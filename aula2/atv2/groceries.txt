@@ -1,0 +1,16 @@
+Fruits:
+
+Fruits:
+
+-Orange
+-Strawberry
+-Mango
+-Grape
+
+Vegetables:
+
+Vegetables:
+
+-Zucchini
+-Potato
+-Carrot

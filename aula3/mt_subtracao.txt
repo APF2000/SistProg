@@ -1,0 +1,41 @@
+ATM
+PCS 23023/2024 X-Y, subtrai 2 números unários (formato 1.1)
+1 # $ @ *  	//alfabeto de entrada
+1 B # $ @ *	//alfabeto da fita 
+1		//numero de fitas
+1		//numeros de trilhas na fita 0
+1		//fita 0 é infinita sío em um sentido
+q0		//estado inicial
+qA		//estado final (aceitacao)
+q0 $ q1 $ R
+q1 @ q1 @ R	// busca um numero 1
+q1 1 q2 @ R
+q2 1 q2 1 R
+q2 # q3 # R	//vai até a borda do primeiro número
+q3 * q3 * R
+q3 1 qVer1 * R	//busca um numero 1 e transforma em * (vai para o estado de verficação1)
+qVer1 # q5 # L	//vai pro módulo que arruma a conta
+qVer1 1 q4 1 L	//continua o processo da conta
+q4 1 q4 1 L	
+q4 * q4 * L
+q4 # q4 # L	//vai para a esquerda procurando um @
+q4 @ q1 @ R	//acha o arroba e volta para o loop
+q5 1 q5 1 L	//começa o módulo que arruma a conta
+q5 # q5 # L
+q5 * q5 * L
+q5 @ qVer2 @ R	//vai até um @ e entra no estado de verificação2
+qVer2 # q7 # L  //entra no módulo final
+qVer2 1 q6 @ R	//agora some com o 1 pra contabilizar ele lá no canto direito
+q6 1 q6 1 R
+q6 # q6 # R
+q6 * q6 * R
+q6 B q5 1 L	//deposita o 1 no canto direito e volta pro loop
+q7 @ q7 1 L	//troca os @s por 1s
+q7 $ q8 $ R	//chega na ponta da esquerda
+q8 1 q8 1 R
+q8 # q8 # R
+q8 * q8 1 R	
+q8 B qA 1 R 	//tranforma todos os *s em 1s e adiciona um 1 no fim
+end
+
+
