@@ -1,0 +1,40 @@
+ATM
+PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1)
+1 # $	
+1 B # $	
+1		
+1		
+1		
+q0 // estado inicial		
+qA // estado de aceitacao
+q0 $ q1 $ R		//início
+q1 1 q1 1 R
+q1 * q1 * R
+q1 @ q1 @ R
+q1 # q2 # R		//procura o # central
+q2 1 q3 * R
+q2 * q2 * R		//procura um 1 à direita
+q3 1 q4 1 L 		//continua a subtracao atual
+q3 # qdiv2 # R		//vai para a proxima subtracao
+q3 B qAux # R
+qAux B qAux B L
+qAux # qdiv2 # R	//estado aux põe um # após o 2o operando caso não tenha 
+q4 1 qdiv1 @ L		
+q4 * q4 * L		
+q4 # q4 # L
+q4 @ q4 @ L		//procura um 1 e troca por @
+qdiv1 1 q1 1 R		//se ainda tem digitos pra serem divididos, volta pro loop
+qdiv1 $ qarruma $ R	//se acabou o número, acabou a divisão
+qarruma 1 qarruma 1 R
+qarruma * qarruma 1 R
+qarruma # qarruma # R
+qarruma @ qarruma 1 R	//arruma os operandos 
+qarruma B qA 1 R	//chega na borda do resultado e acaba a conta
+qdiv2 1 qdiv2 1 R
+qdiv2 B qdiv3 1 L
+qdiv3 1 qdiv3 1 L
+qdiv3 * qdiv3 1 L
+qdiv3 # qdiv3 # L
+qdiv3 @ q1 @ R 		//reparam o 2o operando para continuar o loop
+end
+ 	

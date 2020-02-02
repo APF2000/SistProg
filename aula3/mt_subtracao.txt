@@ -36,6 +36,8 @@ q8 1 q8 1 R
 q8 # q8 # R
 q8 * q8 1 R	
 q8 B qA 1 R 	//tranforma todos os *s em 1s e adiciona um 1 no fim
+qVer1 B qAux # R
+qAux B qVer1 B L	//estado auxiliar (adicionar # ao fim dos operandos)
 end
 
 

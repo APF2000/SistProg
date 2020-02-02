@@ -21,7 +21,8 @@ q5 # q5 # R
 q5 @ q5 1 R
 q5 1 q5 1 R
 q5 B q6 B L
-q6 1 qA B L
+q6 1 q7 B R
+q7 B qA B L
 q3 1 q4 @ R
 q4 # q4 # R
 q4 @ q4 @ R
