@@ -1,0 +1,107 @@
+;
+0000 0200  ; Pula para o início das instruções;
+;
+; ===========================================================================
+; Área de dados
+; ===========================================================================
+;
+0010 000A	;lado a = 10
+0012 0011	;lado b = 17
+0014 0014	;lado c = 20
+;		triangulo default = (1, sqrt(3), 2) * 10 => (10, 17, 20) (acutangulo)
+;		mudar ordem dos lados nao deve fazer diferenca
+;		valor default da resposta = 0
+0016 0000	;resposta (0=impossivel, 1=acutangulo, 2=retangulo, 3=obtusangulo)
+0018 0000	;area para por resultados parciais (usar no swap e no quadrado)
+001A 0000	;area para por endereco de retorno
+;
+00C0 0001	;constante 1
+00C2 0002	;constante 2
+00C4 0003	;constante 3
+;
+; ===========================================================================
+; Programa
+; ===========================================================================
+;
+; Organizar do menor para o maior
+;
+0100 0200	;endereço de volta
+0102 8012	;carrega lado b
+0104 5010	;subtrai lado a
+0106 210A	;vai trocar a e b se a > b, ou seja, se b - a < 0
+0108 01C0	;vai trocar c e b (mas talvez b agora seja o valor incial de a)
+;
+;		SWAP
+;
+010A 8010	
+010C 9018	;pega a e poe no lugar reservado
+010E 8012	
+0110 9010	;pega b e por no lugar onde a estava
+0112 8018
+0114 9012	;pega a de volta e transfere pra b
+0116 01C0	;pula pro proximo trecho de codigo
+;
+01C0 8014
+01C2 5012
+01C4 21C8	;mesma logica do pre-swap
+01C6 01D4
+;
+01C8 8012
+01CA 9018
+01CC 8014
+01CE 9012	;mesma logica do swap
+01D0 8018
+01D2 9014
+;
+01D4 B100	;volta pra chamada da funcao
+;
+;		AO QUADRADO(ignorar por enquanto)
+;
+01D6 801A	;carrega endereco de volta
+01D8 91DA
+01DA 0000	;poe aqui o endereco de volta e entao volta pra chamada da funcao
+;
+01DC 8018	;carrega valor do lugar combinado
+01DE 6018	;multiplica por ele mesmo
+01E0 9018	;devolve o resultado certo
+;
+01E2 B1D6	;volta pro comeco da func pra poder voltar de onde ela foi chamada
+;  
+;
+0200 A100	;organizar abc (deixa o maior valor em c)
+0202 8010	
+0204 4012
+0206 5014	;faz a + b - c
+0208 2E00	;se o triangulo nao existe, acaba o programa (resposta default = 0)	
+020A 1E00	;idem
+;
+020C 8010
+020E 6010
+0210 9010	;troca a por a^2
+0212 8012
+0214 6012
+0216 9012       ;troca b por b^2
+0218 8014
+021A 6014
+021C 9014       ;troca c por c^2
+;
+021E 8010
+0220 4012
+0222 5014	;temos a^2 + b^2 - c^2
+;
+0224 222C	;a^2 + b^2 - c^2 < 0 (acutangulo)
+0226 1230	;a^2 + b^2 - c^2 = 0 (retangulo)
+;
+0228 80C4	;carrega o numero 3 (obtusangulo)
+022A 0234	;vai depositar o resultado no fim do programa
+;
+022C 80C0	;carrega o numero 1 (acutangulo)
+022E 0234	;vai depositar o resultado no fim do programa
+;
+0230 80C2	;carrega o numero 2 (retangulo)
+;
+0232 9016	;deposita a resposta
+0234 0E00	;acaba o programa
+;
+0E00 CE00	;end
+

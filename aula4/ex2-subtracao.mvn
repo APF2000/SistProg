@@ -1,0 +1,26 @@
+;
+0000 0100  ; Pula para o início das instruções;
+;
+; ===========================================================================
+; Área de dados
+; ===========================================================================
+;
+0010 FF91	; Minuendo X
+0012 014D	; Subtraendo Y
+0014 0000	; Diferença X - Y
+;
+; ===========================================================================
+; Programa
+; ===========================================================================
+;
+; Subtraindo os nums (X - Y)
+;
+0100 A1FE	;pula para a função de subtração
+0102 C102	;end
+;
+01FE 0102	;endereço de retorno
+0200 8010	;carrega minuendo no acumulador
+0202 4012	;subtrai o subtraendo
+0204 9014	;deixa a subtracao no 014	
+0206 B1FE	;volta para a chamada da função
+;

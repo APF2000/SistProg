@@ -1,0 +1,1781 @@
+ REPORT 
+TITLE: NEW MACHINE 
+
+
+TITLE  MACHINE: PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1) 
+         INPUT: $11#11
+  SNAPSHOT:   START State:q0
+  SNAPSHOT:   Machine Tapes:
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$11#11BBBB
+  SNAPSHOT:  
+
+  SNAPSHOT: Step number: 1,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 2,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 3,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 4,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)       $11#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 5,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)      $11#*<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 6,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $11#<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 7,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>#*1BBBBBBB
+
+  SNAPSHOT: Step number: 8,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1#*1BBBBBB
+
+  SNAPSHOT: Step number: 9,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@#*1BBBBB
+
+  SNAPSHOT: Step number: 10,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@#*1BBBBBB
+
+  SNAPSHOT: Step number: 11,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>#*1BBBBBBB
+
+  SNAPSHOT: Step number: 12,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)       $1@#<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 13,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)      $1@#*<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 14,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)     $1@#**<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 15,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)    $1@#**#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 16,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)     $1@#**<read-head>#BBBBBBBBB
+
+  SNAPSHOT: Step number: 17,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00)    $1@#**#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 18,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $1@#**<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 19,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $1@#*<read-head>*#1BBBBBBB
+
+  SNAPSHOT: Step number: 20,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)       $1@#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 21,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>#11#1BBBBB
+
+  SNAPSHOT: Step number: 22,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@#11#1BBBB
+
+  SNAPSHOT: Step number: 23,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>#11#1BBBBB
+
+  SNAPSHOT: Step number: 24,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)       $1@#<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 25,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)      $1@#*<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 26,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $1@#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 27,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>#*1#1BBBBB
+
+  SNAPSHOT: Step number: 28,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@#*1#1BBBB
+
+  SNAPSHOT: Step number: 29,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@#*1#1BBB
+
+  SNAPSHOT: Step number: 30,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$@@#*1#1BB
+
+  SNAPSHOT: Step number: 31,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>@@#*1#1BBB
+
+  SNAPSHOT: Step number: 32,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@#*1#1BBBB
+
+  SNAPSHOT: Step number: 33,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>#*1#1BBBBB
+
+  SNAPSHOT: Step number: 34,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)       $11#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 35,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)      $11#1<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 36,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)     $11#11<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 37,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)    $11#11#<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 38,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)   $11#11#1<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 39,  Current State: qA
+  SNAPSHOT: (Tape,Track):(00)  $11#11#11<read-head>BBBBBBBBBB
+  SNAPSHOT: Stopped ACCEPTED after Step: 39
+  SNAPSHOT: FINAL TAPE(S): 
+  SNAPSHOT: (Tape,Track):(00)            $11#11#11<read-head>BBBBBBBBBBBBBBBBBBBB
+
+TITLE  MACHINE: PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1) 
+         INPUT: $111#11
+  SNAPSHOT:   START State:q0
+  SNAPSHOT:   Machine Tapes:
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$111#11BBB
+  SNAPSHOT:  
+
+  SNAPSHOT: Step number: 1,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>111#11BBBB
+
+  SNAPSHOT: Step number: 2,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 3,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 4,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 5,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)      $111#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 6,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)     $111#*<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 7,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $111#<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 8,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>#*1BBBBBBB
+
+  SNAPSHOT: Step number: 9,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1#*1BBBBBB
+
+  SNAPSHOT: Step number: 10,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@#*1BBBBB
+
+  SNAPSHOT: Step number: 11,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@#*1BBBBBB
+
+  SNAPSHOT: Step number: 12,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>#*1BBBBBBB
+
+  SNAPSHOT: Step number: 13,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)      $11@#<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 14,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)     $11@#*<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 15,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)    $11@#**<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 16,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)   $11@#**#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 17,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)    $11@#**<read-head>#BBBBBBBBB
+
+  SNAPSHOT: Step number: 18,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00)   $11@#**#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 19,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $11@#**<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 20,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $11@#*<read-head>*#1BBBBBBB
+
+  SNAPSHOT: Step number: 21,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $11@#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 22,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>#11#1BBBBB
+
+  SNAPSHOT: Step number: 23,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@#11#1BBBB
+
+  SNAPSHOT: Step number: 24,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>#11#1BBBBB
+
+  SNAPSHOT: Step number: 25,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)      $11@#<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 26,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)     $11@#*<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 27,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $11@#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 28,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>#*1#1BBBBB
+
+  SNAPSHOT: Step number: 29,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@#*1#1BBBB
+
+  SNAPSHOT: Step number: 30,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@#*1#1BBB
+
+  SNAPSHOT: Step number: 31,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@#*1#1BB
+
+  SNAPSHOT: Step number: 32,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@#*1#1BBB
+
+  SNAPSHOT: Step number: 33,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@#*1#1BBBB
+
+  SNAPSHOT: Step number: 34,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>#*1#1BBBBB
+
+  SNAPSHOT: Step number: 35,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)      $1@@#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 36,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)     $1@@#*<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 37,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)    $1@@#**<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 38,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00)   $1@@#**#<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 39,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00)  $1@@#**#1<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 40,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $1@@#**#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 41,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $1@@#**<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 42,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $1@@#*<read-head>*#11BBBBBB
+
+  SNAPSHOT: Step number: 43,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $1@@#<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 44,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>#11#11BBBB
+
+  SNAPSHOT: Step number: 45,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@#11#11BBB
+
+  SNAPSHOT: Step number: 46,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>#11#11BBBB
+
+  SNAPSHOT: Step number: 47,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)      $1@@#<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 48,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)     $1@@#*<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 49,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1@@#<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 50,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>#*1#11BBBB
+
+  SNAPSHOT: Step number: 51,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@#*1#11BBB
+
+  SNAPSHOT: Step number: 52,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@#*1#11BB
+
+  SNAPSHOT: Step number: 53,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@#*1#11B
+
+  SNAPSHOT: Step number: 54,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$@@@#*1#11
+
+  SNAPSHOT: Step number: 55,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>@@@#*1#11B
+
+  SNAPSHOT: Step number: 56,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@#*1#11BB
+
+  SNAPSHOT: Step number: 57,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@#*1#11BBB
+
+  SNAPSHOT: Step number: 58,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>#*1#11BBBB
+
+  SNAPSHOT: Step number: 59,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)      $111#<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 60,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)     $111#1<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 61,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)    $111#11<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 62,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)   $111#11#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 63,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)  $111#11#1<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 64,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) $111#11#11<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 65,  Current State: qA
+  SNAPSHOT: (Tape,Track):(00) 111#11#111<read-head>BBBBBBBBBB
+  SNAPSHOT: Stopped ACCEPTED after Step: 65
+  SNAPSHOT: FINAL TAPE(S): 
+  SNAPSHOT: (Tape,Track):(00)          $111#11#111<read-head>BBBBBBBBBBBBBBBBBBBB
+
+TITLE  MACHINE: PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1) 
+         INPUT: $11111#11
+  SNAPSHOT:   START State:q0
+  SNAPSHOT:   Machine Tapes:
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$11111#11B
+  SNAPSHOT:  
+
+  SNAPSHOT: Step number: 1,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>11111#11BB
+
+  SNAPSHOT: Step number: 2,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1111#11BBB
+
+  SNAPSHOT: Step number: 3,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>111#11BBBB
+
+  SNAPSHOT: Step number: 4,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 5,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 6,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 7,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $11111#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 8,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $11111#*<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 9,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $11111#<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 10,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>#*1BBBBBBB
+
+  SNAPSHOT: Step number: 11,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>1#*1BBBBBB
+
+  SNAPSHOT: Step number: 12,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>1@#*1BBBBB
+
+  SNAPSHOT: Step number: 13,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@#*1BBBBBB
+
+  SNAPSHOT: Step number: 14,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>#*1BBBBBBB
+
+  SNAPSHOT: Step number: 15,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $1111@#<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 16,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $1111@#*<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 17,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $1111@#**<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 18,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00) $1111@#**#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 19,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)  $1111@#**<read-head>#BBBBBBBBB
+
+  SNAPSHOT: Step number: 20,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) $1111@#**#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 21,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $1111@#**<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 22,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $1111@#*<read-head>*#1BBBBBBB
+
+  SNAPSHOT: Step number: 23,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $1111@#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 24,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>#11#1BBBBB
+
+  SNAPSHOT: Step number: 25,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@#11#1BBBB
+
+  SNAPSHOT: Step number: 26,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>#11#1BBBBB
+
+  SNAPSHOT: Step number: 27,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $1111@#<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 28,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $1111@#*<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 29,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $1111@#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 30,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>#*1#1BBBBB
+
+  SNAPSHOT: Step number: 31,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@#*1#1BBBB
+
+  SNAPSHOT: Step number: 32,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>1@#*1#1BBB
+
+  SNAPSHOT: Step number: 33,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1@@#*1#1BB
+
+  SNAPSHOT: Step number: 34,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@#*1#1BBB
+
+  SNAPSHOT: Step number: 35,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>@#*1#1BBBB
+
+  SNAPSHOT: Step number: 36,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>#*1#1BBBBB
+
+  SNAPSHOT: Step number: 37,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $111@@#<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 38,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $111@@#*<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 39,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $111@@#**<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 40,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) $111@@#**#<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 41,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) 111@@#**#1<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 42,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) $111@@#**#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 43,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $111@@#**<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 44,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $111@@#*<read-head>*#11BBBBBB
+
+  SNAPSHOT: Step number: 45,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $111@@#<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 46,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>#11#11BBBB
+
+  SNAPSHOT: Step number: 47,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>@#11#11BBB
+
+  SNAPSHOT: Step number: 48,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>#11#11BBBB
+
+  SNAPSHOT: Step number: 49,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $111@@#<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 50,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $111@@#*<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 51,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $111@@#<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 52,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>#*1#11BBBB
+
+  SNAPSHOT: Step number: 53,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>@#*1#11BBB
+
+  SNAPSHOT: Step number: 54,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@#*1#11BB
+
+  SNAPSHOT: Step number: 55,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1@@#*1#11B
+
+  SNAPSHOT: Step number: 56,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@@@#*1#11
+
+  SNAPSHOT: Step number: 57,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@#*1#11B
+
+  SNAPSHOT: Step number: 58,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@@#*1#11BB
+
+  SNAPSHOT: Step number: 59,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>@#*1#11BBB
+
+  SNAPSHOT: Step number: 60,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>#*1#11BBBB
+
+  SNAPSHOT: Step number: 61,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $11@@@#<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 62,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $11@@@#*<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 63,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $11@@@#**<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 64,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) $11@@@#**#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 65,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) 11@@@#**#1<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 66,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) 1@@@#**#11<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 67,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) 11@@@#**#1<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 68,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) $11@@@#**#<read-head>111BBBBBBB
+
+  SNAPSHOT: Step number: 69,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $11@@@#**<read-head>#111BBBBBB
+
+  SNAPSHOT: Step number: 70,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $11@@@#*<read-head>*#111BBBBB
+
+  SNAPSHOT: Step number: 71,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $11@@@#<read-head>*1#111BBBB
+
+  SNAPSHOT: Step number: 72,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>#11#111BBB
+
+  SNAPSHOT: Step number: 73,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>@#11#111BB
+
+  SNAPSHOT: Step number: 74,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>#11#111BBB
+
+  SNAPSHOT: Step number: 75,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $11@@@#<read-head>11#111BBBB
+
+  SNAPSHOT: Step number: 76,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $11@@@#*<read-head>1#111BBBBB
+
+  SNAPSHOT: Step number: 77,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $11@@@#<read-head>*1#111BBBB
+
+  SNAPSHOT: Step number: 78,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>#*1#111BBB
+
+  SNAPSHOT: Step number: 79,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>@#*1#111BB
+
+  SNAPSHOT: Step number: 80,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@@#*1#111B
+
+  SNAPSHOT: Step number: 81,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@#*1#111
+
+  SNAPSHOT: Step number: 82,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@@@#*1#11
+
+  SNAPSHOT: Step number: 83,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@@@#*1#1
+
+  SNAPSHOT: Step number: 84,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@#*1#11
+
+  SNAPSHOT: Step number: 85,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@@@#*1#111
+
+  SNAPSHOT: Step number: 86,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>@@#*1#111B
+
+  SNAPSHOT: Step number: 87,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>@#*1#111BB
+
+  SNAPSHOT: Step number: 88,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>#*1#111BBB
+
+  SNAPSHOT: Step number: 89,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@#<read-head>*1#111BBBB
+
+  SNAPSHOT: Step number: 90,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $1@@@@#*<read-head>1#111BBBBB
+
+  SNAPSHOT: Step number: 91,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $1@@@@#**<read-head>#111BBBBBB
+
+  SNAPSHOT: Step number: 92,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) $1@@@@#**#<read-head>111BBBBBBB
+
+  SNAPSHOT: Step number: 93,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) 1@@@@#**#1<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 94,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) @@@@#**#11<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 95,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) @@@#**#111<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 96,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) @@@@#**#11<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 97,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) 1@@@@#**#1<read-head>111BBBBBBB
+
+  SNAPSHOT: Step number: 98,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) $1@@@@#**#<read-head>1111BBBBBB
+
+  SNAPSHOT: Step number: 99,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $1@@@@#**<read-head>#1111BBBBB
+
+  SNAPSHOT: Step number: 100,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $1@@@@#*<read-head>*#1111BBBB
+
+  SNAPSHOT: Step number: 101,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@#<read-head>*1#1111BBB
+
+  SNAPSHOT: Step number: 102,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>#11#1111BB
+
+  SNAPSHOT: Step number: 103,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>@#11#1111B
+
+  SNAPSHOT: Step number: 104,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>#11#1111BB
+
+  SNAPSHOT: Step number: 105,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@#<read-head>11#1111BBB
+
+  SNAPSHOT: Step number: 106,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $1@@@@#*<read-head>1#1111BBBB
+
+  SNAPSHOT: Step number: 107,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@#<read-head>*1#1111BBB
+
+  SNAPSHOT: Step number: 108,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>#*1#1111BB
+
+  SNAPSHOT: Step number: 109,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>@#*1#1111B
+
+  SNAPSHOT: Step number: 110,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>@@#*1#1111
+
+  SNAPSHOT: Step number: 111,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@@@#*1#111
+
+  SNAPSHOT: Step number: 112,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@#*1#11
+
+  SNAPSHOT: Step number: 113,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@@@#*1#1
+
+  SNAPSHOT: Step number: 114,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$@@@@@#*1#
+
+  SNAPSHOT: Step number: 115,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>@@@@@#*1#1
+
+  SNAPSHOT: Step number: 116,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@#*1#11
+
+  SNAPSHOT: Step number: 117,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@#*1#111
+
+  SNAPSHOT: Step number: 118,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@#*1#1111
+
+  SNAPSHOT: Step number: 119,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@#*1#1111B
+
+  SNAPSHOT: Step number: 120,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>#*1#1111BB
+
+  SNAPSHOT: Step number: 121,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)    $11111#<read-head>*1#1111BBB
+
+  SNAPSHOT: Step number: 122,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)   $11111#1<read-head>1#1111BBBB
+
+  SNAPSHOT: Step number: 123,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)  $11111#11<read-head>#1111BBBBB
+
+  SNAPSHOT: Step number: 124,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) $11111#11#<read-head>1111BBBBBB
+
+  SNAPSHOT: Step number: 125,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 11111#11#1<read-head>111BBBBBBB
+
+  SNAPSHOT: Step number: 126,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 1111#11#11<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 127,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 111#11#111<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 128,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 11#11#1111<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 129,  Current State: qA
+  SNAPSHOT: (Tape,Track):(00) 1#11#11111<read-head>BBBBBBBBBB
+  SNAPSHOT: Stopped ACCEPTED after Step: 129
+  SNAPSHOT: FINAL TAPE(S): 
+  SNAPSHOT: (Tape,Track):(00)      $11111#11#11111<read-head>BBBBBBBBBBBBBBBBBBBB
+
+TITLE  MACHINE: PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1) 
+         INPUT: $1111#111
+  SNAPSHOT:   START State:q0
+  SNAPSHOT:   Machine Tapes:
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$1111#111B
+  SNAPSHOT:  
+
+  SNAPSHOT: Step number: 1,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1111#111BB
+
+  SNAPSHOT: Step number: 2,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>111#111BBB
+
+  SNAPSHOT: Step number: 3,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>11#111BBBB
+
+  SNAPSHOT: Step number: 4,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>1#111BBBBB
+
+  SNAPSHOT: Step number: 5,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>#111BBBBBB
+
+  SNAPSHOT: Step number: 6,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)     $1111#<read-head>111BBBBBBB
+
+  SNAPSHOT: Step number: 7,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)    $1111#*<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 8,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $1111#<read-head>*11BBBBBBB
+
+  SNAPSHOT: Step number: 9,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>#*11BBBBBB
+
+  SNAPSHOT: Step number: 10,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>1#*11BBBBB
+
+  SNAPSHOT: Step number: 11,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1@#*11BBBB
+
+  SNAPSHOT: Step number: 12,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@#*11BBBBB
+
+  SNAPSHOT: Step number: 13,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>#*11BBBBBB
+
+  SNAPSHOT: Step number: 14,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)     $111@#<read-head>*11BBBBBBB
+
+  SNAPSHOT: Step number: 15,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $111@#*<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 16,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $111@#**<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 17,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $111@#*<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 18,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $111@#<read-head>**1BBBBBBB
+
+  SNAPSHOT: Step number: 19,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>#**1BBBBBB
+
+  SNAPSHOT: Step number: 20,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@#**1BBBBB
+
+  SNAPSHOT: Step number: 21,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1@#**1BBBB
+
+  SNAPSHOT: Step number: 22,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@@#**1BBB
+
+  SNAPSHOT: Step number: 23,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@#**1BBBB
+
+  SNAPSHOT: Step number: 24,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@#**1BBBBB
+
+  SNAPSHOT: Step number: 25,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>#**1BBBBBB
+
+  SNAPSHOT: Step number: 26,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)     $11@@#<read-head>**1BBBBBBB
+
+  SNAPSHOT: Step number: 27,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $11@@#*<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 28,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $11@@#**<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 29,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $11@@#***<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 30,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00) $11@@#***#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 31,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)  $11@@#***<read-head>#BBBBBBBBB
+
+  SNAPSHOT: Step number: 32,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) $11@@#***#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 33,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $11@@#***<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 34,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $11@@#**<read-head>*#1BBBBBBB
+
+  SNAPSHOT: Step number: 35,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $11@@#*<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 36,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $11@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 37,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>#111#1BBBB
+
+  SNAPSHOT: Step number: 38,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@#111#1BBB
+
+  SNAPSHOT: Step number: 39,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>#111#1BBBB
+
+  SNAPSHOT: Step number: 40,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)     $11@@#<read-head>111#1BBBBB
+
+  SNAPSHOT: Step number: 41,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)    $11@@#*<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 42,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $11@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 43,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>#*11#1BBBB
+
+  SNAPSHOT: Step number: 44,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@#*11#1BBB
+
+  SNAPSHOT: Step number: 45,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@#*11#1BB
+
+  SNAPSHOT: Step number: 46,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@@#*11#1B
+
+  SNAPSHOT: Step number: 47,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@@#*11#1
+
+  SNAPSHOT: Step number: 48,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@#*11#1B
+
+  SNAPSHOT: Step number: 49,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@@#*11#1BB
+
+  SNAPSHOT: Step number: 50,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>@#*11#1BBB
+
+  SNAPSHOT: Step number: 51,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>#*11#1BBBB
+
+  SNAPSHOT: Step number: 52,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)     $1@@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 53,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $1@@@#*<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 54,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $1@@@#**<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 55,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $1@@@#*<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 56,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $1@@@#<read-head>**1#1BBBBB
+
+  SNAPSHOT: Step number: 57,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>#**1#1BBBB
+
+  SNAPSHOT: Step number: 58,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>@#**1#1BBB
+
+  SNAPSHOT: Step number: 59,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@@#**1#1BB
+
+  SNAPSHOT: Step number: 60,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@#**1#1B
+
+  SNAPSHOT: Step number: 61,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@@#**1#1
+
+  SNAPSHOT: Step number: 62,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$@@@@#**1#
+
+  SNAPSHOT: Step number: 63,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>@@@@#**1#1
+
+  SNAPSHOT: Step number: 64,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@#**1#1B
+
+  SNAPSHOT: Step number: 65,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@#**1#1BB
+
+  SNAPSHOT: Step number: 66,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@#**1#1BBB
+
+  SNAPSHOT: Step number: 67,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>#**1#1BBBB
+
+  SNAPSHOT: Step number: 68,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)     $1111#<read-head>**1#1BBBBB
+
+  SNAPSHOT: Step number: 69,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)    $1111#1<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 70,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)   $1111#11<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 71,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)  $1111#111<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 72,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) $1111#111#<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 73,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 1111#111#1<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 74,  Current State: qA
+  SNAPSHOT: (Tape,Track):(00) 111#111#11<read-head>BBBBBBBBBB
+  SNAPSHOT: Stopped ACCEPTED after Step: 74
+  SNAPSHOT: FINAL TAPE(S): 
+  SNAPSHOT: (Tape,Track):(00)         $1111#111#11<read-head>BBBBBBBBBBBBBBBBBBBB
+
+TITLE  MACHINE: PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1) 
+         INPUT: $11111#111
+  SNAPSHOT:   START State:q0
+  SNAPSHOT:   Machine Tapes:
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$11111#111
+  SNAPSHOT:  
+
+  SNAPSHOT: Step number: 1,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>11111#111B
+
+  SNAPSHOT: Step number: 2,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1111#111BB
+
+  SNAPSHOT: Step number: 3,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>111#111BBB
+
+  SNAPSHOT: Step number: 4,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>11#111BBBB
+
+  SNAPSHOT: Step number: 5,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>1#111BBBBB
+
+  SNAPSHOT: Step number: 6,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>#111BBBBBB
+
+  SNAPSHOT: Step number: 7,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $11111#<read-head>111BBBBBBB
+
+  SNAPSHOT: Step number: 8,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $11111#*<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 9,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $11111#<read-head>*11BBBBBBB
+
+  SNAPSHOT: Step number: 10,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>#*11BBBBBB
+
+  SNAPSHOT: Step number: 11,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>1#*11BBBBB
+
+  SNAPSHOT: Step number: 12,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>1@#*11BBBB
+
+  SNAPSHOT: Step number: 13,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@#*11BBBBB
+
+  SNAPSHOT: Step number: 14,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>#*11BBBBBB
+
+  SNAPSHOT: Step number: 15,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $1111@#<read-head>*11BBBBBBB
+
+  SNAPSHOT: Step number: 16,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $1111@#*<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 17,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $1111@#**<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 18,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)   $1111@#*<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 19,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $1111@#<read-head>**1BBBBBBB
+
+  SNAPSHOT: Step number: 20,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>#**1BBBBBB
+
+  SNAPSHOT: Step number: 21,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@#**1BBBBB
+
+  SNAPSHOT: Step number: 22,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>1@#**1BBBB
+
+  SNAPSHOT: Step number: 23,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1@@#**1BBB
+
+  SNAPSHOT: Step number: 24,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@#**1BBBB
+
+  SNAPSHOT: Step number: 25,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>@#**1BBBBB
+
+  SNAPSHOT: Step number: 26,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>#**1BBBBBB
+
+  SNAPSHOT: Step number: 27,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $111@@#<read-head>**1BBBBBBB
+
+  SNAPSHOT: Step number: 28,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $111@@#*<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 29,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)  $111@@#**<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 30,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00) $111@@#***<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 31,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00) 111@@#***#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 32,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00) $111@@#***<read-head>#BBBBBBBBB
+
+  SNAPSHOT: Step number: 33,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) 111@@#***#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 34,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) $111@@#***<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 35,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $111@@#**<read-head>*#1BBBBBBB
+
+  SNAPSHOT: Step number: 36,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $111@@#*<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 37,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $111@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 38,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>#111#1BBBB
+
+  SNAPSHOT: Step number: 39,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>@#111#1BBB
+
+  SNAPSHOT: Step number: 40,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>#111#1BBBB
+
+  SNAPSHOT: Step number: 41,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $111@@#<read-head>111#1BBBBB
+
+  SNAPSHOT: Step number: 42,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $111@@#*<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 43,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $111@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 44,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>#*11#1BBBB
+
+  SNAPSHOT: Step number: 45,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>@#*11#1BBB
+
+  SNAPSHOT: Step number: 46,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@#*11#1BB
+
+  SNAPSHOT: Step number: 47,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1@@#*11#1B
+
+  SNAPSHOT: Step number: 48,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@@@#*11#1
+
+  SNAPSHOT: Step number: 49,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@#*11#1B
+
+  SNAPSHOT: Step number: 50,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@@#*11#1BB
+
+  SNAPSHOT: Step number: 51,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>@#*11#1BBB
+
+  SNAPSHOT: Step number: 52,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>#*11#1BBBB
+
+  SNAPSHOT: Step number: 53,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $11@@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 54,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $11@@@#*<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 55,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $11@@@#**<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 56,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)   $11@@@#*<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 57,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $11@@@#<read-head>**1#1BBBBB
+
+  SNAPSHOT: Step number: 58,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>#**1#1BBBB
+
+  SNAPSHOT: Step number: 59,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>@#**1#1BBB
+
+  SNAPSHOT: Step number: 60,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@@#**1#1BB
+
+  SNAPSHOT: Step number: 61,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@#**1#1B
+
+  SNAPSHOT: Step number: 62,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@@@#**1#1
+
+  SNAPSHOT: Step number: 63,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@@@#**1#
+
+  SNAPSHOT: Step number: 64,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@#**1#1
+
+  SNAPSHOT: Step number: 65,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@@@#**1#1B
+
+  SNAPSHOT: Step number: 66,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>@@#**1#1BB
+
+  SNAPSHOT: Step number: 67,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>@#**1#1BBB
+
+  SNAPSHOT: Step number: 68,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>#**1#1BBBB
+
+  SNAPSHOT: Step number: 69,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@#<read-head>**1#1BBBBB
+
+  SNAPSHOT: Step number: 70,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $1@@@@#*<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 71,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)  $1@@@@#**<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 72,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00) $1@@@@#***<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 73,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) 1@@@@#***#<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 74,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) @@@@#***#1<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 75,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) 1@@@@#***#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 76,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) $1@@@@#***<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 77,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $1@@@@#**<read-head>*#11BBBBBB
+
+  SNAPSHOT: Step number: 78,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $1@@@@#*<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 79,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@#<read-head>*11#11BBBB
+
+  SNAPSHOT: Step number: 80,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>#111#11BBB
+
+  SNAPSHOT: Step number: 81,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>@#111#11BB
+
+  SNAPSHOT: Step number: 82,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>#111#11BBB
+
+  SNAPSHOT: Step number: 83,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@#<read-head>111#11BBBB
+
+  SNAPSHOT: Step number: 84,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)   $1@@@@#*<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 85,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@#<read-head>*11#11BBBB
+
+  SNAPSHOT: Step number: 86,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>#*11#11BBB
+
+  SNAPSHOT: Step number: 87,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>@#*11#11BB
+
+  SNAPSHOT: Step number: 88,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>@@#*11#11B
+
+  SNAPSHOT: Step number: 89,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@@@#*11#11
+
+  SNAPSHOT: Step number: 90,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@#*11#1
+
+  SNAPSHOT: Step number: 91,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@@@#*11#
+
+  SNAPSHOT: Step number: 92,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$@@@@@#*11
+
+  SNAPSHOT: Step number: 93,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>@@@@@#*11#
+
+  SNAPSHOT: Step number: 94,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@#*11#1
+
+  SNAPSHOT: Step number: 95,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@#*11#11
+
+  SNAPSHOT: Step number: 96,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@#*11#11B
+
+  SNAPSHOT: Step number: 97,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@#*11#11BB
+
+  SNAPSHOT: Step number: 98,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>#*11#11BBB
+
+  SNAPSHOT: Step number: 99,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)    $11111#<read-head>*11#11BBBB
+
+  SNAPSHOT: Step number: 100,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)   $11111#1<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 101,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)  $11111#11<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 102,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) $11111#111<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 103,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 11111#111#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 104,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 1111#111#1<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 105,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 111#111#11<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 106,  Current State: qA
+  SNAPSHOT: (Tape,Track):(00) 11#111#111<read-head>BBBBBBBBBB
+  SNAPSHOT: Stopped ACCEPTED after Step: 106
+  SNAPSHOT: FINAL TAPE(S): 
+  SNAPSHOT: (Tape,Track):(00)       $11111#111#111<read-head>BBBBBBBBBBBBBBBBBBBB
+
+TITLE  MACHINE: PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1) 
+         INPUT: $111111#111
+  SNAPSHOT:   START State:q0
+  SNAPSHOT:   Machine Tapes:
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$111111#11
+  SNAPSHOT:  
+
+  SNAPSHOT: Step number: 1,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>111111#111
+
+  SNAPSHOT: Step number: 2,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>11111#111B
+
+  SNAPSHOT: Step number: 3,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1111#111BB
+
+  SNAPSHOT: Step number: 4,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>111#111BBB
+
+  SNAPSHOT: Step number: 5,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>11#111BBBB
+
+  SNAPSHOT: Step number: 6,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>1#111BBBBB
+
+  SNAPSHOT: Step number: 7,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)    $111111<read-head>#111BBBBBB
+
+  SNAPSHOT: Step number: 8,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $111111#<read-head>111BBBBBBB
+
+  SNAPSHOT: Step number: 9,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $111111#*<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 10,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)   $111111#<read-head>*11BBBBBBB
+
+  SNAPSHOT: Step number: 11,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $111111<read-head>#*11BBBBBB
+
+  SNAPSHOT: Step number: 12,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>1#*11BBBBB
+
+  SNAPSHOT: Step number: 13,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>1@#*11BBBB
+
+  SNAPSHOT: Step number: 14,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>@#*11BBBBB
+
+  SNAPSHOT: Step number: 15,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)    $11111@<read-head>#*11BBBBBB
+
+  SNAPSHOT: Step number: 16,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $11111@#<read-head>*11BBBBBBB
+
+  SNAPSHOT: Step number: 17,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)  $11111@#*<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 18,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00) $11111@#**<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 19,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)  $11111@#*<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 20,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)   $11111@#<read-head>**1BBBBBBB
+
+  SNAPSHOT: Step number: 21,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $11111@<read-head>#**1BBBBBB
+
+  SNAPSHOT: Step number: 22,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>@#**1BBBBB
+
+  SNAPSHOT: Step number: 23,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>1@#**1BBBB
+
+  SNAPSHOT: Step number: 24,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>1@@#**1BBB
+
+  SNAPSHOT: Step number: 25,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@@#**1BBBB
+
+  SNAPSHOT: Step number: 26,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>@#**1BBBBB
+
+  SNAPSHOT: Step number: 27,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)    $1111@@<read-head>#**1BBBBBB
+
+  SNAPSHOT: Step number: 28,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $1111@@#<read-head>**1BBBBBBB
+
+  SNAPSHOT: Step number: 29,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)  $1111@@#*<read-head>*1BBBBBBBB
+
+  SNAPSHOT: Step number: 30,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00) $1111@@#**<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 31,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00) 1111@@#***<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 32,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00) 111@@#***#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 33,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00) 1111@@#***<read-head>#BBBBBBBBB
+
+  SNAPSHOT: Step number: 34,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) 111@@#***#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 35,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) 1111@@#***<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 36,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) $1111@@#**<read-head>*#1BBBBBBB
+
+  SNAPSHOT: Step number: 37,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $1111@@#*<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 38,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $1111@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 39,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $1111@@<read-head>#111#1BBBB
+
+  SNAPSHOT: Step number: 40,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>@#111#1BBB
+
+  SNAPSHOT: Step number: 41,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)    $1111@@<read-head>#111#1BBBB
+
+  SNAPSHOT: Step number: 42,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $1111@@#<read-head>111#1BBBBB
+
+  SNAPSHOT: Step number: 43,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $1111@@#*<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 44,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)   $1111@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 45,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $1111@@<read-head>#*11#1BBBB
+
+  SNAPSHOT: Step number: 46,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $1111@<read-head>@#*11#1BBB
+
+  SNAPSHOT: Step number: 47,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@@#*11#1BB
+
+  SNAPSHOT: Step number: 48,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>1@@#*11#1B
+
+  SNAPSHOT: Step number: 49,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1@@@#*11#1
+
+  SNAPSHOT: Step number: 50,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@@#*11#1B
+
+  SNAPSHOT: Step number: 51,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>@@#*11#1BB
+
+  SNAPSHOT: Step number: 52,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>@#*11#1BBB
+
+  SNAPSHOT: Step number: 53,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)    $111@@@<read-head>#*11#1BBBB
+
+  SNAPSHOT: Step number: 54,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $111@@@#<read-head>*11#1BBBBB
+
+  SNAPSHOT: Step number: 55,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)  $111@@@#*<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 56,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00) $111@@@#**<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 57,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)  $111@@@#*<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 58,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)   $111@@@#<read-head>**1#1BBBBB
+
+  SNAPSHOT: Step number: 59,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $111@@@<read-head>#**1#1BBBB
+
+  SNAPSHOT: Step number: 60,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $111@@<read-head>@#**1#1BBB
+
+  SNAPSHOT: Step number: 61,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $111@<read-head>@@#**1#1BB
+
+  SNAPSHOT: Step number: 62,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@@#**1#1B
+
+  SNAPSHOT: Step number: 63,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>1@@@#**1#1
+
+  SNAPSHOT: Step number: 64,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@@@@#**1#
+
+  SNAPSHOT: Step number: 65,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@@#**1#1
+
+  SNAPSHOT: Step number: 66,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@@@#**1#1B
+
+  SNAPSHOT: Step number: 67,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>@@#**1#1BB
+
+  SNAPSHOT: Step number: 68,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>@#**1#1BBB
+
+  SNAPSHOT: Step number: 69,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)    $11@@@@<read-head>#**1#1BBBB
+
+  SNAPSHOT: Step number: 70,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $11@@@@#<read-head>**1#1BBBBB
+
+  SNAPSHOT: Step number: 71,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)  $11@@@@#*<read-head>*1#1BBBBBB
+
+  SNAPSHOT: Step number: 72,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00) $11@@@@#**<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 73,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00) 11@@@@#***<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 74,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) 1@@@@#***#<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 75,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00) @@@@#***#1<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 76,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) 1@@@@#***#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 77,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) 11@@@@#***<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 78,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00) $11@@@@#**<read-head>*#11BBBBBB
+
+  SNAPSHOT: Step number: 79,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)  $11@@@@#*<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 80,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)   $11@@@@#<read-head>*11#11BBBB
+
+  SNAPSHOT: Step number: 81,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)    $11@@@@<read-head>#111#11BBB
+
+  SNAPSHOT: Step number: 82,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>@#111#11BB
+
+  SNAPSHOT: Step number: 83,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)    $11@@@@<read-head>#111#11BBB
+
+  SNAPSHOT: Step number: 84,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $11@@@@#<read-head>111#11BBBB
+
+  SNAPSHOT: Step number: 85,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)  $11@@@@#*<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 86,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)   $11@@@@#<read-head>*11#11BBBB
+
+  SNAPSHOT: Step number: 87,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $11@@@@<read-head>#*11#11BBB
+
+  SNAPSHOT: Step number: 88,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $11@@@<read-head>@#*11#11BB
+
+  SNAPSHOT: Step number: 89,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $11@@<read-head>@@#*11#11B
+
+  SNAPSHOT: Step number: 90,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $11@<read-head>@@@#*11#11
+
+  SNAPSHOT: Step number: 91,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@@#*11#1
+
+  SNAPSHOT: Step number: 92,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1@@@@#*11#
+
+  SNAPSHOT: Step number: 93,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@@@@#*11
+
+  SNAPSHOT: Step number: 94,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@@#*11#
+
+  SNAPSHOT: Step number: 95,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@@@@#*11#1
+
+  SNAPSHOT: Step number: 96,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>@@@#*11#11
+
+  SNAPSHOT: Step number: 97,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>@@#*11#11B
+
+  SNAPSHOT: Step number: 98,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>@#*11#11BB
+
+  SNAPSHOT: Step number: 99,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@@<read-head>#*11#11BBB
+
+  SNAPSHOT: Step number: 100,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)   $1@@@@@#<read-head>*11#11BBBB
+
+  SNAPSHOT: Step number: 101,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)  $1@@@@@#*<read-head>11#11BBBBB
+
+  SNAPSHOT: Step number: 102,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00) $1@@@@@#**<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 103,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)  $1@@@@@#*<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 104,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)   $1@@@@@#<read-head>**1#11BBBB
+
+  SNAPSHOT: Step number: 105,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)    $1@@@@@<read-head>#**1#11BBB
+
+  SNAPSHOT: Step number: 106,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)     $1@@@@<read-head>@#**1#11BB
+
+  SNAPSHOT: Step number: 107,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)      $1@@@<read-head>@@#**1#11B
+
+  SNAPSHOT: Step number: 108,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)       $1@@<read-head>@@@#**1#11
+
+  SNAPSHOT: Step number: 109,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)        $1@<read-head>@@@@#**1#1
+
+  SNAPSHOT: Step number: 110,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@@#**1#
+
+  SNAPSHOT: Step number: 111,  Current State: q4
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1@@@@@#**1
+
+  SNAPSHOT: Step number: 112,  Current State: qdiv1
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$@@@@@@#**
+
+  SNAPSHOT: Step number: 113,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>@@@@@@#**1
+
+  SNAPSHOT: Step number: 114,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>@@@@@#**1#
+
+  SNAPSHOT: Step number: 115,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>@@@@#**1#1
+
+  SNAPSHOT: Step number: 116,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)       $111<read-head>@@@#**1#11
+
+  SNAPSHOT: Step number: 117,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)      $1111<read-head>@@#**1#11B
+
+  SNAPSHOT: Step number: 118,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)     $11111<read-head>@#**1#11BB
+
+  SNAPSHOT: Step number: 119,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)    $111111<read-head>#**1#11BBB
+
+  SNAPSHOT: Step number: 120,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)   $111111#<read-head>**1#11BBBB
+
+  SNAPSHOT: Step number: 121,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00)  $111111#1<read-head>*1#11BBBBB
+
+  SNAPSHOT: Step number: 122,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) $111111#11<read-head>1#11BBBBBB
+
+  SNAPSHOT: Step number: 123,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 111111#111<read-head>#11BBBBBBB
+
+  SNAPSHOT: Step number: 124,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 11111#111#<read-head>11BBBBBBBB
+
+  SNAPSHOT: Step number: 125,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 1111#111#1<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 126,  Current State: qarruma
+  SNAPSHOT: (Tape,Track):(00) 111#111#11<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 127,  Current State: qA
+  SNAPSHOT: (Tape,Track):(00) 11#111#111<read-head>BBBBBBBBBB
+  SNAPSHOT: Stopped ACCEPTED after Step: 127
+  SNAPSHOT: FINAL TAPE(S): 
+  SNAPSHOT: (Tape,Track):(00)      $111111#111#111<read-head>BBBBBBBBBBBBBBBBBBBB
+
+TITLE  MACHINE: PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1) 
+         INPUT: $1#1
+  SNAPSHOT:   START State:q0
+  SNAPSHOT:   Machine Tapes:
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$1#1BBBBBB
+  SNAPSHOT:  
+
+  SNAPSHOT: Step number: 1,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 2,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 3,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)        $1#<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 4,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)       $1#*<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 5,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)      $1#*#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 6,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)       $1#*<read-head>#BBBBBBBBB
+
+  SNAPSHOT: Step number: 7,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00)      $1#*#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 8,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)       $1#*<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 9,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)        $1#<read-head>*#1BBBBBBB
+
+  SNAPSHOT: Step number: 10,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>#1#1BBBBBB
+
+  SNAPSHOT: Step number: 11,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>1#1#1BBBBB
+
+  SNAPSHOT: Step number: 12,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$1#1#1BBBB
+  SNAPSHOT: Stopped NOT Accepted after Step: 13
+  SNAPSHOT: FINAL TAPE(S): 
+  SNAPSHOT: (Tape,Track):(00)                     <read-head>$1#1#1BBBBBBBBBBBBBB
+
+TITLE  MACHINE: PCS 2302/2024 X/Y, divide 2 números unários (formato 1.1) 
+         INPUT: $11#1
+  SNAPSHOT:   START State:q0
+  SNAPSHOT:   Machine Tapes:
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$11#1BBBBB
+  SNAPSHOT:  
+
+  SNAPSHOT: Step number: 1,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>11#1BBBBBB
+
+  SNAPSHOT: Step number: 2,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1#1BBBBBBB
+
+  SNAPSHOT: Step number: 3,  Current State: q1
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 4,  Current State: q2
+  SNAPSHOT: (Tape,Track):(00)       $11#<read-head>1BBBBBBBBB
+
+  SNAPSHOT: Step number: 5,  Current State: q3
+  SNAPSHOT: (Tape,Track):(00)      $11#*<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 6,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)     $11#*#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 7,  Current State: qAux
+  SNAPSHOT: (Tape,Track):(00)      $11#*<read-head>#BBBBBBBBB
+
+  SNAPSHOT: Step number: 8,  Current State: qdiv2
+  SNAPSHOT: (Tape,Track):(00)     $11#*#<read-head>BBBBBBBBBB
+
+  SNAPSHOT: Step number: 9,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)      $11#*<read-head>#1BBBBBBBB
+
+  SNAPSHOT: Step number: 10,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)       $11#<read-head>*#1BBBBBBB
+
+  SNAPSHOT: Step number: 11,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)        $11<read-head>#1#1BBBBBB
+
+  SNAPSHOT: Step number: 12,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)         $1<read-head>1#1#1BBBBB
+
+  SNAPSHOT: Step number: 13,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)          $<read-head>11#1#1BBBB
+
+  SNAPSHOT: Step number: 14,  Current State: qdiv3
+  SNAPSHOT: (Tape,Track):(00)           <read-head>$11#1#1BBB
+  SNAPSHOT: Stopped NOT Accepted after Step: 15
+  SNAPSHOT: FINAL TAPE(S): 
+  SNAPSHOT: (Tape,Track):(00)                     <read-head>$11#1#1BBBBBBBBBBBBB
