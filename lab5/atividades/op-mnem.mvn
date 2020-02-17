@@ -1,5 +1,5 @@
 ;
-0000 0100  ; Pula para o início das instruções;
+0000 0300  ; Pula para o programa principal
 ;
 ; ===========================================================================
 ; Área de dados
@@ -36,37 +36,58 @@
 ;
 ; Sub-rotina OP2MNEM
 ;
-0100 XXXX  ; endereço de volta
+0100 0304  ; endereço de volta
 0102 8010  ; carrega OPCODE
 0104 6016  ; multiplica por 2 (distância do primeiro opcode até o desejado)
 0106 401A  ; soma com o endereço inicial da lista
 0108 4018  ; soma com a instrução de load
-010A 910A  ; carrega na linha de baixo
+010A 910C  ; carrega na linha de baixo
 010C 0000  ; espaço reservado para a instrução que carrega o opcode certo
 010E 9012  ; guarda o MNEM na posição reservada para ele
+;
 0110 B100  ; volta pra chamada
 ;
 ;
 ; Sub-rotina MNEM2OP
 ;
 ;
-0200 XXXX  ; endereço de volta
+0200 030E  ; endereço de volta
 0202 801C  ; carrega iterador
 0204 4016
 0206 901C  ; incrementa de 2 o iterador
-0208 401A  ; soma endereço incial da lista de instruções
-020A 4018  ; soma com a instrução de load
-020C 920C  ; põe instrução na linha de baixo
-020E 0000
-0210 5012  ; subtrai o conteúdo de MNEM
-0212 1XXX  ; achou a instrução certa
-0214 0202  ; completa o loop
+0208 5016  ; mantém o iterador inicial
 ;
-0216 801C  ; carrega de novo o iterador
-0218 5016  ; decrementa ele de 2
-021A 7016  ; transforma o valor no OPCODE posicional
-021C 9010  ; guarda no OPCODE
+020A 401A  ; soma endereço incial da lista de instruções
+020C 4018  ; soma com a instrução de load
+020E 9210  ; põe instrução na linha de baixo
+0210 0000
+0212 5012  ; subtrai o conteúdo de MNEM
+0214 1218  ; achou a instrução certa
+0216 0202  ; completa o loop
+;
+;            aqui o acumulador deve estar com o valor inicial do iterador
+;
+0218 801C  ; recarrega o iterador
+021A 5016  ; decrementa de 2
+021C 7016  ; transforma o valor (iterador inicial) no OPCODE posicional
+021E 9010  ; guarda no OPCODE
+;
+0220 B200  ; volta pra chamada
 ;
 ;
+; Programa principal
 ;
-021E C21E  ; end
+;
+0300 3007  ; carrega a constante 7 (instrução de divisão)
+0302 9010  ; põe no espaço reservado para o OPCODE
+0304 A100  ; chama a sub-rotina OP2MNEM
+0306 8012  ; carrega o MNEM traduzido
+0308 E100  ; imprime MNEM
+;
+030A 8030  ; carrega a instrução de load
+030C 9012  ; põe no espaço MNEM
+030E A200  ; chama a sub-rotina MNEM2OP
+0310 8010  ; carrega OPCODE traduzido
+0312 E100  ; imprime OPCODE
+;
+0314 C314  ; end
