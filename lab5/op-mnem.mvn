@@ -5,11 +5,13 @@
 ; Área de dados
 ; ===========================================================================
 ;
-0010 0000  ; OPCODE
-0012 014D  ; MNEM
+0010 0001  ; OPCODE
+0012 0000  ; MNEM
 0014 0001  ; constante 1
 0016 0002  ; constante 2
-0018 0020  ; ponteiro para a lista de instruções
+0018 8000  ; load para construção
+001A 0020  ; ponteiro para a lista de instruções
+001C 0000  ; iterador
 ;
 0020 4A50  ; JP
 0022 4A5A  ; JZ
@@ -27,8 +29,6 @@
 003A 4744  ; GD
 003C 5044  ; PD
 003E 4F53  ; OS
-
-
 ;
 ; ===========================================================================
 ; Programa
@@ -36,4 +36,25 @@
 ;
 ; Sub-rotina OP2MNEM
 ;
-0100 8010 ;
+0100 XXXX  ; endereço de volta
+0102 8010  ; carrega OPCODE
+0104 6016  ; multiplica por 2 (distância do primeiro opcode até o desejado)
+0106 401A  ; soma com o endereço inicial da lista
+0108 4018  ; soma com a instrução de load
+010A 910A  ; carrega na linha de baixo
+010C 0000  ; espaço reservado para a instrução que carrega o opcode certo
+010E 9010  ; guarda o OPCODE na posição reservada para ele
+0110 B100  ; volta pra chamada
+;
+;
+; Sub-rotina MNEM2OP
+;
+;
+0200 801C  ; carrega iterador
+0202 4016
+0204 901C  ; incrementa de 2 o iterador
+0206 401A  ; soma endereço incial da lista de instruções
+0208 4018  ; soma com a instrução de load
+020A 920C  ; põe instrução na linha de baixo
+020C 0000
+020E 5012  ; subtrai o conteúdo de MNEM
