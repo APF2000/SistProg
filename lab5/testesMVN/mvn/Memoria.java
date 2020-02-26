@@ -57,8 +57,14 @@ public class Memoria {
    *            MAX_ADDRESS).
    */
   public void write(Bits8 p, int addr) throws MVNException {
-    if (p != null){
-      p = new Bits8(addr);
+    if(p != null){
+      if (addr <= MAX_ADDRESS && addr >= MIN_ADDRESS){
+        p = new Bits8(addr);
+      }else{
+        throw new MVNException("[erro] Endereço" + addr + " é inválido");
+      }
+    }else{
+      throw new MVNException("[erro] Objeto nulo usado para escrever.");
     }
     // TODO:
     // - Verificar se o endereço é válido. Caso não seja, lançar uma
@@ -74,8 +80,10 @@ public class Memoria {
    *            O endereço de memória do Bits8 a ser retornado.
    */
   public Bits8 read(int addr) throws MVNException {
-    throw new MVNException("[erro] O método read() não está implementado.");
-
+    if(!validAddress(addr)){
+      throw new MVNException("[erro] Endereço" + addr + "inválido.");
+    }
+    return store[addr];
     // TODO:
     // - Verificar se o endereço é válido. Caso não seja, lançar uma
     //   MVNException com a mensagem de erro "[erro] Endereço XXXX é inválido",
@@ -223,8 +231,19 @@ public class Memoria {
   public String toString(int ini_address, int end_address) {
     // TODO
     // Verificar se os endereços são válidos. Se não forem, retornar null.
+    String texto = new String();
+    int conta = 0;
 
-    System.out.println("[erro] O método toString(ini, end) não está implementado.");
+    if(validAddress(ini_address) && validAddress(end_address)){
+      for(int i = ini_address; i < end_address; i++, conta++){
+        texto += (store[i].toHexString());
+        if(conta == 3){
+          conta = -1;
+          texto += " ";
+        }
+      }
+      return texto;
+    }
     return null;
   }
 
@@ -234,9 +253,19 @@ public class Memoria {
    * @return O conteúdo da memória em uma String formatada.
    */
   public String toString() {
-    System.out.println("[erro] O método toString() não está implementado.");
+    String texto = new String();
+    int conta = 0;
+
+    for(int i = MIN_ADDRESS; i < MAX_ADDRESS; i++, conta++){
+      texto += (store[i].toHexString());
+      if(conta == 3){
+        conta = 0;
+        texto += " ";
+      }
+    }
     return null;
   }
+
 
   /**
    * Verifica se o endereço é válido. Usado internamente por memRead() e
@@ -248,6 +277,8 @@ public class Memoria {
    */
   private boolean validAddress(int address) {
     // TODO
+    if(address >= MIN_ADDRESS && address <= MAX_ADDRESS)
+      return true;
     return false;
   }
 

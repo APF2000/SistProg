@@ -1,0 +1,165 @@
+ATM
+PCS 2302/2024 X+Y, soma 2 números unários (formato 1.1)
+1 # $ U	Z _ E u z 
+1 B # $ U Z _ E u z // E = empty, u = vai1, z = vai0	
+1		
+1		
+1		
+q0 // estado inicial		
+qA // estado de aceitacao
+q0 $ qA1 $ R	// inicio da fita, vai pra direita
+qA1 1 qA1 1 R
+qA1 0 qA1 0 R
+qA1 # qA1 # R
+qA1 B qA3 _ R
+qA3 B qA4 E R	//
+qA4 B qA5 E R	//
+qA5 B qA6 E R	//
+qA6 B qA7 E R	//
+qA7 B qA8 E R	// preparar 9 digitos pra resposta
+qA8 B qA9 E R	//
+qA9 B qAA E R	//
+qAA B qAB E R	//
+qAB B qAC E R	//
+qAC B qAC # L
+qAC E qAC E L
+qAC _ qAC _ L
+qAC 1 qAC 1 L
+qAC 0 qAC 0 L
+qAC U qAC U L
+qAC Z qAC Z L
+qAC # q2 # L	// ponto comum de convergẽncia de loops//
+q2 1 q2aux 1 R
+q2 0 q2aux 0 R
+q2aux U q3 U L
+q2aux Z q3 Z L
+q2aux # q3 # L
+q2 U q2 U L	//
+q2 Z q2 Z L	// procura o dig a somar do num da esquerda
+q2 # q3 # L	// //////////////////////////////////////////////////////////// 
+q2 $ qFim $ R	// chegou no "fim" da soma
+q3 1 qU_ U R
+q3 0 qZ_ Z R	/////////////////////////////////////////////////
+qU_ U qU_ U R
+qU_ Z qU_ Z R
+qU_ # qU_.2 # R		// vai até a ponta do primeiro num
+qU_.2 1 qU_.2 1 R
+qU_.2 0 qU_.2 0 R	// caça a ponta do outro num
+qU_.2 U qU_.3 U L
+qU_.2 Z qU_.3 Z L	//
+qU_.2 _ qU_.3 _ L 	// chega na ponta///////////////////////////////////
+qU_.3 1 q0vai1 U R
+qU_.3 0 q1vai0 Z R	// soma com a ponta/////////////////////
+qU_.3 # qmaior1 # R	// caminho alternativo (o num da esquerda é maior)
+qZ_ U qZ_ U R
+qZ_ Z qZ_ Z R
+qZ_ # qZ_.2 # R         
+qZ_.2 1 qZ_.2 1 R
+qZ_.2 0 qZ_.2 0 R       // mesma coisa de cima, mas quando acha um 0
+qZ_.2 U qZ_.3 U L
+qZ_.2 Z qZ_.3 Z L        
+qZ_.2 _ qZ_.3 _ L       /////////////////////////////////////
+qZ_.3 1 q1vai0 U R
+qZ_.3 0 q0vai0 Z R      // soma com a ponta/////////////////////
+qZ_.3 # qmaior0 # R	// caminho alternativo (o num da esquerda é maior)
+q0vai1 E q0vai1 E R
+q0vai1 U q0vai1 U R
+q0vai1 Z q0vai1 Z R
+q0vai1 _ q0vai1 _ R
+q0vai1 # q0vai1aux # L
+q0vai1aux E qvai1 0 L 
+q0vai1 u qvai1 1 L
+q0vai1 z qvai1 0 L	////////////////////////////////////////////////////
+q1vai0 E q1vai0 E R
+q1vai0 U q1vai0 U R
+q1vai0 Z q1vai0 Z R
+q1vai0 _ q1vai0 _ R
+q1vai0 # q1vai0aux # L
+q1vai0aux E qvai0 1 L
+q1vai0 u qvai1 0 L
+q1vai0 z qvai0 1 L	/////////////////////////////////////////////////////
+q0vai0 E q0vai0 E R
+q0vai0 U q0vai0 U R
+q0vai0 Z q0vai0 Z R
+q0vai0 _ q0vai0 _ R
+q0vai0 # q0vai0aux # L
+q0vai0aux E qvai0 0 L
+q0vai0 u qvai0 1 L
+q0vai0 z qvai0 0 L      /////////////////////////////////////////////////////
+qvai1 E qAC u L
+qvai0 E qAC z L         // deixa a marcação//////////////////////////////////
+qFim U qFim 1 R		// o fim começa aqui
+qFim Z qFim 0 R
+qFim # qFim # R
+qFim _ qFim # R
+qFim E qFim E R
+qFim u qpuxa 1 L
+qFim z qpuxa E L	// transforma as sobras da soma (u->1 e z->E)
+qFim 1 qFimaux 1 R
+qFim 0 qFimaux 0 R	// resolve quando o da esquerda é maior ///////////////////////
+qFimaux 1 qFimaux 1 R
+qFimaux 0 qFimaux 0 R
+qFimaux U qFimauxaux U L 
+qFimaux Z qFimauxaux Z L
+qFimauxaux 1 qmaior1 U R
+qFimauxaux 0 qmaior0 Z R ///////////////////////////////
+qFimaux1 # qFimaux1 # R
+qFimaux1 _ qFimaux1 # R
+qFimaux1 E qFimaux1 E R
+qFimaux1 u qFimaux2 0 L
+qFimaux1 z qpuxa 1 L
+qFimaux2 E qpuxa 1 L	/////////////////////////////
+qvolta E qvolta E R
+qvolta B qacabou B L	// acaba o processo
+qvolta 1 qpuxa1 E L
+qvolta 0 qpuxa0 E L
+qvolta # qacabou B L
+qpuxa E qpuxa E R	// puxa o resultado pra esquerda
+qpuxa 1 qpuxa1 E L
+qpuxa1 E qpuxa1 E L
+qpuxa1 1 qpoe1 1 R
+qpuxa1 0 qpoe1 0 R
+qpuxa1 # qpoe1 # R
+qpoe1 E qvolta 1 R	/////////////////////////////
+qpuxa 0 qpuxa0 E L
+qpuxa0 E qpuxa0 E L
+qpuxa0 1 qpoe0 1 R
+qpuxa0 0 qpoe0 0 R
+qpuxa0 # qpoe0 # R
+qpoe0 E qvolta 0 R	//////////////////////////////
+qpuxa # qpuxaaux # R	
+qpuxaaux B qacabou L
+qpuxaaux E qpuxa E R	//////////////////////////////
+qacabou E qacabou B L	// agora acaba de fato
+qacabou 0 qA 0 R
+qacabou 1 qA 1 R	/////////////////////////////////
+qmaior0 U qmaior0 U R
+qmaior0 Z qmaior0 Z R
+qmaior0 E qmaior0 E R
+qmaior0 _ qmaior0 _ R
+qmaior0 # qmaior0 # R
+qmaior0 u qmaiorvoltavai0 1 L
+qmaior0 z qmaiorvoltavai0 0 L ////////////////////
+qmaior1 U qmaior1 U R
+qmaior1 Z qmaior1 Z R
+qmaior1 E qmaior1 E R
+qmaior1 _ qmaior1 _ R
+qmaior1 # qmaior1 # R
+qmaior1 u qmaiorvoltavai1 0 L
+qmaior1 z qmaiorvoltavai0 1 L /////////////////////
+qmaiorvoltavai1 E qmaiorvolta u L
+qmaiorvoltavai0 E qmaiorvolta z L //////////////////////
+qmaiorvolta E qmaiorvolta E L
+qmaiorvolta U qmaiorvolta U L
+qmaiorvolta Z qmaiorvolta Z L
+qmaiorvolta # qverifica # L
+qverifica 1 qFim 1 R
+qverifica 0 qFim 0 R
+qverifica U qmaiorvolta U L
+qverifica Z qmaiorvolta Z L
+qmaiorvolta 1 qmaior1 U R
+qmaiorvolta 0 qmaior0 Z R
+qmaiorvolta _ qmaiorvolta _ L
+qmaiorvolta $ qFim $ R ////////////////////////////////////
+end
+
