@@ -1,0 +1,121 @@
+
+; ===========================================================================
+; Entrada = X e Y
+; Saída = X + Y
+; ===========================================================================
+;
+0000 0100  ; Pula para o início das instruções;
+;
+; ===========================================================================
+; Área de dados
+; ===========================================================================
+;
+0002 0001  ; Constante: 0x001
+0004 0100  ; Constante: 0x100
+0006 000A  ; Constante: 10
+0008 0030  ; ASCII para o número 0
+000A 0000  ; X
+000C 0000  ; Y
+000E 0000  ; X + Y
+0010 0000  ; AUX
+0012 0000  ; Endereço onde se quer pôr o número
+0014 9000  ; AC -> MEM para construir instrução
+0016 0000  ; Endereço de chamada das funções
+0018 0000  ; Byte 1 de X+Y
+001A 0000  ; Byte 2 de X+Y
+;
+; ===========================================================================
+; Programa
+; ===========================================================================
+;
+; Sub-rotina para adquirir número
+;
+001C 0000  ; Endereço de volta da sub-rotina
+001E D000  ; Recebe a entrada do teclado (4 bytes)
+0020 9010  ; Guarda a entrada em AUX
+0022 7004  ; Pega a dezena
+0024 5008  ; Calcula a distãncia até a referência do 0
+0026 6006 
+0028 900E  ; Dezena do número em X+Y (pq o tamanho dos dados foi excedido)
+002A 8010  ; Pega a entrada de novo (AUX)
+002C 6004
+002E 7004  ; Pega a unidade
+0030 5008  ; Distância à referência
+0032 400E  ; Soma dezena com unidade 
+0034 9010  ; Guarda soma em AUX 
+0036 8014
+0038 4012  ; Constrói instrução para carregar o resultado na variável certa
+003A 903E  ; Põe a instrução embaixo
+003C 8010  ; Pega de volta de AUX a soma
+003E 0000  ; Espaço para a instrução
+0040 8016
+0042 901C  ; Constrói o endereço de chamada
+0044 B01C  ; Volta pra cha
+mada
+;
+; Sub-rotina de conversão para ASCII
+;
+0050 011E  ; Endereço de volta da sub-rotina
+0052 800E  ; Carrega X+Y
+0054 7006  ; Divide por 10
+0056 7006  ; Pega a centena
+0058 106E  ; Pula os passos da centena caso ela seja nula
+005A 9010  ; Guarda no AUX
+005C 4008  ; Soma com a referência do 0 em ASCII
+005E E100  ; Imprime a centena
+;
+0060 8010  ; Pega de volta a centena do número
+0062 6006  ; Multiplica por 10
+0064 6006  ; Multiplica por 10
+0066 9010  ; Guarda de novo no AUX
+0068 800E  ; Pega a soma X+Y original
+006A 5010  ; Tira a centena do número
+006C 900E  ; Guarda na soma
+;
+006E 800E  ; Pega a soma parcial
+0070 7006  ; Pega a dezena
+0072 6006  ; Deixa ela pura (ela vezes 10)
+0074 9010  ; Guarda  no AUX
+0076 7006  ; Volta a ser só dezena
+0078 4008  ; Soma com a referência
+007A 9018  ; Guarda no byte 1
+;
+007C 800E  ; Pega de volta a soma
+007E 5010  ; Tira a dezena dela
+0080 4008  ; Soma de novo com a referência (agora temos o byte 2)
+0082 901A  ; Guarda no byte 2
+;
+0084 B050  ; Volta pra chamada
+;
+;
+;  Programa principal
+;
+;
+0100 300A  ; Endereço de X
+0102 9012  ; Guarda no espaço pra endereço
+0104 310A
+0106 9016  ; Guarda o endereço de chamada
+0108 A01C  ; Converte X no seu valor decimal
+;
+010A D000  ; Ignora dois caracteres (espaços)
+;
+010C 300C
+010E 9012  ; Informa à sub-rotina o endereço de Y 
+0110 3116
+0112 9016  ; Guarda o endereço de chamada
+0114 A01C  ; Converte Y agora também
+;
+0116 800A  ; Pega o valor de X
+0118 400C  ; Soma com o valor de Y
+011A 900E  ; Guarda o valor da soma
+011C A050  ; Converte para ASCII
+;
+011E 8018  ; Carrega a dezena
+0120 E100  ; Imprime a dezena
+;
+0122 801A  ; Carrega a unidade
+0124 E100  ; Imprime a unidade
+;
+0126 0200  ; Pula para a instrução de parada.
+;
+0200 C200  ; The End.
