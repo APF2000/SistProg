@@ -5,8 +5,8 @@
 ; Área de dados
 ; ===========================================================================
 ;
-0010 FF91	; Minuendo X
-0012 014D	; Subtraendo Y
+0010 0002	; Minuendo X
+0012 0001	; Subtraendo Y
 0014 0000	; Diferença X - Y
 ;
 ; ===========================================================================
@@ -20,7 +20,7 @@
 ;
 01FE 0102	;endereço de retorno
 0200 8010	;carrega minuendo no acumulador
-0202 4012	;subtrai o subtraendo
+0202 5012	;subtrai o subtraendo
 0204 9014	;deixa a subtracao no 014	
 0206 B1FE	;volta para a chamada da função
 ;

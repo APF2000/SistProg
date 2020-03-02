@@ -19,6 +19,10 @@
 00C2 0002	;constante 2
 00C4 0003	;constante 3
 ;
+00C6 0000 ; local pro a^2 e a
+00C8 0000 ; local pro b^2 e b
+00CA 0000 ; local pro c^2 e c
+;
 ; ===========================================================================
 ; Programa
 ; ===========================================================================
@@ -77,17 +81,17 @@
 ;
 020C 8010
 020E 6010
-0210 9010	;troca a por a^2
+0210 90C6	;troca a por a^2 (CÓDIGO ORIGINAL : 0210 9010)
 0212 8012
 0214 6012
-0216 9012       ;troca b por b^2
+0216 90C8       ;troca b por b^2
 0218 8014
 021A 6014
-021C 9014       ;troca c por c^2
+021C 90CA       ;troca c por c^2
 ;
-021E 8010
-0220 4012
-0222 5014	;temos a^2 + b^2 - c^2
+021E 80C6 ; pega a^2
+0220 40C8 ; soma b^2
+0222 50CA	;temos a^2 + b^2 - c^2
 ;
 0224 222C	;a^2 + b^2 - c^2 < 0 (acutangulo)
 0226 1230	;a^2 + b^2 - c^2 = 0 (retangulo)
