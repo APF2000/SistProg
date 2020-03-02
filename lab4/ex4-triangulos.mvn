@@ -97,10 +97,10 @@
 0226 1230	;a^2 + b^2 - c^2 = 0 (retangulo)
 ;
 0228 80C4	;carrega o numero 3 (obtusangulo)
-022A 0234	;vai depositar o resultado no fim do programa
+022A 0232	;vai depositar o resultado no fim do programa
 ;
 022C 80C0	;carrega o numero 1 (acutangulo)
-022E 0234	;vai depositar o resultado no fim do programa
+022E 0232	;vai depositar o resultado no fim do programa
 ;
 0230 80C2	;carrega o numero 2 (retangulo)
 ;
