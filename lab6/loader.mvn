@@ -1,0 +1,7 @@
+; Fake loader.
+
+0B00 0000 ; Endereço de retorno
+0B02 0B06 ; Jump para o começo
+0B04 0000 ; Alguma constante.
+0B06 D300 ; Lê 2 bytes do arquivo de dump
+0B08 BB00 ; Retorno.

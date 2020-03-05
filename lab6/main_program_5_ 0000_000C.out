@@ -1,0 +1,23 @@
+# Exemplo para 5 palavras por bloco (no exercício: 128)
+
+0000 ---- 1o. bloco
+0005
+8010
+9704
+8012
+9706
+A700
+D531
+0005 ---- 2o. bloco
+0005
+C00A
+0000
+0000
+0000
+0082
+C096
+000A ---- 3o. bloco
+0002
+D56A
+2560
+FAD6

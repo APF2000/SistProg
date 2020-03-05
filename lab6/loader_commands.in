@@ -1,0 +1,15 @@
+i
+s
+a
+3
+0
+dump.dat
+l
+s
+
+p main_program.mvn
+p loader.mvn
+r 0000 s
+n
+m 0000 000D mem.out
+x

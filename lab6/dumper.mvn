@@ -1,0 +1,9 @@
+; Fake dumper.
+
+0700 0000 ; Endereço de retorno
+0702 0708 ; Jump para o início
+0704 ABCD ; Parâmetro 1: endereço inicial
+0706 6789 ; Parâmetro 2: quantidade de palavras
+0708 8704 ; ...
+070A E300 ; ...
+070C B700 ; Fim.

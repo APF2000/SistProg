@@ -1,0 +1,14 @@
+i
+s
+a
+3
+0
+dump.dat
+e
+s
+
+p main_program.mvn
+p dumper.mvn
+r 0000 s
+n
+x
