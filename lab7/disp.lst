@@ -1,0 +1,4 @@
+0 0 mvn.dispositivo.Teclado
+1 0 mvn.dispositivo.Monitor
+3 1 mvn.dispositivo.Disco dump.txt l
+3 1 mvn.dispositivo.Disco dump.txt e
