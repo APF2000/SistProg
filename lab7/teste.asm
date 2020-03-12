@@ -1,58 +1,61 @@
-; ----------------------------------------------------------------------------
-; Exemplo de programa escrito na linguagem de montagem da MVN
-; Refer�ncia da linguagem:
-; Slides das aulas 10 e 11
-; ----------------------------------------------------------------------------
-
-    JP INICIO      ; Jump incondicional para o in�cio
-
-@   /100           ; Define que o endere�o agora �: 0x100
-C0  K  /100        ; Declara uma constante chamada C0 com valor 0x100
-C1  K  /111        ; Declara outra constante, e etc.
-C2  K  /122
-CB  K  /1BB
-CC  K  /1CC
-CD  K  /1DD
-CE  K  /1EE
-CF  K  /1FF
+    JP START      ; Jump incondicional para o in�cio
 
 
-; Exemplos de declara��o de constantes em diferentes formatos:
+COUNTS_END K /0000  ; unidade logica do arquivo-texto
+COUNTS_UL  K /0000  ; diz qual a unidade logica (ordinal)
+READ K /E000
 
-GG  K  'ER         ; Base 256 (valor = 'E'*256^1 + 'R'*256^0)
-GH  K  'RO         ; Base 256
-GJ  K  =1000       ; Base 10 (1000 em decimal)
-GK  K  /3E8        ; Base 16 (equivalente a 0x3E8)
-GL  K  @1750       ; Base 8
-GM  K  #1111101000 ; Base 2 (1111101000 em bin�rio)
+COUNTS K /0000
 
-@   /200           ; Define que o endere�o agora �: 0x200
-$   /A             ; Reserva 10 words
+READER JP /0000
 
-TRES K /4142
-
-TESTANDO K /4344
-
-INICIO JP INI       ; Comeco do programa
-
-INI    LD TRES
-       PD /301
-       LD TESTANDO
-       PD /301
-
-       HM CC
-
-       JZ C1       ; Exemplo de uso de todos os mnemonicos da linguagem
-       JN C2
+       GD /0000 ; comando para ler do disco (montado)
+       RS COUNTS
 
 
-       LD TESTANDO
-       PD /100
+;
+;Arthur Pires da Fonseca - 10773096
+;
 
-       HM CC
+; =============================================================================
+;
+; *** SIMBOLOS IMPORTADOS
+; ... <
+;
+					&	/0000
+MAIN				JP	START
 
-       GD CD
-       PD CE
-       OS CF
+; RETORNO DE COUNTS
+RESULTADO			K	/0000
 
-# INICIO           ; Marca o final do programa
+; VALORES FORNECIDOS
+UL					K	/0001			; NUMERO DA UNIDADE LOGICA
+
+; STRING A SER PROCURADA, INCLUINDO EOS (i.e., 0000)
+STRPROC		K	/414C	; "ALO GALERA DO CAUBOI\0"
+					K	/5520
+					K	/4741
+					K	/4C45
+					K	/5241
+					K	/2044
+					K	/4F20
+					K	/4341
+          K /5542
+          K /4F49
+          K /0000
+
+; CORPO DO MAIN
+START			LV	STRPROC
+					MM	COUNTS_END		; PARAM 1: ENDERECO DA STRING A SER PROCURADA
+					LD	UL
+					MM	COUNTS_UL			; PARAM 2: UNIDADE LOGICA DO ARQUIVO
+
+					SC	COUNTS				; INVOCA COUNTS
+					MM	RESULTADO			; SALVA O RESULTADO
+;
+FIM					HM	FIM					; FIM DO MAIN
+;
+;
+
+
+					# 	MAIN
