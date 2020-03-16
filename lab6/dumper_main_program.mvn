@@ -956,12 +956,47 @@
 0B0A 0000 ; Checksum
 0B0C 0000 ; Reservado para o byte lido
 
+; Pega o endereço inicial das instruções
 0B0E 3C00 ; Endereço da sub-rotina que será chamada
 0B10 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
 0B12 3B18 ; Pega endereço de volta da próxima função
 0B14 AC20 ; Chama a sub-rotina que arruma os endereços
 0B16 AC00 ; Sub-rotina do checksum
-0B18 CB18 ; Acabou (checkpoint pra debug)
+
+0B18 3BO4 ; Endereço para guardar o endereço inicial do bloco
+0B1A 400E ; Soma com a instrução de LOAD
+0B1C 9B20 ; Põe a instrução 2 espaços abaixo
+0B1E 8B0C ; Recupera o byte lido
+0B20 0000 ; Instrução vai aqui
+
+;0B18 8B08 ; Pega o iterador
+;0B1A 1XXX ; Verifica se vale zero e vai armazenar o endereço
+;0B1C 500A ; Subtrai 1 do iterador
+;0B1E 1XXX ; Pula pra armazenar a quantidade de instruções do bloco
+;0B20 5B08 ; Subtrai o valor teórico da qtde de instruções
+;0B22
+
+; Pega a quantidade de instruções por bloco
+0B22 3C00 ; Endereço da sub-rotina que será chamada
+0B24 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
+0B26 3B36 ; Pega endereço de volta da próxima função
+0B28 AC20 ; Chama a sub-rotina que arruma os endereços
+0B2A AC00 ; Sub-rotina do checksum
+
+0B2C 3BO4 ; Endereço para guardar o endereço inicial do bloco
+0B2E 400E ; Soma com a instrução de LOAD
+0B30 9B20 ; Põe a instrução 2 espaços abaixo
+0B32 8B0C ; Recupera o byte lido
+0B34 0000 ; Instrução vai aqui
+
+
+0B0E 3C00 ; Endereço da sub-rotina que será chamada
+0B10 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
+0B12 3B18 ; Pega endereço de volta da próxima função
+0B14 AC20 ; Chama a sub-rotina que arruma os endereços
+0B16 AC00 ; Sub-rotina do checksum
+
+;0B18 CB18 ; Acabou (checkpoint pra debug)
 
 ;0B0E D300 ; Lê endereço inicial
 ;0B10 9B04 ; Põe no lugar reservado
@@ -975,11 +1010,11 @@
 
 ; Loop
 
-0B1E D300 ; Lê o próximo byte
-0B20 9B0C ; Guarda no lugar do byte lido
-0B22 4B0A
-0B24 9B0A ; Checksum += instrução
-0B26 8B0C ; Recupera o byte lido
+;0B1E D300 ; Lê o próximo byte
+;0B20 9B0C ; Guarda no lugar do byte lido
+;0B22 4B0A
+;0B24 9B0A ; Checksum += instrução
+;0B26 8B0C ; Recupera o byte lido
 
 ;0B10 5B06 ; Subtrai o tamanho de um bloco
 ;0B12 1B16 ; Se for igual ao esperado, continua normalmente
@@ -1014,5 +1049,6 @@
 
 0C2E 500C ; Tira 2 do endereço de volta
 0C30 9C20 ; Agora temos o endereço de volta desta função
-0C32 BC20 ; Volta pra chamada
+0C32 8B0C ; Recupera o byte lido
+0C34 BC20 ; Volta pra chamada
 ; ........
