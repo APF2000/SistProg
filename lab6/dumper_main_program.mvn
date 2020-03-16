@@ -6,27 +6,27 @@
 ; que você vai implementar/testar.
 
 ; --------------------------------------------------------------- DUMPER
-0000 8010  ; Carrega parâmetro: endereço inicial do dump
-0002 9704  ; Grava parâmetro para a sub-rotina
-0004 8012  ; Carrega parâmetro: qtd. de palavras do dump
-0006 9706  ; Grava parâmetro para a sub-rotina
-0008 A700  ; Chama a sub-rotina.
-000A C00A  ; Final do programa.
-000C 0001  ; Constante 1
-000E 0002  ; Constante 2
-0010 0014  ; Constante: endereço inicial
-0012 0005  ; Constante: qtd. de palavras.
-0014 8000  ; LOAD para construir instrução
+;0000 8010  ; Carrega parâmetro: endereço inicial do dump
+;0002 9704  ; Grava parâmetro para a sub-rotina
+;0004 8012  ; Carrega parâmetro: qtd. de palavras do dump
+;0006 9706  ; Grava parâmetro para a sub-rotina
+;0008 A700  ; Chama a sub-rotina.
+;000A C00A  ; Final do programa.
+;000C 0001  ; Constante 1
+;000E 0002  ; Constante 2
+;0010 0014  ; Constante: endereço inicial
+;0012 0005  ; Constante: qtd. de palavras.
+;0014 8000  ; LOAD para construir instrução
 ; --------------------------------------------------------------- LOADER
-; 0000 AB00  ; Chama sub-rotina do loader.
-; 0006 0000  ; <vazio>
-; 0004 0000  ; <vazio>
-; 0008 0000  ; <vazio>
-; 000A 0000  ; <vazio>
-; 000C 0000  ; <vazio>
-; 000E 0000  ; <vazio>
-; 0010 0000  ; <vazio>
-; 0012 0000  ; <vazio>
+0000 AB00  ; Chama sub-rotina do loader.
+0006 C006  ; Acaba o programa
+0004 0000  ; <vazio>
+0008 0000  ; <vazio>
+000A 0001  ; Constante 1
+000C 0002  ; Constante 2
+000E 8000  ; Load para construir instrução
+0010 0014  ; Endereço do começo da memória
+0012 0000  ; Iterador de todas as instruções
 ; ---------------------------------------------------------------
 
 ; 0002 C002  ; <vazio>
@@ -949,33 +949,70 @@
 ; ----------------------------------------------------------------------------
 
 0B00 0000 ; Endereço de retorno
-0B02 0B0A ; Jump para o começo
+0B02 0B0E ; Jump para o começo
 0B04 0000 ; Parâmetro: endereço inicial
 0B06 0000 ; Parâmetro: tamanho da imagem de memória
-0B08 0000 ; Iterador i
+0B08 0000 ; Iterador das instruções em um bloco
 0B0A 0000 ; Checksum
 0B0C 0000 ; Reservado para o byte lido
 
-0B0E D300 ; Lê endereço inicial
-0B10 9B04 ; Põe no lugar reservado
-0B12 4B0A
-0B14 9B0A ; Soma instrução com o checksum e põe lá o resultado
+0B0E 3C00 ; Endereço da sub-rotina que será chamada
+0B10 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
+0B12 3B18 ; Pega endereço de volta da próxima função
+0B14 AC20 ; Chama a sub-rotina que arruma os endereços
+0B16 AC00 ; Sub-rotina do checksum
+0B18 CB18 ; Acabou (checkpoint pra debug)
 
-0B16 D300 ; Lê o tamanho de um bloco
-0B18 9B06 ; Guarda esse tamanho
-0B1A 4B0A
-0B1C 9B0A ; Soma com o checksum
+;0B0E D300 ; Lê endereço inicial
+;0B10 9B04 ; Põe no lugar reservado
+;0B12 4B0A
+;0B14 9B0A ; Soma instrução com o checksum e põe lá o resultado
+
+;0B16 D300 ; Lê o tamanho de um bloco
+;0B18 9B06 ; Guarda esse tamanho
+;0B1A 4B0A
+;0B1C 9B0A ; Soma com o checksum
 
 ; Loop
 
 0B1E D300 ; Lê o próximo byte
 0B20 9B0C ; Guarda no lugar do byte lido
-0B22
+0B22 4B0A
+0B24 9B0A ; Checksum += instrução
+0B26 8B0C ; Recupera o byte lido
 
-0B10 5B06 ; Subtrai o tamanho de um bloco
-0B12 1B16 ; Se for igual ao esperado, continua normalmente
-0B14 0XXX ; Se for menor (ou maior), vai pro fim do programa
+;0B10 5B06 ; Subtrai o tamanho de um bloco
+;0B12 1B16 ; Se for igual ao esperado, continua normalmente
+;0B14 0000 ; Se for menor (ou maior), vai pro fim do programa
 
-0B16
+;0B16 0000
 
+;
+; Sub-rotina : Soma checksum e põe na memória
+;
+0C00 0000 ; Endereço de volta
+0C02 D300 ; Lê o byte
+0C04 9B0C ; Guarda no espaço pro byte lido
+0C06 4B0A
+0C08 9B0A ; Checksum += instrução
+0C0A BC00 ; Volta pra chamada
+
+
+0C1A 9000 ; MM para construir instrução
+0C1C 0000 ; Endereço da sub-rotina a ser chamada
+0C1E 0000 ; Endereço de volta dessa sub-rotina
+;
+; Sub-rotina : Guarda endereço de volta da função
+;
+0C20 0000 ; Endereço de volta
+0C22 9C1E ; Guarda o que estava no ACC (endereço de volta)
+0C24 8C1C ; Pega o endereço do começo da sub-rotina a ser chamada
+0C26 4C1A ; Soma com a instrução de MM
+0C28 9C2C ; Põe a instrução montada 2 espaços abaixo
+0C2A 8C1E ; Pega de volta o endereço de volta
+0C2C 0000 ; Espaço para a instrução
+
+0C2E 500C ; Tira 2 do endereço de volta
+0C30 9C20 ; Agora temos o endereço de volta desta função
+0C32 BC20 ; Volta pra chamada
 ; ........
