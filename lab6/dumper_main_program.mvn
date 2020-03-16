@@ -12,15 +12,15 @@
 0006 9706  ; Grava parâmetro para a sub-rotina
 0008 A700  ; Chama a sub-rotina.
 000A C00A  ; Final do programa.
-000C 0000  ; <vazio>
-000E 0000  ; <vazio>
-0010 0000  ; Constante: endereço inicial
-0012 0082  ; Constante: qtd. de palavras.
+000C 0001  ; Constante 1
+000E 0002  ; Constante 2
+0010 0014  ; Constante: endereço inicial
+0012 0005  ; Constante: qtd. de palavras.
+0014 8000  ; LOAD para construir instrução
 ; --------------------------------------------------------------- LOADER
 ; 0000 AB00  ; Chama sub-rotina do loader.
-; 0002 C002  ; <vazio>
-; 0004 0000  ; <vazio>
 ; 0006 0000  ; <vazio>
+; 0004 0000  ; <vazio>
 ; 0008 0000  ; <vazio>
 ; 000A 0000  ; <vazio>
 ; 000C 0000  ; <vazio>
@@ -29,9 +29,10 @@
 ; 0012 0000  ; <vazio>
 ; ---------------------------------------------------------------
 
+; 0002 C002  ; <vazio>
 ; Início de dados aleatórios.
 
-0014 D56A
+;0014 D56A
 0016 2560
 0018 ED76
 001A D0C7
@@ -922,10 +923,24 @@
 ; Início do dumper
 ; ----------------------------------------------------------------------------
 
-0700 0000 ; Endereço de retorno
+0700 000A ; Endereço de retorno
 0702 0708 ; Jump para o começo
 0704 0000 ; Parâmetro: endereço inicial
 0706 0000 ; Parâmetro: quantidade de palavras
+0708 8010
+070A 9704 ; Pega e carrega endereco inicial
+070C 8012
+070E 9706 ; Pega e carrega qtde de palavras
+
+;0710 D300 ; Lê do arquivo os primeiros 2 bytes
+;0712 0
+;0714
+;0716
+;0718
+;071A
+;071C
+
+;0750 B
 
 ; ........
 
@@ -934,7 +949,33 @@
 ; ----------------------------------------------------------------------------
 
 0B00 0000 ; Endereço de retorno
-0B02 0B08 ; Jump para o começo
+0B02 0B0A ; Jump para o começo
 0B04 0000 ; Parâmetro: endereço inicial
+0B06 0000 ; Parâmetro: tamanho da imagem de memória
+0B08 0000 ; Iterador i
+0B0A 0000 ; Checksum
+0B0C 0000 ; Reservado para o byte lido
+
+0B0E D300 ; Lê endereço inicial
+0B10 9B04 ; Põe no lugar reservado
+0B12 4B0A
+0B14 9B0A ; Soma instrução com o checksum e põe lá o resultado
+
+0B16 D300 ; Lê o tamanho de um bloco
+0B18 9B06 ; Guarda esse tamanho
+0B1A 4B0A
+0B1C 9B0A ; Soma com o checksum
+
+; Loop
+
+0B1E D300 ; Lê o próximo byte
+0B20 9B0C ; Guarda no lugar do byte lido
+0B22
+
+0B10 5B06 ; Subtrai o tamanho de um bloco
+0B12 1B16 ; Se for igual ao esperado, continua normalmente
+0B14 0XXX ; Se for menor (ou maior), vai pro fim do programa
+
+0B16
 
 ; ........
