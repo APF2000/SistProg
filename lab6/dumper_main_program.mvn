@@ -961,18 +961,19 @@
 
 
 ; Endereço inicial do bloco
-0B10 8010 ; Endereço que diz onde está o começo da memória
-0B12 400E ; Soma com a instrução MM
-0B14 9B1A ; Põe a instrução abaixo (carregar valor obtido)
+;0B10 8010 ; Endereço que diz onde está o começo da memória
+;0B12 400E ; Soma com a instrução MM
+;0B14 9B1A ; Põe a instrução abaixo (carregar valor obtido)
 ;
-
+0B10 0B16 ; Provisório
 0B16 D300 ; Pega o byte de endereço inicial
-0B18 9B04 ; Guarda no espaço para o endereço inicial
-0B1A 0000 ; Espaço para a instrução (carregar na memória o end inicial)
+;0B18 9B04 ; Guarda no espaço para o endereço inicial
+;0B1A 0000 ; Espaço para a instrução (carregar na memória o end inicial)
 ;
+0B18 0B1C ;Provisório
 0B1C 4B0C
-0B1E 9B0C ; Checkcsum += instrução
-0B20 0B22 ; Pula algumas posições de memória
+0B1E 9B0C ; Checksum += instrução
+0B20 0B2C ; Pula algumas posições de memória
 ;0B1C 3C00 ; Endereço da sub-rotina que será chamada
 ;0B1E 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
 ;0B20 3B26 ; Pega endereço de volta da próxima função
@@ -980,15 +981,16 @@
 ;0B24 AC00 ; Sub-rotina do checksum
 
 ; Qtde de instruções do bloco atual
-0B22 8010
-0B24 400C ; Inicio da memoria + 2
-0B26 9010 ; Atualiza o endereço
-0B28 400E ; + instrução MM
-0B2A 9B30 ; Põe a instrução abaixo (carregar qtde de instruções por bloco)
+;0B22 8010
+;0B24 400C ; Inicio da memoria + 2
+;0B26 9010 ; Atualiza o endereço
+;0B28 400E ; + instrução MM
+;0B2A 9B30 ; Põe a instrução abaixo (carregar qtde de instruções por bloco)
 ;
 0B2C D300 ; Byte de tamanho do bloco
 0B2E 9B08 ; Guarda no tamanho atual do bloco
-0B30 0000 ; Espaço para a instrução (carregar o tam do bloco na memória)
+0B30 0B32 ; Provisório
+;0B30 0000 ; Espaço para a instrução (carregar o tam do bloco na memória)
 0B32 4B0C
 0B34 9B0C ; Checksum += instrução
 
@@ -999,7 +1001,8 @@
 0B3C 1B5A ; Se instruções acabaram, checar soma
 
 0B3E 8B0A ; Pega iterador de novo
-0B40 400A ; Soma 1 a ele
+0B40 0B42
+;0B40 400A ; Soma 1 a ele
 0B42 600C ; Multiplica por 2
 0B44 4010 ; Soma com o endereço atual da memória
 0B46 400E ; Soma MM
@@ -1023,7 +1026,8 @@
 0B60 0B78 ; Deu ruim
 ;
 0B62 8B0A ; Pega o valor atual do iterador
-0B64 400A ; Iterador + 1
+0B64 0B66 ; Provisório
+;0B64 400A ; Iterador + 1
 0B66 600C ; Multiplica por 2
 0B68 4010 ; Soma com o endereço inicial
 0B6A 9010 ; Põe no endereço inicial
