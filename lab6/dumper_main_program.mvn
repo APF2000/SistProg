@@ -19,6 +19,7 @@
 ;0014 8000  ; LOAD para construir instrução
 ; --------------------------------------------------------------- LOADER
 0000 AB00  ; Chama sub-rotina do loader.
+0002 C002  ; Acaba o programa
 0006 C006  ; Acaba o programa
 0004 0000  ; <vazio>
 0008 0000  ; <vazio>
@@ -32,7 +33,7 @@
 ; 0002 C002  ; <vazio>
 ; Início de dados aleatórios.
 
-;0014 D56A
+0014 D56A
 0016 2560
 0018 ED76
 001A D0C7
@@ -953,67 +954,89 @@
 0B04 0000 ; Parâmetro: endereço inicial
 0B06 0005 ; Parâmetro: tamanho da imagem de memória
 0B08 0000 ; Reservado para o tamanho do bloco atual
+;
 0B0A 0000 ; Iterador das instruções em um bloco
 0B0C 0000 ; Checksum
 0B0E 0000 ; Reservado para o byte lido
+
 
 ; Endereço inicial do bloco
 0B10 8010 ; Endereço que diz onde está o começo da memória
 0B12 400E ; Soma com a instrução MM
 0B14 9B1A ; Põe a instrução abaixo (carregar valor obtido)
 ;
+
 0B16 D300 ; Pega o byte de endereço inicial
 0B18 9B04 ; Guarda no espaço para o endereço inicial
 0B1A 0000 ; Espaço para a instrução (carregar na memória o end inicial)
 ;
-0B1C 3C00 ; Endereço da sub-rotina que será chamada
-0B1E 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
-0B20 3B26 ; Pega endereço de volta da próxima função
-0B22 AC20 ; Chama a sub-rotina que arruma os endereços
-0B24 AC00 ; Sub-rotina do checksum
+0B1C 4B0C
+0B1E 9B0C ; Checkcsum += instrução
+0B20 0B22 ; Pula algumas posições de memória
+;0B1C 3C00 ; Endereço da sub-rotina que será chamada
+;0B1E 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
+;0B20 3B26 ; Pega endereço de volta da próxima função
+;0B22 AC20 ; Chama a sub-rotina que arruma os endereços
+;0B24 AC00 ; Sub-rotina do checksum
 
 ; Qtde de instruções do bloco atual
-0B26 8010
-0B28 400C ; Inicio da memoria + 2
-0B2A 9010 ; Atualiza o endereço
-0B2C 400E ; + instrução MM
-0B2E 9B34 ; Põe a instrução abaixo (carregar qtde de instruções por bloco)
+0B22 8010
+0B24 400C ; Inicio da memoria + 2
+0B26 9010 ; Atualiza o endereço
+0B28 400E ; + instrução MM
+0B2A 9B30 ; Põe a instrução abaixo (carregar qtde de instruções por bloco)
 ;
-0B30 D300 ; Byte de tamanho do bloco
-0B32 9B08 ; Guarda no tamanho atual do bloco
-0B34 0000 ; Espaço para a instrução (carregar o tam do bloco na memória)
+0B2C D300 ; Byte de tamanho do bloco
+0B2E 9B08 ; Guarda no tamanho atual do bloco
+0B30 0000 ; Espaço para a instrução (carregar o tam do bloco na memória)
+0B32 4B0C
+0B34 9B0C ; Checksum += instrução
 
 ; Instruções
 0B36 8B0A ; Carrega iterador
 0B38 5B08 ; Tira o tamanho do bloco
 0B3A 2B3E ; Se ainda faltam instruções, continuar
-0B3C 0B58 ; Se instruções acabaram, checar soma
+0B3C 1B5A ; Se instruções acabaram, checar soma
 
 0B3E 8B0A ; Pega iterador de novo
-0B40 600C ; Multiplica por 2
-0B42 4010 ; Soma com o endereço atual da memória
-0B44 400E ; Soma MM
-0B46 9B3A ; Põe a instrução logo abaixo
-0B48 D300 ; Pega a instrução
-0B4A 4B0C
-0B4C 9B0C ; Atualiza checksum
+0B40 400A ; Soma 1 a ele
+0B42 600C ; Multiplica por 2
+0B44 4010 ; Soma com o endereço atual da memória
+0B46 400E ; Soma MM
+0B48 9B4C ; Põe a instrução logo abaixo
+0B4A D300 ; Pega a instrução
 ;
-0B4E 0000 ; Espaço pra instrução feita acima
+0B4C 0000 ; Espaço pra instrução feita acima
+0B4E 4B0C
+0B50 9B0C ; Atualiza checksum
 ;
-0B50 8B0A ; Recupera iterador
-0B52 400A ; Iterador + 1
-0B54 9B0A ; It += 1
+0B52 8B0A ; Recupera iterador
+0B54 400A ; Iterador + 1
+0B56 9B0A ; It += 1
 ;
-0B56 0B2C ; Completa o loop
+0B58 0B36 ; Completa o loop
 
 ; Checksum
-0B58 D300 ; Pega o byte do checksum
-0B5A 5B0C ; Tira o checksum calculado
-0B5C 1B62 ; Deu bom
-0B5E 3FFF ; Deu ruim
-0B60 D100 ; Printa na tela
+0B5A D300 ; Pega o byte do checksum
+0B5C 5B0C ; Tira o checksum calculado
+0B5E 1B62 ; Deu bom
+0B60 0B78 ; Deu ruim
 ;
-0B62 CB4E ; Halt
+0B62 8B0A ; Pega o valor atual do iterador
+0B64 400A ; Iterador + 1
+0B66 600C ; Multiplica por 2
+0B68 4010 ; Soma com o endereço inicial
+0B6A 9010 ; Põe no endereço inicial
+;
+0B6C 3000
+0B6E 9B0A ; Reinicializa o iterador
+0B70 9B0C ; E o checksum também
+;
+0B72 8B06 ; Pega o tamanho estipulado de um bloco
+0B74 5B08 ; Tira o tamanho do bloco atual
+0B76 1B10 ; Se for o tamanho correto, faz mais um loop
+;
+0B78 BB00 ; Fim
 
 ; 3000
 ; 9B08 ; reinicializa iterador
