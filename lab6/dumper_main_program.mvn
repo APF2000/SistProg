@@ -24,7 +24,7 @@
 0008 0000  ; <vazio>
 000A 0001  ; Constante 1
 000C 0002  ; Constante 2
-000E 8000  ; Load para construir instrução
+000E 9000  ; MM para construir instrução
 0010 0014  ; Endereço do começo da memória
 0012 0000  ; Iterador de todas as instruções
 ; ---------------------------------------------------------------
@@ -951,23 +951,91 @@
 0B00 0000 ; Endereço de retorno
 0B02 0B0E ; Jump para o começo
 0B04 0000 ; Parâmetro: endereço inicial
-0B06 0000 ; Parâmetro: tamanho da imagem de memória
-0B08 0000 ; Iterador das instruções em um bloco
-0B0A 0000 ; Checksum
-0B0C 0000 ; Reservado para o byte lido
+0B06 0005 ; Parâmetro: tamanho da imagem de memória
+0B08 0000 ; Reservado para o tamanho do bloco atual
+0B0A 0000 ; Iterador das instruções em um bloco
+0B0C 0000 ; Checksum
+0B0E 0000 ; Reservado para o byte lido
+
+; Endereço inicial do bloco
+0B10 3010 ; Endereço que diz onde está o começo da memória
+0B12 400E ; Soma com a instrução MM
+0B14 9XXX ; Põe a instrução abaixo (carregar valor obtido)
+;
+0B16 D300 ; Pega o byte de endereço inicial
+0B18 9B04 ; Guarda no espaço para o endereço inicial
+0B1A 0000 ; Espaço para a instrução (carregar na memória o end inicial)
+;
+0B1C 3C00 ; Endereço da sub-rotina que será chamada
+0B1E 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
+0B20 3B26 ; Pega endereço de volta da próxima função
+0B22 AC20 ; Chama a sub-rotina que arruma os endereços
+0B24 AC00 ; Sub-rotina do checksum
+
+; Qtde de instruções do bloco atual
+0B1C 3010
+0B1E 400C ; Inicio da memoria + 2
+0B20 9010 ; Atualiza o endereço
+0B22 400E ; + instrução MM
+0B24 9XXX ; Põe a instrução abaixo (carregar qtde de instruções por bloco)
+;
+0B26 D300 ; Byte de tamanho do bloco
+0B28 9B08 ; Guarda no tamanho atual do bloco
+0B2A 0000 ; Espaço para a instrução (carregar o tam do bloco na memória)
+
+; Instruções
+0B2C 8B0A ; Carrega iterador
+0B2E 5B08 ; Tira o tamanho do bloco
+0B30 2XXX ; Se ainda faltam instruções, continuar
+0B32 0XXX ; Se instruções acabaram, checar soma
+
+0B34 8B0A ; Pega iterador de novo
+0B36 600C ; Multiplica por 2
+0B38 4010 ; Soma com o endereço atual da memória
+0B3A 400E ; Soma MM
+0B36 9B3A ; Põe a instrução logo abaixo
+0B38 D300 ; Pega a instrução
+0B3A 4B0C
+0B36 9B0C ; Atualiza checksum
+;
+OB3A 0000 ; Espaço pra instrução feita acima
+;
+0B3C 8B0A ; Recupera iterador
+0B3E 400A ; Iterador + 1
+0B40 9B0A ; It += 1
+;
+0B42 0B2C ; Completa o loop
+
+; Checksum
+0B44 D300 ; Pega o byte do checksum
+0B46 5B0C ; Tira o checksum calculado
+0B48 1XXX ; Deu bom
+0B4A 3FFF ; Deu ruim
+0B4C D100 ; Printa na tela
+;
+0B4E CB4E ; Halt
+
+; 3000
+; 9B08 ; reinicializa iterador
+
 
 ; Pega o endereço inicial das instruções
-0B0E 3C00 ; Endereço da sub-rotina que será chamada
-0B10 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
-0B12 3B18 ; Pega endereço de volta da próxima função
-0B14 AC20 ; Chama a sub-rotina que arruma os endereços
-0B16 AC00 ; Sub-rotina do checksum
+;0B0E 3C00 ; Endereço da sub-rotina que será chamada
+;0B10 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
+;0B12 3B18 ; Pega endereço de volta da próxima função
+;0B14 AC20 ; Chama a sub-rotina que arruma os endereços
+;0B16 AC00 ; Sub-rotina do checksum
 
-0B18 3BO4 ; Endereço para guardar o endereço inicial do bloco
-0B1A 400E ; Soma com a instrução de LOAD
-0B1C 9B20 ; Põe a instrução 2 espaços abaixo
-0B1E 8B0C ; Recupera o byte lido
-0B20 0000 ; Instrução vai aqui
+;0B18 3BO4 ; Endereço para guardar o endereço inicial do bloco
+;0B1A 400E ; Soma com a instrução de LOAD
+;0B1C 9B20 ; Põe a instrução 5 espaços abaixo
+;
+;0B1E 3010 ; Endereço do começo da memória
+;0B20 400E ; Soma LOAD
+;0B22 9B
+;
+;0B24 8B0C ; Recupera o byte lido
+;0B26 0000 ; Instrução vai aqui
 
 ;0B18 8B08 ; Pega o iterador
 ;0B1A 1XXX ; Verifica se vale zero e vai armazenar o endereço
@@ -977,24 +1045,24 @@
 ;0B22
 
 ; Pega a quantidade de instruções por bloco
-0B22 3C00 ; Endereço da sub-rotina que será chamada
-0B24 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
-0B26 3B36 ; Pega endereço de volta da próxima função
-0B28 AC20 ; Chama a sub-rotina que arruma os endereços
-0B2A AC00 ; Sub-rotina do checksum
+;0B22 3C00 ; Endereço da sub-rotina que será chamada
+;0B24 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
+;0B26 3B36 ; Pega endereço de volta da próxima função
+;0B28 AC20 ; Chama a sub-rotina que arruma os endereços
+;0B2A AC00 ; Sub-rotina do checksum
 
-0B2C 3BO4 ; Endereço para guardar o endereço inicial do bloco
-0B2E 400E ; Soma com a instrução de LOAD
-0B30 9B20 ; Põe a instrução 2 espaços abaixo
-0B32 8B0C ; Recupera o byte lido
-0B34 0000 ; Instrução vai aqui
+;0B2C 3BO4 ; Endereço para guardar o endereço inicial do bloco
+;0B2E 400E ; Soma com a instrução de LOAD
+;0B30 9B20 ; Põe a instrução 2 espaços abaixo
+;0B32 8B0C ; Recupera o byte lido
+;0B34 0000 ; Instrução vai aqui
 
 
-0B0E 3C00 ; Endereço da sub-rotina que será chamada
-0B10 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
-0B12 3B18 ; Pega endereço de volta da próxima função
-0B14 AC20 ; Chama a sub-rotina que arruma os endereços
-0B16 AC00 ; Sub-rotina do checksum
+;0B0E 3C00 ; Endereço da sub-rotina que será chamada
+;0B10 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
+;0B12 3B18 ; Pega endereço de volta da próxima função
+;0B14 AC20 ; Chama a sub-rotina que arruma os endereços
+;0B16 AC00 ; Sub-rotina do checksum
 
 ;0B18 CB18 ; Acabou (checkpoint pra debug)
 
