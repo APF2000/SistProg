@@ -1,4 +1,4 @@
 0 0 mvn.dispositivo.Teclado
 1 0 mvn.dispositivo.Monitor
-3 0 mvn.dispositivo.Disco main_program_5_0000_000C.dat l
+3 0 mvn.dispositivo.Disco main_program_5_0000_000C_modificado2.dat l
 3 1 mvn.dispositivo.Disco dump.dat e

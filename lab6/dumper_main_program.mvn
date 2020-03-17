@@ -961,83 +961,57 @@
 
 
 ; Endereço inicial do bloco
-;0B10 8010 ; Endereço que diz onde está o começo da memória
-;0B12 400E ; Soma com a instrução MM
-;0B14 9B1A ; Põe a instrução abaixo (carregar valor obtido)
-;
-0B10 0B16 ; Provisório
-0B16 D300 ; Pega o byte de endereço inicial
-;0B18 9B04 ; Guarda no espaço para o endereço inicial
-;0B1A 0000 ; Espaço para a instrução (carregar na memória o end inicial)
-;
-0B18 0B1C ;Provisório
-0B1C 4B0C
-0B1E 9B0C ; Checksum += instrução
-0B20 0B2C ; Pula algumas posições de memória
-;0B1C 3C00 ; Endereço da sub-rotina que será chamada
-;0B1E 9C1C ; Lugar reservado na função auxiliar pra guardar esse endereço
-;0B20 3B26 ; Pega endereço de volta da próxima função
-;0B22 AC20 ; Chama a sub-rotina que arruma os endereços
-;0B24 AC00 ; Sub-rotina do checksum
+0B10 D300 ; Pega o byte de endereço inicial
+
+0B12 4B0C
+0B14 9B0C ; Checksum += instrução
 
 ; Qtde de instruções do bloco atual
-;0B22 8010
-;0B24 400C ; Inicio da memoria + 2
-;0B26 9010 ; Atualiza o endereço
-;0B28 400E ; + instrução MM
-;0B2A 9B30 ; Põe a instrução abaixo (carregar qtde de instruções por bloco)
-;
-0B2C D300 ; Byte de tamanho do bloco
-0B2E 9B08 ; Guarda no tamanho atual do bloco
-0B30 0B32 ; Provisório
-;0B30 0000 ; Espaço para a instrução (carregar o tam do bloco na memória)
-0B32 4B0C
-0B34 9B0C ; Checksum += instrução
+0B16 D300 ; Byte de tamanho do bloco
+0B18 9B08 ; Guarda no tamanho atual do bloco
+0B1A 4B0C
+0B1C 9B0C ; Checksum += instrução
 
 ; Instruções
-0B36 8B0A ; Carrega iterador
-0B38 5B08 ; Tira o tamanho do bloco
-0B3A 2B3E ; Se ainda faltam instruções, continuar
-0B3C 1B5A ; Se instruções acabaram, checar soma
+0B1E 8B0A ; Carrega iterador
+0B20 5B08 ; Tira o tamanho do bloco
+0B22 2B26 ; Se ainda faltam instruções, continuar
+0B24 1B40 ; Se instruções acabaram, checar soma
 
-0B3E 8B0A ; Pega iterador de novo
-0B40 0B42
-;0B40 400A ; Soma 1 a ele
-0B42 600C ; Multiplica por 2
-0B44 4010 ; Soma com o endereço atual da memória
-0B46 400E ; Soma MM
-0B48 9B4C ; Põe a instrução logo abaixo
-0B4A D300 ; Pega a instrução
+0B26 8B0A ; Pega iterador de novo
+0B28 600C ; Multiplica por 2
+0B2A 4010 ; Soma com o endereço atual da memória
+0B2C 400E ; Soma MM
+0B2E 9B32 ; Põe a instrução logo abaixo
+0B30 D300 ; Pega a instrução
 ;
-0B4C 0000 ; Espaço pra instrução feita acima
-0B4E 4B0C
-0B50 9B0C ; Atualiza checksum
+0B32 0000 ; Espaço pra instrução feita acima
+0B34 4B0C
+0B36 9B0C ; Atualiza checksum
 ;
-0B52 8B0A ; Recupera iterador
-0B54 400A ; Iterador + 1
-0B56 9B0A ; It += 1
+0B38 8B0A ; Recupera iterador
+0B3A 400A ; Iterador + 1
+0B3C 9B0A ; It += 1
 ;
-0B58 0B36 ; Completa o loop
+0B3E 0B1E ; Completa o loop
 
 ; Checksum
-0B5A D300 ; Pega o byte do checksum
-0B5C 5B0C ; Tira o checksum calculado
-0B5E 1B62 ; Deu bom
-0B60 0B78 ; Deu ruim
+0B40 D300 ; Pega o byte do checksum
+0B42 5B0C ; Tira o checksum calculado
+0B44 1B48 ; Deu bom
+0B46 0B5C ; Deu ruim
 ;
-0B62 8B0A ; Pega o valor atual do iterador
-0B64 0B66 ; Provisório
-;0B64 400A ; Iterador + 1
-0B66 600C ; Multiplica por 2
-0B68 4010 ; Soma com o endereço inicial
-0B6A 9010 ; Põe no endereço inicial
+0B48 8B0A ; Pega o valor atual do iterador
+0B4A 600C ; Multiplica por 2
+0B4C 4010 ; Soma com o endereço inicial
+0B4E 9010 ; Põe no endereço inicial
 ;
-0B6C 3000
-0B6E 9B0A ; Reinicializa o iterador
-0B70 9B0C ; E o checksum também
+0B50 3000
+0B52 9B0A ; Reinicializa o iterador
+0B54 9B0C ; E o checksum também
 ;
-0B72 8B06 ; Pega o tamanho estipulado de um bloco
-0B74 5B08 ; Tira o tamanho do bloco atual
-0B76 1B10 ; Se for o tamanho correto, faz mais um loop
+0B56 8B06 ; Pega o tamanho estipulado de um bloco
+0B58 5B08 ; Tira o tamanho do bloco atual
+0B5A 1B10 ; Se for o tamanho correto, faz mais um loop
 ;
-0B78 BB00 ; Fim
+0B5C BB00 ; Fim
