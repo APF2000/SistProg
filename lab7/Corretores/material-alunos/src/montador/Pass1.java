@@ -2,6 +2,8 @@ package montador;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import assemblerException.AssemblerException;
 import util.SymbolTable;
 
 // versão do aluno gerada em 01.02.2010
@@ -61,21 +63,20 @@ class Pass1 extends Pass {
 
         boolean result = false;
 
-        System.out.println("Vamos tentar descobrir o que está acontecendo");
-
-        System.out.println(symbols + " linha :" + line);
-
-        System.out.println("size = " + symbols.size());
+        System.out.println("AnalyzeLine PASS1 " + symbols);
 
         if (symbols.size() > 2) {
-            // contém label
+            // Quando a instrução contém label, entra-se aqui
+
             if (symbols.size() > 3) {
                 // a linha contem mais símbolos do que devia
                 System.out.println(MSG_PASS1_PSEUDO_ERROR);
                 return false;
             }
 
-            System.out.println("simbolo : " + tab.symbolInTable(symbols.get(0)));
+            System.out.println("simbolo esta na tabela : " + tab.symbolInTable(symbols.get(0)));
+            System.out.println("simbolo esta definido ? : " + tab.definedSymbol(symbols.get(0)));
+
             if (!tab.symbolInTable(symbols.get(0))) {
                 // se símbolo ainda não usado, coloca na tabela e resolve
                 tab.insertSymbol(symbols.get(0));
@@ -122,7 +123,7 @@ class Pass1 extends Pass {
 
         boolean result = false;
 
-        System.out.println("code + arg" + "\n" + code + " " + arg);
+        System.out.println("code + arg = " + code + " " + arg);
         System.out.println("is number? " + isNumber(arg));
 
         // Testa se o argumento é número ou label
@@ -130,7 +131,7 @@ class Pass1 extends Pass {
 
             // testa se não é um erro na codificação do número
             String base = arg.substring(0, 1);
-            System.out.println("base = " + base);
+            System.out.println("base (dec, oct, hex?) = " + base);
 
             if (base.equals(HEX_CODE) || base.equals(ASCII_CODE)
                     || base.equals(DECIMAL_CODE)
@@ -148,12 +149,13 @@ class Pass1 extends Pass {
         }
 
 
-        System.out.println("e instrucao? " + InstructionsTable.getTable().instructionDefined(code));
+        System.out.println("\ne' instrucao? " + InstructionsTable.getTable().instructionDefined(code));
         System.out.println("table = " + InstructionsTable.getTable().toString());
 
         // Testa se é instrução
         if (InstructionsTable.getTable().instructionDefined(code)) {
             locationCounter += 2;
+            System.out.println("e' instrucao, location : " + locationCounter);
             if (locationCounter < LAST_VAL_ADDR) {
                 System.out.println("Nao excedeu a memoria");
                 result = true;
@@ -162,7 +164,7 @@ class Pass1 extends Pass {
             }
         } else {
             // É uma pseudo instrução
-            System.out.println("Deve ser entao uma pseudo");
+            System.out.println("Deve ser entao uma pseudo\n");
             result = testForPseudo(code, arg);
         }
 
@@ -182,10 +184,12 @@ class Pass1 extends Pass {
 
         boolean result = false;
 
+        System.out.println("testForPseudo()");
+
         // É código de pseudo-instrução.
         if (PseudoTable.getTable().pseudoDefined(code)) {
             int ps = PseudoTable.getTable().getPseudoCode(code);
-            System.out.println("code " + code + "\ntable "+PseudoTable.getTable() + "\nps " + ps);
+            System.out.println("\ncode " + code + ",table "+ PseudoTable.getTable() + ",ps " + ps);
             switch (ps) {
                 case PseudoTable.ORG:
                     System.out.println("arroba");
@@ -231,12 +235,21 @@ class Pass1 extends Pass {
      *
      */
     private boolean defineNewOrigin(String arg) {
-
+        int num;
         /*
          * TODO AULA 08 : defineNewOrigin
          * implementar método defineNewOrigin() conforme informações do método ( acima )
          *
          * */
+        try {
+            num = 0;
+            if (isNumber(arg)) {
+                locationCounter = getDecNumber(arg);
+            }
+        } catch(AssemblerException ae){
+
+        }
+
 
         System.out.println("Define-se uma nova origem");
 
@@ -248,7 +261,8 @@ class Pass1 extends Pass {
      * Define uma constante (pseudo-instrução DC). Permite que um valor esteja associado à um
      * símbolo (seja guardado no endereço do símbolo).<br>
      *
-     * Na prática apenas move o contador de localização (as demais verificações
+     * Na prática apenas move o contador de localização (as demais verificaç
+     *         ões
      * já foram feitas).
      *
      * @return <b>Falso</b> caso tenha ocorrido um erro ao definir as constantes ( estouro de memória ).
@@ -262,7 +276,7 @@ class Pass1 extends Pass {
          *
          * */
 
-        System.out.println("Define-se uma nova constante");
+        System.out.println("Define-se uma nova constante\n");
 
         return true;
     }

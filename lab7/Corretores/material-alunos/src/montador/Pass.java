@@ -21,22 +21,29 @@ public abstract class Pass {
 
     //Variáveis de apoio
     protected final String COMM = ";";
+
     /**Limite de endereços válidos*/
     protected final int LAST_VAL_ADDR = 4096;
+
     /**Valor máximo que pode ser contido dentro de uma word*/
     protected final int MAX_VALUE = 0xFFFF;
+
     /**Início do programa*/
     protected final int CONST_INIT_COUNT = 0;
+
     /**Tabela de Símbolos ( guarda os símbolos e valores ( endereços ))*/
     protected SymbolTable tab;
+
     /**Guarda a posição do contador de instruções. Indica o endereço da instrução (ou pseudo-instrução) */
     protected int locationCounter = CONST_INIT_COUNT;
+
     // Códigos do tipo de dado
     protected final String HEX_CODE = "/";
     protected final String ASCII_CODE = "'";
     protected final String DECIMAL_CODE = "=";
     protected final String OCTAL_CODE = "@";
     protected final String BINARY_CODE = "#";
+
     // Expressões regulares para os valores de cada tipo
     protected final String HEX_CHARS = "[0-9a-fA-F]+";
     protected final String ASCII_CHARS = ".+";
@@ -100,12 +107,15 @@ public abstract class Pass {
         /**Indica o final físico do arquivo*/
         boolean flagFinalFisico = false;
 
+        System.out.println("tokenizeData");
 
         try {
             data = in.readLine();
             numLinha++;
 
             while (data != null) {
+                System.out.println("\nComeca uma nova linha");
+
                 tokens = new StringTokenizer(data);
                 symbols = new ArrayList<String>();
 
@@ -159,8 +169,6 @@ public abstract class Pass {
         String base = code.substring(0, 1);
         String resto = code.substring(1, code.length());
 
-        System.out.println("base + resto = " + base + " " + resto);
-
         if (!((base.equals(HEX_CODE) && resto.matches(HEX_CHARS))
                 || (base.equals(ASCII_CODE) && resto.matches(ASCII_CHARS))
                 || (base.equals(DECIMAL_CODE) && resto.matches(DECIMAL_CHARS))
@@ -169,7 +177,6 @@ public abstract class Pass {
 
             return false;
         }
-        System.out.println("como previsto " + (base.equals(HEX_CODE) && resto.matches(HEX_CHARS)));
         return true;
     }
 
@@ -201,6 +208,13 @@ public abstract class Pass {
          * 				(se estiver no formato errado, uma NumberFormatException é gerada automaticamente)
          *
          * */
+        switch(arg.substring(0, 1)){
+            case HEX_CODE :
+
+                break;
+            default :
+                break;
+        }
 
         return 0;
     }//

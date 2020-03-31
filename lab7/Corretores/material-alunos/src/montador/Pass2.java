@@ -92,6 +92,9 @@ public class Pass2 extends Pass {
         if (InstructionsTable.getTable().instructionDefined(instrucao)) {
             // É uma instrução
             String enderecoArg = getArgumentValue(argumento);
+
+            System.out.println("BATATA" + enderecoArg);
+
             if (enderecoArg == null) {
                 // endereço não definido
                 System.out.println(MSG_PASS2_ASM_SYMBOL + SPACES
@@ -226,7 +229,11 @@ public class Pass2 extends Pass {
      */
     private String getArgumentValue(String arg) {
 
+        System.out.println("getArgumentValue(arg)");
+
         if (tab.symbolInTable(arg)) {
+            System.out.println("o simbolo " + arg + " esta na tabela");
+
             if (tab.definedSymbol(arg)) {
                 return tab.getSymbolValue(arg);
             } else {

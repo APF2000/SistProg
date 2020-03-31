@@ -36,8 +36,9 @@ public class SymbolTable {
         String index1 = new String("index1");
         symbolTable = new Hashtable<String, String>();
         String bla = new String("bla");
-        symbolTable.putIfAbsent(index1, bla);
-        System.out.println(symbolTable.values());
+        //symbolTable.putIfAbsent(index1, bla);
+        //symbolTable.putIfAbsent(bla, index1);
+        //System.out.println(symbolTable.elements());
     }
 
     /**
@@ -51,11 +52,13 @@ public class SymbolTable {
      *
      */
     public boolean symbolInTable(String sym) {
-        if(sym == null){
-            throw new NullPointerException();
+
+
+        System.out.println("o simbolo esta na tabela?? " + symbolTable.containsKey(sym));
+
+        if (symbolTable.containsKey(sym)) {
+            return true;
         }
-
-
 
         //TODO Aula 08: implementar o método symbolInTable
 
@@ -98,7 +101,16 @@ public class SymbolTable {
          * A pensar: o que indica que um símbolo não está definido ?
          *
          * */
+        System.out.println("\nIS SYMBOL " + sym + " DEFINED? ");
 
+        if(symbolTable.containsKey(sym)){
+            System.out.println("esta na lista");
+            if(symbolTable.get(sym).equals("")) {
+                System.out.println("nao esta definido");
+                return false;
+            }
+            return true;
+        }
         return false;
     }//
 
@@ -116,7 +128,18 @@ public class SymbolTable {
 
         //TODO Aula 08: implementar método insertSymbol
 
-        return false;
+        System.out.println("\nINSERTING SYMBOL " + sym + "\n");
+
+
+        symbolTable.putIfAbsent(sym, "");
+        System.out.println("INSERTED " + symbolTable.get(sym) + "\n");
+
+
+        if(definedSymbol(sym)){
+            return false;
+        }
+
+        return true;
     }
 
     /**
