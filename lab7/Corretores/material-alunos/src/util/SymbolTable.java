@@ -1,5 +1,6 @@
 package util;
 
+import java.util.Hashtable;
 import java.util.Map;
 
 //Versão do aluno gerada em 01/2010
@@ -16,7 +17,7 @@ import java.util.Map;
 public class SymbolTable {
 
     /**Map que guarda os símbolos.*/
-    protected Map<?, ?> symbolTable;
+    protected Map<String, String> symbolTable;
 
     /*
      * TODO Aula 08:
@@ -31,7 +32,13 @@ public class SymbolTable {
      *
      *
      * */
-
+    public SymbolTable(){
+        String index1 = new String("index1");
+        symbolTable = new Hashtable<String, String>();
+        String bla = new String("bla");
+        symbolTable.putIfAbsent(index1, bla);
+        System.out.println(symbolTable.values());
+    }
 
     /**
      * Verifica se um símbolo está na tabela.
@@ -44,6 +51,11 @@ public class SymbolTable {
      *
      */
     public boolean symbolInTable(String sym) {
+        if(sym == null){
+            throw new NullPointerException();
+        }
+
+
 
         //TODO Aula 08: implementar o método symbolInTable
 

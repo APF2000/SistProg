@@ -83,6 +83,7 @@ public class TwoPassAssembler extends AbstractAssembler {
     private boolean executePass(Pass pass) {
         // Cria um buffer de leitura para o arquivo texto
         BufferedReader filIn;
+        System.out.println("\nalo galera do cauboi");
         try {
             filIn = new BufferedReader(new FileReader(super.getInFile()));
 

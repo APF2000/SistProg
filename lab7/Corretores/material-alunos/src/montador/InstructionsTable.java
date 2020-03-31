@@ -91,6 +91,11 @@ public final class InstructionsTable {
      *         contrário.
      */
     public boolean instructionDefined(String instruction) {
+        System.out.println("\nEstamos aqui\n");
+        System.out.println("intsruc = " + instruction);
+        System.out.println(instruction.toUpperCase());
+        System.out.println(instr.containsKey(instruction.toUpperCase()));
+
         return instr.containsKey(instruction.toUpperCase());
     }
 

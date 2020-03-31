@@ -121,6 +121,8 @@ public abstract class Pass {
                 }
 
                 if (symbols.size() > 0) {
+
+                    System.out.println("Aposto que o problema esta aqui");
                     if (!analyzeLine(symbols, data)) {
                         return numLinha;
                     }
@@ -156,13 +158,18 @@ public abstract class Pass {
     protected boolean isNumber(String code) {
         String base = code.substring(0, 1);
         String resto = code.substring(1, code.length());
+
+        System.out.println("base + resto = " + base + " " + resto);
+
         if (!((base.equals(HEX_CODE) && resto.matches(HEX_CHARS))
                 || (base.equals(ASCII_CODE) && resto.matches(ASCII_CHARS))
                 || (base.equals(DECIMAL_CODE) && resto.matches(DECIMAL_CHARS))
                 || (base.equals(OCTAL_CODE) && resto.matches(OCTAL_CHARS))
                 || (base.equals(BINARY_CODE) && resto.matches(BINARY_CHARS)))) {
+
             return false;
         }
+        System.out.println("como previsto " + (base.equals(HEX_CODE) && resto.matches(HEX_CHARS)));
         return true;
     }
 

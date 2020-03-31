@@ -61,6 +61,12 @@ class Pass1 extends Pass {
 
         boolean result = false;
 
+        System.out.println("Vamos tentar descobrir o que está acontecendo");
+
+        System.out.println(symbols + " linha :" + line);
+
+        System.out.println("size = " + symbols.size());
+
         if (symbols.size() > 2) {
             // contém label
             if (symbols.size() > 3) {
@@ -69,6 +75,7 @@ class Pass1 extends Pass {
                 return false;
             }
 
+            System.out.println("simbolo : " + tab.symbolInTable(symbols.get(0)));
             if (!tab.symbolInTable(symbols.get(0))) {
                 // se símbolo ainda não usado, coloca na tabela e resolve
                 tab.insertSymbol(symbols.get(0));
@@ -87,6 +94,8 @@ class Pass1 extends Pass {
             result = testForCode(symbols.get(1), symbols.get(2));
         } else if (symbols.size() == 2) {
             // não contem label
+
+            System.out.println("Nao contem label");
 
             // adaptação para corrigir o posicionamento do operando
             result = testForCode(symbols.get(0), symbols.get(1));
@@ -113,11 +122,16 @@ class Pass1 extends Pass {
 
         boolean result = false;
 
+        System.out.println("code + arg" + "\n" + code + " " + arg);
+        System.out.println("is number? " + isNumber(arg));
+
         // Testa se o argumento é número ou label
         if (!isNumber(arg)) {
 
             // testa se não é um erro na codificação do número
             String base = arg.substring(0, 1);
+            System.out.println("base = " + base);
+
             if (base.equals(HEX_CODE) || base.equals(ASCII_CODE)
                     || base.equals(DECIMAL_CODE)
                     || base.equals(OCTAL_CODE)
@@ -133,16 +147,22 @@ class Pass1 extends Pass {
             }
         }
 
+
+        System.out.println("e instrucao? " + InstructionsTable.getTable().instructionDefined(code));
+        System.out.println("table = " + InstructionsTable.getTable().toString());
+
         // Testa se é instrução
         if (InstructionsTable.getTable().instructionDefined(code)) {
             locationCounter += 2;
             if (locationCounter < LAST_VAL_ADDR) {
+                System.out.println("Nao excedeu a memoria");
                 result = true;
             } else {
                 System.out.println(MSG_PASS1_LOC_ERROR);
             }
         } else {
             // É uma pseudo instrução
+            System.out.println("Deve ser entao uma pseudo");
             result = testForPseudo(code, arg);
         }
 
@@ -161,15 +181,21 @@ class Pass1 extends Pass {
     private boolean testForPseudo(String code, String arg) {
 
         boolean result = false;
+
         // É código de pseudo-instrução.
         if (PseudoTable.getTable().pseudoDefined(code)) {
             int ps = PseudoTable.getTable().getPseudoCode(code);
+            System.out.println("code " + code + "\ntable "+PseudoTable.getTable() + "\nps " + ps);
             switch (ps) {
                 case PseudoTable.ORG:
+                    System.out.println("arroba");
+
                     // Pseudo-Instrução que troca a origem
                     if (defineNewOrigin(arg)) {
+                        System.out.println("definiu nova origem");
                         result = true;
                     }
+                    System.out.println("agora sim deu ruim, " + defineNewOrigin(arg));
                     break;
                 case PseudoTable.DC:
                     // Pseudo-Instrução para definição de constantes
@@ -211,6 +237,8 @@ class Pass1 extends Pass {
          * implementar método defineNewOrigin() conforme informações do método ( acima )
          *
          * */
+
+        System.out.println("agora tudo faz sentido :')");
 
 
         return false;
