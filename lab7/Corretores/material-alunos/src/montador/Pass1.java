@@ -238,10 +238,10 @@ class Pass1 extends Pass {
          *
          * */
 
-        System.out.println("agora tudo faz sentido :')");
+        System.out.println("Define-se uma nova origem");
 
 
-        return false;
+        return true;
     }
 
     /**
@@ -262,7 +262,9 @@ class Pass1 extends Pass {
          *
          * */
 
-        return false;
+        System.out.println("Define-se uma nova constante");
+
+        return true;
     }
 
     /**
@@ -280,7 +282,10 @@ class Pass1 extends Pass {
          * implementar método endAsm()
          *
          * */
-        return false;
+
+        System.out.println("Define-se o fim");
+
+        return true;
     }
 
     /**
@@ -297,6 +302,9 @@ class Pass1 extends Pass {
          * implementar método reserveBlock(). Reservar explicitamente a área de dados.
          *
          * */
-        return false;
+
+        System.out.println("Reserva-se um bloco");
+
+        return true;
     }
 }
