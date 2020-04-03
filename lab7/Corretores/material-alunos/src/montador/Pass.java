@@ -197,7 +197,9 @@ public abstract class Pass {
         //TODO AULA 08 : getDecNumber
         // implementar método getDecNumber()
 
-        String num = arg.substring(1, arg.length()-1);
+        String num = arg.substring(1, arg.length());
+        char[] aux;
+        int asc1, asc2;
 
         /*
          * Converter o número passado usando o seguinte pseudo-algoritmo
@@ -213,25 +215,22 @@ public abstract class Pass {
         switch(arg.substring(0, 1)){
             case HEX_CODE :
                 return Integer.parseInt(num, 16);
-                break;
-            //case ASCII_CODE :
-                //return Integer.parseInt(num, 16);
-                //break;
+            case ASCII_CODE :
+                if(num.length() > 2)
+                    throw new NumberFormatException();
+                aux = num.toCharArray();
+                asc1 = (int) aux[0];
+                asc2 = (int) aux[1];
+                return asc1 + 256 * asc2;
             case DECIMAL_CODE :
                 return Integer.parseInt(num, 10);
-                break;
             case OCTAL_CODE :
                 return Integer.parseInt(num, 8);
-                break;
             case BINARY_CODE :
                 return Integer.parseInt(num, 2);
-                break;
             default :
-                throw new NumberFormatException();
-                break;
+                throw new AssemblerException("Numero mal formatado");
         }
-
-        return 0;
     }//
 }//class
 

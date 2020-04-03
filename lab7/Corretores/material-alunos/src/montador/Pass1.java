@@ -243,17 +243,12 @@ class Pass1 extends Pass {
          * */
         try {
             num = 0;
-            if (isNumber(arg)) {
-                locationCounter = getDecNumber(arg);
-            }
+            locationCounter = getDecNumber(arg);
         } catch(AssemblerException ae){
-
+            System.out.println(ae.toString());
+            return false;
         }
-
-
         System.out.println("Define-se uma nova origem");
-
-
         return true;
     }
 
@@ -310,15 +305,24 @@ class Pass1 extends Pass {
      *
      */
     private boolean reserveBlock(String arg) {
-
+        int space=0;
         /**
          * TODO AULA 08 : reserveBlock
          * implementar método reserveBlock(). Reservar explicitamente a área de dados.
          *
          * */
-
+        try {
+            space = getDecNumber(arg);
+        }catch(NumberFormatException nfe){
+            System.out.println("Formato errado");
+        }catch (AssemblerException ae){
+            System.out.println(ae.toString());
+        }
+        if(locationCounter + space > LAST_VAL_ADDR || space % 2 != 0){
+            return false;
+        }
+        locationCounter += space;
         System.out.println("Reserva-se um bloco");
-
         return true;
     }
 }
