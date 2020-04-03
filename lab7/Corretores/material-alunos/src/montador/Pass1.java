@@ -163,9 +163,15 @@ class Pass1 extends Pass {
                 System.out.println(MSG_PASS1_LOC_ERROR);
             }
         } else {
+
             // É uma pseudo instrução
             System.out.println("Deve ser entao uma pseudo\n");
             result = testForPseudo(code, arg);
+
+            //System.out.println("Talvez eu nao devesse estar mexendo aqui");
+            // Codigo intruso
+            //if(result == true)
+                //locationCounter += 2;
         }
 
         return result;
@@ -243,6 +249,8 @@ class Pass1 extends Pass {
          * */
         try {
             num = 0;
+            if(getDecNumber(arg) > LAST_VAL_ADDR)
+                return false;
             locationCounter = getDecNumber(arg);
         } catch(AssemblerException ae){
             System.out.println(ae.toString());
@@ -273,7 +281,12 @@ class Pass1 extends Pass {
 
         System.out.println("Define-se uma nova constante\n");
 
-        return true;
+        // Sera que e isso?
+        if(locationCounter + 2 <= LAST_VAL_ADDR){
+            locationCounter += 2;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -291,10 +304,15 @@ class Pass1 extends Pass {
          * implementar método endAsm()
          *
          * */
-
-        System.out.println("Define-se o fim");
-
-        return true;
+        try {
+            //int aux = getDecNumber(arg);
+            System.out.println("Define-se o fim");
+            if (locationCounter < LAST_VAL_ADDR)
+                return true;
+            return false;
+        }catch(NumberFormatException nfe){
+            return false;
+        }
     }
 
     /**
@@ -321,7 +339,7 @@ class Pass1 extends Pass {
         if(locationCounter + space > LAST_VAL_ADDR || space % 2 != 0){
             return false;
         }
-        locationCounter += space;
+        locationCounter += (2 * space);
         System.out.println("Reserva-se um bloco");
         return true;
     }

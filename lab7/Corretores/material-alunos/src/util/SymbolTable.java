@@ -76,8 +76,10 @@ public class SymbolTable {
     public boolean setSymbolValue(String sym, String address) {
         //TODO Aula 08: implementar o método setSymbolValue
 
-        symbolTable.put(sym, address);
-
+        if(sym != null && symbolTable.get(sym) != null){
+            symbolTable.put(sym, address);
+            return true;
+        }
         return false;
     }//
 
@@ -151,7 +153,8 @@ public class SymbolTable {
     public String getSymbolValue(String sym) {
 
         //TODO Aula 08: implementar getSymbolValue
+        String aux = symbolTable.get(sym);
 
-        return symbolTable.get(sym);
+        return aux;
     }//m
 }//class

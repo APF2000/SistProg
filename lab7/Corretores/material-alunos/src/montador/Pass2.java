@@ -215,7 +215,23 @@ public class Pass2 extends Pass {
                  *
                  * */
                 //Apenas escrevendo a pseudo como comentário no arquivo de saída
-                out.writePseudo(originalLine);
+
+                //String arg, String originalLine   writeInstruction(int locationCounter, int nibble, String inst,
+                //            String arg, String originalLine)
+                //out.writeInstruction(locationCounter, nibble, inst, arg, originalLine);
+                System.out.println();
+                try {
+                    nibble = 0;
+                    String inst = new String("0");
+                    for (int i = 0; i < getDecNumber(arg); i++) {
+
+                        out.writeInstruction(locationCounter, nibble, inst, "000", originalLine);
+                        //out.writePseudo(originalLine);
+                        locationCounter += 2;
+                    }
+                }catch (NumberFormatException | AssemblerException e){
+                    return false;
+                }
         }
         return true;
     }
