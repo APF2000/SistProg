@@ -33,12 +33,7 @@ public class SymbolTable {
      *
      * */
     public SymbolTable(){
-        String index1 = new String("index1");
         symbolTable = new Hashtable<String, String>();
-        String bla = new String("bla");
-        //symbolTable.putIfAbsent(index1, bla);
-        //symbolTable.putIfAbsent(bla, index1);
-        //System.out.println(symbolTable.elements());
     }
 
     /**
@@ -59,10 +54,11 @@ public class SymbolTable {
         if (symbolTable.containsKey(sym)) {
             return true;
         }
+        return false;
 
         //TODO Aula 08: implementar o método symbolInTable
 
-        return false;
+
     }//
 
     /**
@@ -79,6 +75,8 @@ public class SymbolTable {
      */
     public boolean setSymbolValue(String sym, String address) {
         //TODO Aula 08: implementar o método setSymbolValue
+
+        symbolTable.put(sym, address);
 
         return false;
     }//
@@ -101,7 +99,7 @@ public class SymbolTable {
          * A pensar: o que indica que um símbolo não está definido ?
          *
          * */
-        System.out.println("\nIS SYMBOL " + sym + " DEFINED? ");
+        System.out.println("\nIS SYMBOL " + sym + " DEFINED? " + symbolTable.get(sym));
 
         if(symbolTable.containsKey(sym)){
             System.out.println("esta na lista");
@@ -130,14 +128,12 @@ public class SymbolTable {
 
         System.out.println("\nINSERTING SYMBOL " + sym + "\n");
 
-
-        symbolTable.putIfAbsent(sym, "");
-        System.out.println("INSERTED " + symbolTable.get(sym) + "\n");
-
-
         if(definedSymbol(sym)){
             return false;
         }
+
+        symbolTable.put(sym, "");
+        System.out.println("INSERTED " + symbolTable.get(sym) + "\n");
 
         return true;
     }
@@ -145,7 +141,7 @@ public class SymbolTable {
     /**
      * Obtêm o valor definido para um símbolo.
      *
-     * @param sym O símbolo o qual se deseja saber o valor.
+     * @param sym O símbolo cujo valor se deseja saber.
      *
      * @return O valor do símbolo.
      *
@@ -156,6 +152,6 @@ public class SymbolTable {
 
         //TODO Aula 08: implementar getSymbolValue
 
-        return null;
+        return symbolTable.get(sym);
     }//m
 }//class

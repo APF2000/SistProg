@@ -197,11 +197,13 @@ public abstract class Pass {
         //TODO AULA 08 : getDecNumber
         // implementar método getDecNumber()
 
+        String num = arg.substring(1, arg.length()-1);
+
         /*
          * Converter o número passado usando o seguinte pseudo-algoritmo
          * 		-retira a base da string ( primeiro caractere do arg )
-         * 		-verifica à qual das bases (definida na classe ASM) corresponde a entrada
-         * 			-se não corresponde à nenhuma das bases definidas, gerar uma MVNException com a mensagem de erro
+         * 		-verifica a qual das bases (definida na classe ASM) corresponde a entrada
+         * 			-se não corresponde a nenhuma das bases definidas, gerar uma MVNException com a mensagem de erro
          * 					definida em ASM e sair do programa.
          *
          * 		-converte o restante do arg para um valor decimal
@@ -210,9 +212,22 @@ public abstract class Pass {
          * */
         switch(arg.substring(0, 1)){
             case HEX_CODE :
-
+                return Integer.parseInt(num, 16);
+                break;
+            //case ASCII_CODE :
+                //return Integer.parseInt(num, 16);
+                //break;
+            case DECIMAL_CODE :
+                return Integer.parseInt(num, 10);
+                break;
+            case OCTAL_CODE :
+                return Integer.parseInt(num, 8);
+                break;
+            case BINARY_CODE :
+                return Integer.parseInt(num, 2);
                 break;
             default :
+                throw new NumberFormatException();
                 break;
         }
 
