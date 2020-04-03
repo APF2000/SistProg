@@ -4,7 +4,7 @@
 ; Slides das aulas 10 e 11
 ; ----------------------------------------------------------------------------
 
-0000 020a		;	    JP INICIO      ; Jump incondicional para o in�cio
+0000 0214		;	    JP INICIO      ; Jump incondicional para o in�cio
 
 				;	@   /100           ; Define que o endere�o agora �: 0x100
 0100 0100		;	C0  K  /100        ; Declara uma constante chamada C0 com valor 0x100
