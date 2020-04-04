@@ -225,10 +225,12 @@ public class Pass2 extends Pass {
                     String inst = new String("0");
                     for (int i = 0; i < getDecNumber(arg); i++) {
 
-                        out.writeInstruction(locationCounter, nibble, inst, "000", originalLine);
+                        out.writeInstruction(locationCounter, nibble, inst, "000", originalLine
+                                + "\t" + Integer.toHexString(2 * i));
                         //out.writePseudo(originalLine);
                         locationCounter += 2;
                     }
+                    out.writePseudo(originalLine);
                 }catch (NumberFormatException | AssemblerException e){
                     return false;
                 }

@@ -26,24 +26,24 @@
 
 ; Exemplos de declara��o de constantes em diferentes formatos:
 
-0120 5245		;	GG  K  'ER         ; Base 256 (valor = 'E'*256^1 + 'R'*256^0)
-0122 4f52		;	GH  K  'RO         ; Base 256
+0120 4552		;	GG  K  'ER         ; Base 256 (valor = 'E'*256^1 + 'R'*256^0)
+0122 524f		;	GH  K  'RO         ; Base 256
 0124 03e8		;	GJ  K  =1000       ; Base 10 (1000 em decimal)
 0126 03e8		;	GK  K  /3E8        ; Base 16 (equivalente a 0x3E8)
 0128 03e8		;	GL  K  @1750       ; Base 8
 012a 03e8		;	G�  K  #1111101000 ; Base 2 (1111101000 em bin�rio)
 
 				;	@   /200           ; Define que o endere�o agora �: 0x200
-0200 0000		;	$   /A             ; Reserva 10 words	0
-0202 0000		;	$   /A             ; Reserva 10 words	2
-0204 0000		;	$   /A             ; Reserva 10 words	4
-0206 0000		;	$   /A             ; Reserva 10 words	6
-0208 0000		;	$   /A             ; Reserva 10 words	8
-020a 0000		;	$   /A             ; Reserva 10 words	a
-020c 0000		;	$   /A             ; Reserva 10 words	c
-020e 0000		;	$   /A             ; Reserva 10 words	e
-0210 0000		;	$   /A             ; Reserva 10 words	10
-0212 0000		;	$   /A             ; Reserva 10 words	12
+0200 0000		;	$   /A             ; Reserva 10 words   0
+0202 0000		;	$   /A             ; Reserva 10 words   2
+0204 0000		;	$   /A             ; Reserva 10 words   4
+0206 0000		;	$   /A             ; Reserva 10 words   6
+0208 0000		;	$   /A             ; Reserva 10 words   8
+020a 0000		;	$   /A             ; Reserva 10 words   a
+020c 0000		;	$   /A             ; Reserva 10 words   c
+020e 0000		;	$   /A             ; Reserva 10 words   e
+0210 0000		;	$   /A             ; Reserva 10 words   10
+0212 0000		;	$   /A             ; Reserva 10 words   12
 				;	$   /A             ; Reserva 10 words
 
 0214 0100		;	INICIO JP C0       ; Come�o do programa
