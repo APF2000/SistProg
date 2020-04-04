@@ -1,0 +1,74 @@
+0000 0300		;	  JP START
+
+				;	@ /020 ; Tabela de mnemônicos
+0020 4a50		;	TABLE     K /4A50 ; JP
+0022 4a5a		;	          K /4A5A ; JZ
+0024 4a4e		;	          K /4A4E ; JN
+0026 4c56		;	          K /4C56 ; LV
+0028 2b20		;	          K /2B20 ; +
+002a 2d20		;	          K /2D20 ; -
+002c 2a20		;	          K /2A20 ; *
+002e 2f20		;	          K /2F20 ; /
+0030 4c44		;	LOAD_MNEM K /4C44 ; LD
+0032 4d4d		;	          K /4D4D ; MM
+0034 5343		;	          K /5343 ; SC
+0036 5253		;	          K /5253 ; RS
+0038 484d		;	          K /484D ; HM
+003a 4744		;	          K /4744 ; GD
+003c 5044		;	          K /5044 ; PD
+003e 4f53		;	          K /4F53 ; OS
+
+				;	@ /010
+0010 0001		;	OPCODE   K /001
+0012 4a5a		;	MNEM     K /4A5A
+0014 0001		;	UM       K =1
+0016 000a		;	DOIS     K =10
+0018 8000		;	LOAD     LD /000
+001a 0020		;	P_TABLE  K  TABLE
+001c 0000		;	ITERADOR K  /000
+
+				;	@ /100 ; OP2MNEM
+0100 0304		;	OP2MNEM JP CHAMADA_OP2MNEM
+0102 8010		;	      LD OPCODE
+0104 6016		;	      *  DOIS
+0106 401a		;	      +  P_TABLE
+0108 4018		;	      +  LOAD
+010a 910c		;	      MM INST1
+010c 0000		;	INST1 K  /0000
+010e 9012		;	      MM MNEM
+0110 b100		;	      RS OP2MNEM
+
+				;	@ /200 ; MNEM2OP
+0200 030e		;	MNEM2OP JP CHAMADA_MNEM2OP
+0202 801c		;	BEG_LOOP LD ITERADOR
+0204 4016		;	      +  DOIS
+0206 901c		;	      MM ITERADOR
+0208 5016		;	      -  DOIS
+020a 401a		;	      +  P_TABLE
+020c 4018		;	      +  LOAD
+020e 9210		;	      MM INST2
+0210 0000		;	INST2 K  /000
+0212 5012		;	          -  MNEM
+0214 1218		;	          JZ END_LOOP ; Achou a instrução certa
+0216 0202		;	          JP BEG_LOOP ; Completa o loop
+0218 801c		;	END_LOOP LD ITERADOR
+021a 5016		;	         -  DOIS
+021c 7016		;	         /  DOIS ; Transforma o valor (iterador inicial) no OPCODE posicional
+021e 9010		;	         MM OPCODE
+0220 b200		;	         RS MNEM2OP
+
+				;	@ /300 ; Programa principal
+0300 3007		;	START LV /007
+0302 9010		;	      MM OPCODE
+0304 a100		;	CHAMADA_OP2MNEM  SC OP2MNEM
+0306 8012		;	      LD MNEM
+0308 e100		;	      PD /100 ; Imprime o MNEM
+
+030a 8030		;	      LD LOAD_MNEM
+030c 9012		;	      MM MNEM
+030e a200		;	CHAMADA_MNEM2OP  SC MNEM2OP
+0310 8010		;	      LD OPCODE
+0312 e100		;	      PD /100 ; Impriem OPCODE
+
+0314 c314		;	END   HM END
+
