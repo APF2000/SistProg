@@ -20,10 +20,13 @@ public class Pass1 extends Pass {
 
     /**A tabela de símbolos para o linker*/
     private LinkerSymbolTable symbolTable;
+
     /**A posição relocável anterior*/
     private int relativeLocationCouter;
+
     /**A base de relocação a ser considerada no código*/
     private int base;
+
     /**Numera as diferentes variáveis externas existentes num arquivo*/
     private int externalCounter = 0;
 
@@ -50,6 +53,10 @@ public class Pass1 extends Pass {
          * Analisar o nibble e incrementar o endereçamento relativo (relativeLocationCounter) de acordo.
          *
          */
+        if(isRelocable(nibble)){
+            relativeLocationCouter += 2;
+            return true;
+        }
         return false;
     }//
 
@@ -73,8 +80,22 @@ public class Pass1 extends Pass {
          * Devem ser avaliadas as combinações apropriadas do nibble.
          * Deve-se calcular o endereço do codigo e atualizar apropriadamente a tabela de simbolos.
          */
+        if (isRelocableEntryPoint(nibble)) {
+            symbolTable.insertSymbol(symbol);
+            symbolTable.setSymbolValue(symbol, Integer.toHexString(Integer.parseInt(address, 16) + base), true);
+        }
+        else if (isEntryPoint(nibble)) {
+            symbolTable.insertSymbol(symbol);
+            symbolTable.setSymbolValue(symbol, address);
+        }
+        else if (isExternalPseudoInstruction(nibble)) {
+            symbolTable.setCodeForSymbol(symbol, currentFile, externalCounter);
+            externalCounter++;
+        }
+        else
+            return false;
 
-        return false;
+        return true;
     }//
 
     /**
@@ -88,6 +109,7 @@ public class Pass1 extends Pass {
          * Atualizar as variáveis existentes de acordo.
          *
          * */
+        return;
     }//
 
     public LinkerSymbolTable getSymbolTable() {

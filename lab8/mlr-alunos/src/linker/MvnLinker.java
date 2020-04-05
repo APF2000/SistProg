@@ -16,10 +16,19 @@ public class MvnLinker {
     private static final String MSG_FALTA_SAIDA = "E preciso determinar o arquivo de saida.";
 
     public static void main(String[] args) {
+        args = new String[4];
+        // TESTE
+        args[0] = "exemplos/somador.mvn";
+        args[1] = "exemplos/principal.mvn";
+        args[2] = "-s";
+        args[3] = "exemplos/saida-relocavel.mvn";
+
+
         if (args.length < 3) {
             System.out.println(MSG_USO_LINKER);
             System.exit(1);
         }
+
 
         ArrayList<String> entradas = new ArrayList<String>();
         String saida = null;

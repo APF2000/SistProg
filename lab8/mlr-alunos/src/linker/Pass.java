@@ -69,7 +69,7 @@ public abstract class Pass {
      */
     protected boolean isEntryPoint(int nibble) {
         // TODO: isEntryPoint
-        return false;
+        return ( nibble == 2 || nibble == 0 );
     }
 
     /**
@@ -82,7 +82,7 @@ public abstract class Pass {
      */
     protected boolean isRelocableEntryPoint(int nibble) {
         //TODO: isRelocableEntryPoint
-        return false;
+        return (nibble == 2);
     }
 
     /**
@@ -95,7 +95,7 @@ public abstract class Pass {
      */
     protected boolean isRelocable(int nibble) {
         //TODO: isRelocable
-        return false;
+        return ( (nibble / 8) % 2 == 1);
     }
 
     /**
@@ -108,7 +108,7 @@ public abstract class Pass {
      */
     protected boolean isResolved(int nibble) {
         //TODO: isResolved
-        return false;
+        return (nibble != 5 && nibble != 13);
     }
 
     /**
@@ -119,7 +119,7 @@ public abstract class Pass {
      * @return Verdadeiro se o argumento for relocável.
      */
     protected boolean isArgumentRelocable(int nibble) {
-        return false;
+        return ((nibble / 2) % 2 == 1);
     }
 
     /**
@@ -132,7 +132,7 @@ public abstract class Pass {
      */
     protected boolean isExternalPseudoInstruction(int nibble) {
         //TODO: isExternalPseudoInstruction
-        return false;
+        return (nibble == 4);
     }//
 
     /**
@@ -144,7 +144,7 @@ public abstract class Pass {
      */
     protected boolean instructionWithExternal(int nibble) {
         //TODO: instructionWithExternal
-        return false;
+        return (nibble % 2 == 1);
     }//
 
     /**
