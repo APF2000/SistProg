@@ -21,8 +21,8 @@ LOAD_MNEM K /4C44 ; LD
 @ /010
 OPCODE   K /001
 MNEM     K /4A5A
-UM       K =1
-DOIS     K =10
+UM       K #1
+DOIS     K #10
 LOAD     LD /000
 P_TABLE  K  TABLE
 ITERADOR K  /000

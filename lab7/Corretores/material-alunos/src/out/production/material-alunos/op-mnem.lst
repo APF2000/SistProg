@@ -21,8 +21,8 @@
 				;	@ /010
 0010 0001		;	OPCODE   K /001
 0012 4a5a		;	MNEM     K /4A5A
-0014 0001		;	UM       K #1
-0016 0002		;	DOIS     K #10
+0014 0001		;	UM       K =1
+0016 000a		;	DOIS     K =10
 0018 8000		;	LOAD     LD /000
 001a 0020		;	P_TABLE  K  TABLE
 001c 0000		;	ITERADOR K  /000
