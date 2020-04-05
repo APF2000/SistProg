@@ -49,8 +49,6 @@ public class SymbolTable {
     public boolean symbolInTable(String sym) {
 
 
-        System.out.println("o simbolo esta na tabela?? " + symbolTable.containsKey(sym));
-
         if (symbolTable.containsKey(sym)) {
             return true;
         }
@@ -101,12 +99,9 @@ public class SymbolTable {
          * A pensar: o que indica que um símbolo não está definido ?
          *
          * */
-        System.out.println("\nIS SYMBOL " + sym + " DEFINED? " + symbolTable.get(sym));
 
         if(symbolTable.containsKey(sym)){
-            System.out.println("esta na lista");
             if(symbolTable.get(sym).equals("")) {
-                System.out.println("nao esta definido");
                 return false;
             }
             return true;
@@ -128,14 +123,12 @@ public class SymbolTable {
 
         //TODO Aula 08: implementar método insertSymbol
 
-        System.out.println("\nINSERTING SYMBOL " + sym + "\n");
 
         if(definedSymbol(sym)){
             return false;
         }
 
         symbolTable.put(sym, "");
-        System.out.println("INSERTED " + symbolTable.get(sym) + "\n");
 
         return true;
     }

@@ -107,15 +107,11 @@ public abstract class Pass {
         /**Indica o final físico do arquivo*/
         boolean flagFinalFisico = false;
 
-        System.out.println("tokenizeData");
-
         try {
             data = in.readLine();
             numLinha++;
 
             while (data != null) {
-                System.out.println("\nComeca uma nova linha");
-
                 tokens = new StringTokenizer(data);
                 symbols = new ArrayList<String>();
 
@@ -131,8 +127,6 @@ public abstract class Pass {
                 }
 
                 if (symbols.size() > 0) {
-
-                    System.out.println("Aposto que o problema esta aqui");
                     if (!analyzeLine(symbols, data)) {
                         return numLinha;
                     }
