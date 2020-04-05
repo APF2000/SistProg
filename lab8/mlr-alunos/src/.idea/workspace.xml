@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73e4e049-7ec9-4084-b75e-08cf7b935588" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../linker/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linker/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linker/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linker/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../linker/linker.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linker/MvnLinker.java" beforeDir="false" afterPath="$PROJECT_DIR$/linker/MvnLinker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linker/Pass.java" beforeDir="false" afterPath="$PROJECT_DIR$/linker/Pass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/linker/Pass1.java" beforeDir="false" afterPath="$PROJECT_DIR$/linker/Pass1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mlr-alunos/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mlr-alunos/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mlr-alunos/linker/MvnLinker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mlr-alunos/linker/MvnLinker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linker/Pass2.java" beforeDir="false" afterPath="$PROJECT_DIR$/linker/Pass2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/mlr-alunos/linker/Pass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mlr-alunos/linker/Pass.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/mlr-alunos/linker/Pass1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mlr-alunos/linker/Pass1.class" afterDir="false" />
     </list>
@@ -68,42 +60,42 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1807" height="382" key="GridCell.Tab.0.bottom" timestamp="1586109801998">
+    <state width="1042" height="426" key="GridCell.Tab.0.bottom" timestamp="1586115980928">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="382" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1586109801998" />
-    <state width="1807" height="382" key="GridCell.Tab.0.center" timestamp="1586109801997">
+    <state width="1042" height="426" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1586115980928" />
+    <state width="1042" height="426" key="GridCell.Tab.0.center" timestamp="1586115980927">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="382" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1586109801997" />
-    <state width="1807" height="382" key="GridCell.Tab.0.left" timestamp="1586109801997">
+    <state width="1042" height="426" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1586115980927" />
+    <state width="1042" height="426" key="GridCell.Tab.0.left" timestamp="1586115980927">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="382" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1586109801997" />
-    <state width="1807" height="382" key="GridCell.Tab.0.right" timestamp="1586109801998">
+    <state width="1042" height="426" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1586115980927" />
+    <state width="1042" height="426" key="GridCell.Tab.0.right" timestamp="1586115980927">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="382" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1586109801998" />
-    <state width="1807" height="382" key="GridCell.Tab.1.bottom" timestamp="1586109802271">
+    <state width="1042" height="426" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1586115980927" />
+    <state width="1042" height="426" key="GridCell.Tab.1.bottom" timestamp="1586115980928">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="382" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1586109802271" />
-    <state width="1807" height="382" key="GridCell.Tab.1.center" timestamp="1586109802270">
+    <state width="1042" height="426" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1586115980928" />
+    <state width="1042" height="426" key="GridCell.Tab.1.center" timestamp="1586115980928">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="382" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1586109802270" />
-    <state width="1807" height="382" key="GridCell.Tab.1.left" timestamp="1586109802270">
+    <state width="1042" height="426" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1586115980928" />
+    <state width="1042" height="426" key="GridCell.Tab.1.left" timestamp="1586115980928">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="382" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1586109802270" />
-    <state width="1807" height="382" key="GridCell.Tab.1.right" timestamp="1586109802271">
+    <state width="1042" height="426" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1586115980928" />
+    <state width="1042" height="426" key="GridCell.Tab.1.right" timestamp="1586115980928">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1807" height="382" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1586109802271" />
-    <state x="1102" y="247" width="710" height="743" key="find.popup" timestamp="1586109432309">
+    <state width="1042" height="426" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1586115980928" />
+    <state x="1102" y="247" width="710" height="743" key="find.popup" timestamp="1586115548955">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="1102" y="247" width="710" height="743" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1586109432309" />
+    <state x="1102" y="247" width="710" height="743" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1586115548955" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -149,51 +141,6 @@
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/TwoPassLinker.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/TwoPassLinker.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/TwoPassLinker.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/TwoPassLinker.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
-          <line>180</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
-          <line>181</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
-          <line>184</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
-          <line>185</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
-          <line>187</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/linker/Pass.java</url>
           <line>204</line>
           <option name="timeStamp" value="34" />
@@ -215,11 +162,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/linker/Pass.java</url>
-          <line>235</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
           <line>245</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
@@ -230,23 +172,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/linker/Pass.java</url>
-          <line>240</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
           <line>242</line>
           <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/linker/Pass1.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/linker/Pass.java</url>
@@ -263,19 +190,91 @@
           <line>217</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/TwoPassLinker.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/TwoPassLinker.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/linker/Pass1.java</url>
-          <line>73</line>
-          <properties class="linker.Pass1" method="processSymbolicalAddress">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="60" />
+          <line>84</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass1.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass1.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass1.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass1.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
+          <line>244</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
+          <line>215</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
+          <line>194</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass2.java</url>
+          <line>128</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
+          <line>201</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass1.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/linker/Pass.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="88" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="temp.charAt(temp.length() - 2" language="JAVA" />
+        <watch expression="symbolTable" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

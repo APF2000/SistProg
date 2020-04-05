@@ -109,7 +109,9 @@ public class Pass1 extends Pass {
          * Atualizar as variáveis existentes de acordo.
          *
          * */
-        return;
+        base += relativeLocationCouter;
+        relativeLocationCouter = 0;
+        externalCounter = 0;
     }//
 
     public LinkerSymbolTable getSymbolTable() {

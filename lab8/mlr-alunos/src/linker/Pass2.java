@@ -58,7 +58,41 @@ public class Pass2 extends Pass {
          *
          */
 
-        return false;
+        int actualAddress = Integer.parseInt(address, 16);
+        String actualCode = code;
+        boolean argumentRelocable = false;
+        if (isArgumentRelocable(nibble)) {
+            argumentRelocable = true;
+            nibble = Integer.parseInt(actualCode, 16) + base;
+            actualCode = "0000" + Integer.toHexString(nibble);
+            actualCode = actualCode.substring(actualCode.length() - 4, actualCode.length());
+        }
+        boolean relocable = false;
+        if (isRelocable(nibble)) {
+            actualAddress += base;
+            relocable = true;
+            relativeLocationCouter += 2;
+        }
+        int codeInteger = Integer.parseInt(code.substring(1), 16);
+        String codeWithoutNibble = symbolTable.getAddressByCode(currentFile, codeInteger);
+        boolean resolved = isResolved(nibble);
+
+        if (codeWithoutNibble != null && codeWithoutNibble.startsWith("5")){
+            codeWithoutNibble = "0000" + codeWithoutNibble;
+            codeWithoutNibble = codeWithoutNibble.substring(codeWithoutNibble.length() - 3, codeWithoutNibble.length());
+            if (instructionWithExternal(nibble)) {
+                argumentRelocable = symbolTable.isRelocable(symbolTable.getAddressByCode(currentFile, codeInteger));
+                actualCode = code.substring(0, 1) + codeWithoutNibble;
+            }
+            if (isResolved(nibble))
+                actualCode = code.substring(0, 1) + codeWithoutNibble;
+
+        }
+        else if (instructionWithExternal(nibble)) {
+            actualCode = code;
+        }
+        out.write(actualAddress, actualCode, relocable, argumentRelocable, resolved);
+        return true;
 
     }//method
 
@@ -78,7 +112,21 @@ public class Pass2 extends Pass {
         //Se for símbolo exportável: gero no arquivo de saída as informações a respeito dele
         //...
         //...
-        return false;
+        if (isEntryPoint(nibble)) {
+            out.writeExternal(Integer.toHexString(nibble), Integer.parseInt(symbolTable.getSymbolValue(symbol), 16), originalLine);
+            return true;
+        }
+        if (!symbolTable.definedSymbol(symbol)) {
+            symbolTable.insertSymbol(symbol);
+            String addressToSet = "0000" + Integer.toHexString(externalCounter);
+            addressToSet = "5" + addressToSet.substring(addressToSet.length() - 3, addressToSet.length());
+            symbolTable.setSymbolValue(symbol, addressToSet);
+            out.writeExternal("4", Integer.parseInt(symbolTable.getSymbolValue(symbol), 16), originalLine);
+            externalCounter++;
+        }
+        StringTokenizer stringTokenizer = new StringTokenizer(originalLine);
+        symbolTable.setCodeForSymbol(symbol, currentFile, Integer.parseInt(stringTokenizer.nextToken().substring(1, 4), 16));
+        return true;
     }
 
     /**
@@ -89,6 +137,8 @@ public class Pass2 extends Pass {
          * TODO: fileEnd()
          * Quando há mudança de arquivo, deve-se atualizar a base e o relativeLocationCounter!
          * */
+        base += relativeLocationCouter;
+        relativeLocationCouter = 0;
     }
 
     public void closeOutput() throws IOException {
