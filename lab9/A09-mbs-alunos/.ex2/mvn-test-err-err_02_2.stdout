@@ -1,0 +1,66 @@
+Inicializacao padrao de dispositivos baseada em arquivo: disp.lst
+MVN Inicializada
+
+                Escola Politécnica da Universidade de São Paulo
+             PCS2302/PCS2024 - Simulador da Máquina de von Neumann
+         MVN versao 4.2 (Novembro/2010) - Todos os direitos reservados
+
+ COMANDO  PARÂMETROS           OPERAÇÃO
+---------------------------------------------------------------------------
+    i                          Re-inicializa MVN
+    p     [arq]                Carrega programa para a memória
+    r     [addr] [regs]        Executa programa
+    b                          Ativa/Desativa modo Debug
+    l                          Loader
+    d                          Dumper
+    s                          Manipula dispositivos de I/O
+    g                          Lista conteúdo dos registradores
+    m     [ini] [fim] [arq]    Lista conteúdo da memória
+    h                          Ajuda
+    x                          Finaliza MVN e terminal
+
+> 
+> Inicializacao padrao de dispositivos baseada em arquivo: disp.lst
+MVN Inicializada
+
+> Tipo   UC   Dispositivo
+---------------------------------
+  0     0   Teclado
+  1     0   Monitor
+  3    255   Disco (e - /home/arthur/Documentos/Quadri/SistProg/SistProg/lab9/A09-mbs-alunos/mbs-corretor/log.txt)
+  3     0   Disco (l - /home/arthur/Documentos/Quadri/SistProg/SistProg/lab9/A09-mbs-alunos/mbs-corretor/batch-err.txt)
+  3     1   Disco (l - /home/arthur/Documentos/Quadri/SistProg/SistProg/lab9/A09-mbs-alunos/mbs-corretor/dump.data)
+
+Adicionar(a) ou remover(r) (ENTER para cancelar): 
+> Programa mbs-corretor/main-absoluto.mvn carregado
+
+> Executar MVN passo a passo (s/n)[n]:  MAR  MDR  IC   IR   OP   OI   AC  
+---- ---- ---- ---- ---- ---- ---- 
+0000 00BE 00BE 00BE 0000 00BE 0000 
+00BE 00D4 00D4 00D4 0000 00D4 0000 
+00D4 D300 00D6 D300 000D 0300 2F2F 
+00D6 50C0 00D8 50C0 0005 00C0 0000 
+00D8 10DC 00DC 10DC 0001 00DC 0000 
+00DC D300 00DE D300 000D 0300 4A42 
+00DE 50C2 00E0 50C2 0005 00C2 0000 
+00E0 10E4 00E4 10E4 0001 00E4 0000 
+00E4 D300 00E6 D300 000D 0300 0A0A 
+00E6 50C6 00E8 50C6 0005 00C6 0000 
+00E8 10EC 00EC 10EC 0001 00EC 0000 
+00EC D300 00EE D300 000D 0300 2F2F 
+00EE 50C0 00F0 50C0 0005 00C0 0000 
+00F0 10F4 00F4 10F4 0001 00F4 0000 
+00F4 D300 00F6 D300 000D 0300 4455 
+00F6 90CE 00F8 90CE 0009 00CE 4455 
+00F8 00FA 00FA 00FA 0000 00FA 4455 
+00FA D300 00FC D300 000D 0300 4D50 
+00FC 50C6 00FE 50C6 0005 00C6 4346 
+00FE 1102 0100 1102 0001 0102 4346 
+0100 016E 016E 016E 0000 016E 4346 
+016E 3002 0170 3002 0003 0002 0002 
+0170 017A 017A 017A 0000 017A 0002 
+017A F0EE 017C F0EE 000F 00EE 0002 
+017C 018C 018C 018C 0000 018C 0002 
+018C C18C 018C C18C 000C 018C 0002 
+
+> Terminal encerrado.

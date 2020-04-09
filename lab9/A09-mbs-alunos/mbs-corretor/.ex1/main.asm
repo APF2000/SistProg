@@ -3,17 +3,17 @@
 ; -------------------------------------------------------------------
 
 ; Coloque aqui os símbolos importados
-
-DUMPER          <
-DUMP_INI        <
-DUMP_TAM        <
-DUMP_UL         <
-DUMP_BL         <
-DUMP_EXE        <
+; -------------------------------------------------------------------
 
 LOADER      <
-LOADER_UL   <
-; -------------------------------------------------------------------
+LOADER_LU   <
+
+DUMPER          >
+DUMP_INI        >
+DUMP_TAM        >
+DUMP_UL         >
+DUMP_BL         >
+DUMP_EXE        >
 
 ; ...
 
@@ -47,9 +47,9 @@ X_DIFF          K       /0007
 ONE             K       /0001
 MINUS_1         K       /FFFF
 ZERO            K       /0000
-EIGHT           K       /1000
-FOUR            K       /0100
-TWO             K       /0010
+EIGHT           K       #1000
+FOUR            K       #0100
+TWO             K       #0010
 
 ; Corpo da subrotina
 UNPACK          $       /0001
@@ -168,131 +168,174 @@ CHTOI           $       /0001
                 JN      CH_RET
                 -       CH_0
                 +       CH_ANS
-  ;; Valor da resposta está no acumulador!
+  ;; Valor da resposta está no acumulador! -> blz, obrigado
 CH_RET          RS      CHTOI
 
 
+
+INI             K       /0000
+
+; ==================================================================
+;                                                                   |
+;                              AQUI                                 |
+;                              VAI                                  |
+;                               O                                   |
+;                              SEU                                  |
+;                              MBS!                                 |
+;                                                                   |
+;                               \o/                                 |
+;                                                                   |
 ; ==================================================================
 
-INI             JP       COMECA
+READ_NUM	$	/0001
+		GD	/300
+		MM	CH_IN_A ; in box
+		GD	/300
+		MM	CH_IN_B 
 
-BARRAS		K	'//
-JOB		K	'JB
-FIMCHAR	K	'/*
-ENTER		K	/0A0A
-ESPACO		K	/2020
-DUMP		K	'DU
+		SC	CHTOI
+
+		RS	READ_NUM
+
+
+BARRA_BARRA	K	'//	
+JB		K	'JB
+EOL		K	/0A0A
+FIM_JOB		K	'/*
+SPACE		K	/2020
+
 LOAD		K	'LO
-ACAO		K	/0000
-X1		K	/0000
-X0		K	/0000
+DUMP		K	'DU
+AUX		$	/0001
 
-COMECA		GD 	/300
-		-	BARRAS
-		JZ	JOBOK1/3
-		JP	JOBERRO	;ADICIONAR JOBERRO
-JOBOK1/3	GD	/300
-		-	JOB
-		JZ	JOBOK2/3
-		JP	JOBERRO
-JOBOK2/3	GD	/300
-		-	ENTER
-		JZ	JOBOK3/3
-		JP	JOBERRO
-JOBOK3/3	GD	/300
-		-	BARRAS
-		JZ	CMDOK1/3
-		JP	CMDERRO
-CMDOK1/3	GD	/300
-		MM	ACAO
-		JP	CMDOK2/3
-CMDOK2/3	GD	/300
-		-	ENTER
-		JZ	CMDOK3/3
-		JP	CMDERRO
-CMDOK3/3	LD	ACAO		;VERIFICA O COMANDO SELECIONADO
+		GD 	/300
+		- 	BARRA_BARRA 	; //
+		JZ	CONTINUE1
+		JP	ERR:JOB
+CONTINUE1	GD	/300
+		- 	JB	    	; JB
+		JZ	CONTINUE2
+		JP	ERR:JOB
+CONTINUE2	GD	/300
+		- 	EOL	    	;\n
+		JZ	LOOP
+		JP	ERR:JOB
+
+
+LOOP		GD	/300
+		- 	BARRA_BARRA 	; //
+		JZ	CONTINUE3
+		JP	ERR:CMD
+
+CONTINUE3	GD	/300
+		MM	AUX
 		-	LOAD
-		JZ	LOAD_ACAO
-		+	LOAD
-		-	DUMP
-		JZ	DUMP_ACAO
-		JP	CMDERRO	;ADICIONAR CMDERRO
+		JZ	FAZER_LOAD	; inst de load
 
-LOAD_ACAO	SC	LENUMERO
-		MM	LOADER_UL
-		SC	LOADER
-		JP	FIMACAO
+		LD	AUX
+		-	DUMP		
+		JZ	FAZER_DUMP	; inst de dump
 
-DUMP_ACAO	SC	LENUMERO
-		MM	DUMP_BL
-		GD	/300
-		-	ESPACO
-		JZ	DUMP_ACAO_OK1
-		JP	ERROARG	;ADICIONAR ERROARG
-DUMP_ACAO_OK1	SC	LENUMERO
-		MM	DUMP_INI
-		GD	/300
-		-	ESPACO
-		JZ	DUMP_ACAO_OK2
-		JP	ERROARG
-DUMP_ACAO_OK2	SC	LENUMERO
-		MM	DUMP_TAM
-		GD	/300
-		-	ESPACO
-		JZ	DUMP_ACAO_OK3
-		JP	ERROARG
-DUMP_ACAO_OK3	SC	LENUMERO
-		MM	DUMP_EXE
-		GD	/300
-		-	ESPACO
-		JZ	DUMP_ACAO_OK4
-		JP	ERROARG
-DUMP_ACAO_OK4	SC	LENUMERO
-		MM	DUMP_UL
-		GD	/300
-		-	ENTER
-		JZ	DUMP_ACAO_OK5
-		JP	ERROARG
-DUMP_ACAO_OK5	SC	DUMPER	
-		JP	FIMACAO
+		JP	ERR:CMD
 
-FIMACAO	GD	/300
-		-	ENTER
-		JZ	ERROARG	;IMPLEMENTAR ERROARG
-		GD	/300
-		-	FIMCHAR
-		JZ	FINALOK
-		JP	ERROEND	;IMPLEMENTAR ERROEND
-
-FINALOK	LV	/0000
-		JP	VERIFICA
-
-JOBERRO	LV	/0001
-		JP	VERIFICA
-
-CMDERRO	LV	/0002
-		JP	VERIFICA
-
-ERROARG	LV	/0003
-		JP	VERIFICA
-
-ERROEND	LV	/0004
-		JP	VERIFICA
-
-VERIFICA	OS	/00EE
+CONTINUE4	GD	/300
+		-	FIM_JOB
+		JZ	DEUBOM
+		JP	LOOP
+DEUBOM		LV	/0000
 		JP	FIM
 
+;---------------------------------------------
+; Lembrete 1
+;LOADER      <
+;LOADER_LU   <
 
-LENUMERO	K	/0000
+FAZER_LOAD	GD	/300
+		- 	EOL		; \n
+		JZ	CONTINUE_LOAD1
+		JP	ERR:CMD
+CONTINUE_LOAD1	SC	READ_NUM
+		MM	LOAD_UL
 		GD	/300
-		MM	CH_IN_A
-		GD	/300
-		MM	CH_IN_B
-		SC	CHTOI
-		RS	LENUMERO
+		-	EOL		; \n
+		JZ	CONTINUE_LOAD2
+		JP	ERR:CMD
+CONTINUE_LOAD2	SC	LOADER
+		JP	CONTINUE4
 
-; ==================================================================
+;-------------------------------------------
+; Lembrete 2
+;DUMPER          >
+;DUMP_BL         >
+;DUMP_INI        > "<tamanho_bloco>bb<endereço_inicial>bb<tamanho_total>bb
+;			<endereço_primeira_instrução>bb<LU>"
+;DUMP_TAM        >
+;DUMP_EXE        >
+;DUMP_UL         >
+
+FAZER_DUMP	GD	/300
+		- 	EOL		; \n
+		JZ	CONTINUE_DUMP1
+		JP	ERR:ARG
+CONTINUE_DUMP1	SC	READ_NUM
+		MM	DUMP_BL
+		GD	/300		; tam bloco
+		-	SPACE
+		JZ	CONTINUE_DUMP2
+		JP	ERR:ARG
+CONTINUE_DUMP2	SC	READ_NUM
+		MM	DUMP_INI
+		GD	/300		; end inicial
+		-	SPACE
+		JZ	CONTINUE_DUMP3
+		JP	ERR:ARG
+CONTINUE_DUMP3	SC	READ_NUM
+		MM	DUMP_TAM
+		GD	/300		; tam tot
+		-	SPACE
+		JZ	CONTINUE_DUMP4
+		JP	ERR:ARG
+CONTINUE_DUMP4	SC	READ_NUM
+		MM	DUMP_EXE
+		GD	/300		; end primeira inst
+		-	SPACE
+		JZ	CONTINUE_DUMP5
+		JP	ERR:ARG
+CONTINUE_DUMP5	SC	READ_NUM
+		MM	DUMP_UL
+		GD	/300		; unidade logica
+		-	SPACE
+		JZ	CONTINUE_DUMP6
+		JP	ERR:ARG
+		
+CONTINUE_DUMP6	GD	/300
+		- 	EOL		; \n
+		JZ	CONTINUE_DUMP7
+		JP	ERR:ARG
+
+CONTINUE_DUMP7	SC	DUMPER
+		JP	CONTINUE4
+					
+;-------------------------------------------	
+
+ERR:JOB		LV	/0001
+		JP	ANTE_FIM
+
+ERR:CMD		LV	/0002
+		JP	ANTE_FIM
+
+ERR:ARG		LV	/0003
+		JP	ANTE_FIM
+
+ERR:END		LV	/0004
+		JP	ANTE_FIM
+
+;-------------------------------------------
+
+
+ANTE_FIM	OS	/00EE
 
 FIM             HM      FIM   ; Fim do programa
+
 
 # MAIN

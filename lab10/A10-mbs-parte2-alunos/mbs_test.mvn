@@ -1,0 +1,19 @@
+; -------------------------------------------------------------------
+; Arquivo: mbs_test.mvn
+; Programa de exemplo.
+; -------------------------------------------------------------------
+
+; Início do sub-programa
+
+0700  3000  ; Carrega 0 no acumulador
+0702  470C  ; AC = AC + 2
+0704  670E  ; AC = AC * 4
+0706  970A
+0708  C708
+
+; Constantes do sub-programa
+
+070A  0000  ; Armazena o valor calculado
+070C  0002
+070E  0004
+0710  0000

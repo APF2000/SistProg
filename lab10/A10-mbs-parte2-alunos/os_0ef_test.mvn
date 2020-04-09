@@ -1,0 +1,44 @@
+; -------------------------------------------------------------------
+; Arquivo: os_0ef_test.mvn
+; Programa de exemplo que chama o comando OS /0EF
+; -------------------------------------------------------------------
+
+0000  0004   ; Desvio para o início
+0002  0020   ; Constante: endereço de início do sub-programa.
+
+; Início do programa principal
+
+0004  8002   ; Carrega o end. de início no acumulador
+0006  F0EF   ; Desvia para o sub-programa
+0008  3ABC   ; Carrega 0xABC no acumulador
+000A  601E   ; Left shift
+000C  401C   ; Soma com 0xD
+000E  901A   ; Armazena o resultado.
+0010  C010   ; Final do programa principal
+
+; EMPTY SPACE.
+
+0012  0000   ;
+0014  0000   ;
+0016  0000   ;
+0018  0000   ;
+
+; Constantes do programa principal
+
+001A  0000   ; Resultado.
+001C  000D   ;
+001E  0010   ;
+
+; Início do sub-programa
+
+0020  3000  ; Carrega 0 no acumulador
+0022  402C  ; AC = AC + 2
+0024  602E  ; AC = AC * 4
+0026  902A
+0028  C028
+
+; Constantes do sub-programa
+
+002A  0000  ; Armazena o valor calculado
+002C  0002
+002E  0004

@@ -3,16 +3,6 @@
 ; -------------------------------------------------------------------
 
 ; Coloque aqui os símbolos importados
-
-DUMPER          <
-DUMP_INI        <
-DUMP_TAM        <
-DUMP_UL         <
-DUMP_BL         <
-DUMP_EXE        <
-
-LOADER      <
-LOADER_UL   <
 ; -------------------------------------------------------------------
 
 ; ...
@@ -172,125 +162,19 @@ CHTOI           $       /0001
 CH_RET          RS      CHTOI
 
 
+
+INI             JP      FIM
+
 ; ==================================================================
-
-INI             JP       COMECA
-
-BARRAS		K	'//
-JOB		K	'JB
-FIMCHAR	K	'/*
-ENTER		K	/0A0A
-ESPACO		K	/2020
-DUMP		K	'DU
-LOAD		K	'LO
-ACAO		K	/0000
-X1		K	/0000
-X0		K	/0000
-
-COMECA		GD 	/300
-		-	BARRAS
-		JZ	JOBOK1/3
-		JP	JOBERRO	;ADICIONAR JOBERRO
-JOBOK1/3	GD	/300
-		-	JOB
-		JZ	JOBOK2/3
-		JP	JOBERRO
-JOBOK2/3	GD	/300
-		-	ENTER
-		JZ	JOBOK3/3
-		JP	JOBERRO
-JOBOK3/3	GD	/300
-		-	BARRAS
-		JZ	CMDOK1/3
-		JP	CMDERRO
-CMDOK1/3	GD	/300
-		MM	ACAO
-		JP	CMDOK2/3
-CMDOK2/3	GD	/300
-		-	ENTER
-		JZ	CMDOK3/3
-		JP	CMDERRO
-CMDOK3/3	LD	ACAO		;VERIFICA O COMANDO SELECIONADO
-		-	LOAD
-		JZ	LOAD_ACAO
-		+	LOAD
-		-	DUMP
-		JZ	DUMP_ACAO
-		JP	CMDERRO	;ADICIONAR CMDERRO
-
-LOAD_ACAO	SC	LENUMERO
-		MM	LOADER_UL
-		SC	LOADER
-		JP	FIMACAO
-
-DUMP_ACAO	SC	LENUMERO
-		MM	DUMP_BL
-		GD	/300
-		-	ESPACO
-		JZ	DUMP_ACAO_OK1
-		JP	ERROARG	;ADICIONAR ERROARG
-DUMP_ACAO_OK1	SC	LENUMERO
-		MM	DUMP_INI
-		GD	/300
-		-	ESPACO
-		JZ	DUMP_ACAO_OK2
-		JP	ERROARG
-DUMP_ACAO_OK2	SC	LENUMERO
-		MM	DUMP_TAM
-		GD	/300
-		-	ESPACO
-		JZ	DUMP_ACAO_OK3
-		JP	ERROARG
-DUMP_ACAO_OK3	SC	LENUMERO
-		MM	DUMP_EXE
-		GD	/300
-		-	ESPACO
-		JZ	DUMP_ACAO_OK4
-		JP	ERROARG
-DUMP_ACAO_OK4	SC	LENUMERO
-		MM	DUMP_UL
-		GD	/300
-		-	ENTER
-		JZ	DUMP_ACAO_OK5
-		JP	ERROARG
-DUMP_ACAO_OK5	SC	DUMPER	
-		JP	FIMACAO
-
-FIMACAO	GD	/300
-		-	ENTER
-		JZ	ERROARG	;IMPLEMENTAR ERROARG
-		GD	/300
-		-	FIMCHAR
-		JZ	FINALOK
-		JP	ERROEND	;IMPLEMENTAR ERROEND
-
-FINALOK	LV	/0000
-		JP	VERIFICA
-
-JOBERRO	LV	/0001
-		JP	VERIFICA
-
-CMDERRO	LV	/0002
-		JP	VERIFICA
-
-ERROARG	LV	/0003
-		JP	VERIFICA
-
-ERROEND	LV	/0004
-		JP	VERIFICA
-
-VERIFICA	OS	/00EE
-		JP	FIM
-
-
-LENUMERO	K	/0000
-		GD	/300
-		MM	CH_IN_A
-		GD	/300
-		MM	CH_IN_B
-		SC	CHTOI
-		RS	LENUMERO
-
+;                                                                   |
+;                              AQUI                                 |
+;                              VAI                                  |
+;                               O                                   |
+;                              SEU                                  |
+;                              MBS!                                 |
+;                                                                   |
+;                               \o/                                 |
+;                                                                   |
 ; ==================================================================
 
 FIM             HM      FIM   ; Fim do programa

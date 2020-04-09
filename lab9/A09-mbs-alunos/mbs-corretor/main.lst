@@ -1,0 +1,308 @@
+; -------------------------------------------------------------------
+; Programa principal do Monitor Batch Simples (MBS)
+; -------------------------------------------------------------------
+
+; Coloque aqui os símbolos importados
+
+4000 0000 ; "DUMPER<"		;	DUMPER          <
+4001 0000 ; "DUMP_INI<"		;	DUMP_INI        <
+4002 0000 ; "DUMP_TAM<"		;	DUMP_TAM        <
+4003 0000 ; "DUMP_UL<"		;	DUMP_UL         <
+4004 0000 ; "DUMP_BL<"		;	DUMP_BL         <
+4005 0000 ; "DUMP_EXE<"		;	DUMP_EXE        <
+
+4006 0000 ; "LOADER<"		;	LOADER      <
+4007 0000 ; "LOADER_UL<"		;	LOADER_UL   <
+; -------------------------------------------------------------------
+
+; ...
+
+; Origem relocável
+				;	                &       /0000
+
+a000 00be		;	MAIN            JP      INI      ; salta para o início do programa
+8002 0000		;	UL              K       /0000    ; parâmetro: UL onde está o arquivo de batch
+
+; -------------------------------------------------------------------
+; Subrotina: UNPACK
+; Extrai os bytes de uma word contida no acumulador, colocando-os
+; em dois endereços da memória.
+;
+; Exemplo: dada a word XYZT no acumulador, ao final da execução,
+; UNP_B1="00XY" e UNP_B2="00ZT".
+; -------------------------------------------------------------------
+
+; Parâmetros
+8004 0000		;	WORD            $       /0001       ; Word de entrada   0
+				;	WORD            $       /0001       ; Word de entrada
+8006 0000		;	UNP_B1          $       /0001       ; Byte mais significativo   0
+				;	UNP_B1          $       /0001       ; Byte mais significativo
+8008 0000		;	UNP_B2          $       /0001       ; Byte menos significativo   0
+				;	UNP_B2          $       /0001       ; Byte menos significativo
+
+; Constantes
+800a 0100		;	SHIFT           K       /0100
+800c 0030		;	CH_0            K       /0030
+800e 0046		;	CH_F            K       /0046
+8010 003a		;	X_INI           K       /003A
+8012 0041		;	X_END           K       /0041
+8014 0007		;	X_DIFF          K       /0007
+8016 0001		;	ONE             K       /0001
+8018 ffff		;	MINUS_1         K       /FFFF
+801a 0000		;	ZERO            K       /0000
+801c 1000		;	EIGHT           K       /1000
+801e 0100		;	FOUR            K       /0100
+8020 0010		;	TWO             K       /0010
+
+; Corpo da subrotina
+8022 0000		;	UNPACK          $       /0001   0
+				;	UNPACK          $       /0001
+a024 9004		;	                MM      WORD        ; Carrega word. Primeiramente faremos unpack de B2
+a026 600a		;	                *       SHIFT       ; Desloca os bytes para remover 2 primeiros hex
+a028 a038		;	                SC      RSHIFT2     ; Desloca os bytes menos significativos pro seu lugar
+a02a 9008		;	                MM      UNP_B2      ; Salva resultado
+a02c 8004		;	                LD      WORD        ;
+a02e a038		;	                SC      RSHIFT2     ;
+a030 9006		;	                MM      UNP_B1      ;
+a032 b022		;	                RS      UNPACK      ; Retorna
+
+; -------------------------------------------------------------------
+; Subrotina: RSHIFT2
+; Faz um right shift (<) duas vezes do valor do acumulador
+; -------------------------------------------------------------------
+
+; Constantes
+8034 8000		;	FIX             K       /8000
+8036 0080		;	REFIX           K       /0080
+; Corpo da subrotina
+8038 0000		;	RSHIFT2         $       /0001   0
+				;	RSHIFT2         $       /0001
+a03a 2040		;	                JN      NEG         ; O número é negativo
+a03c 700a		;	                /       SHIFT       ; Retorna os 2 bytes à posição inicial
+a03e 0046		;	                JP      FIM-RS      ; Vai para final de RSHIFT2
+a040 5034		;	NEG             -       FIX         ; Fix do shift em número negativo
+a042 700a		;	                /       SHIFT       ; Shift
+a044 4036		;	                +       REFIX       ; Fix para voltar número tirado
+a046 b038		;	FIM-RS          RS      RSHIFT2     ; Retorno
+
+; -------------------------------------------------------------------
+; Subrotina: IS_HEX
+; -------------------------------------------------------------------
+
+  ;; Parâmetros
+8048 0000		;	S_HEX           $       /0001   0
+				;	S_HEX           $       /0001
+  ;; Corpo da subrotina
+804a 0000		;	IS_HEX          $       /0001   0
+				;	IS_HEX          $       /0001
+a04c 9048		;	                MM      S_HEX
+  ;; Verifica se < '0'
+a04e 500c		;	                -       CH_0
+a050 205a		;	                JN      NOT_HEX
+  ;; Verifica se > 'f'
+a052 8048		;	                LD      S_HEX
+a054 500e		;	                -       CH_F
+a056 5016		;	                -       ONE ; we wanna include 'f'
+a058 205e		;	                JN      MIGHTB
+  ;; Não é hex. Retorna -1.
+a05a 8018		;	NOT_HEX         LD      MINUS_1
+a05c b04a		;	                RS      IS_HEX
+  ;; Incrementa CH_F decrementado e verifica se é caractere especial.
+a05e 8048		;	MIGHTB          LD      S_HEX
+a060 5010		;	                -       X_INI
+a062 206e		;	                JN      YES_HEX
+a064 5014		;	                -       X_DIFF
+a066 205a		;	                JN      NOT_HEX
+a068 8048		;	                LD      S_HEX
+a06a 5014		;	                -       X_DIFF
+a06c b04a		;	                RS      IS_HEX
+a06e 8048		;	YES_HEX         LD      S_HEX
+a070 b04a		;	                RS      IS_HEX
+
+; -------------------------------------------------------------------
+; Subrotina: CHTOI
+; Converte uma word em hexa para um número inteiro.
+;
+; Exemplo: CHTOI("0010") = 0010 (i.e., 16 em decimal)
+; -------------------------------------------------------------------
+
+  ;; Parâmetros
+8072 0000		;	CH_ANS          $       /0001        ; Variável para guardar resultado   0
+				;	CH_ANS          $       /0001        ; Variável para guardar resultado
+8074 0000		;	CH_IN_A         $       /0001        ; 2 bytes mais significativos (em ASCII)   0
+				;	CH_IN_A         $       /0001        ; 2 bytes mais significativos (em ASCII)
+8076 0000		;	CH_IN_B         $       /0001        ; 2 bytes menos signicativos (em ASCII)   0
+				;	CH_IN_B         $       /0001        ; 2 bytes menos signicativos (em ASCII)
+
+  ;; Corpo da subrotina
+8078 0000		;	CHTOI           $       /0001   0
+				;	CHTOI           $       /0001
+  ;; Zera CH_ANS
+a07a 801a		;	                LD      ZERO
+a07c 9072		;	                MM      CH_ANS
+  ;; Unpack primeira palavra
+a07e 8074		;	                LD      CH_IN_A
+a080 9004		;	                MM      WORD
+a082 a022		;	                SC      UNPACK
+  ;; Processa primeira palavra
+  ;; Processa primeiro byte
+a084 8006		;	                LD      UNP_B1
+a086 a04a		;	                SC      IS_HEX
+a088 20bc		;	                JN      CH_RET
+a08a 500c		;	                -       CH_0
+a08c 601c		;	                *       EIGHT
+a08e 9072		;	                MM      CH_ANS
+  ;; Processa segundo byte
+a090 8008		;	                LD      UNP_B2
+a092 a04a		;	                SC      IS_HEX
+a094 20bc		;	                JN      CH_RET
+a096 500c		;	                -       CH_0
+a098 601e		;	                *       FOUR
+a09a 4072		;	                +       CH_ANS
+a09c 9072		;	                MM      CH_ANS
+  ;; Unpack segunda palavra
+a09e 8076		;	                LD      CH_IN_B
+a0a0 9004		;	                MM      WORD
+a0a2 a022		;	                SC      UNPACK
+  ;; Processa segunda palavra
+  ;; Processa primeiro byte
+a0a4 8006		;	                LD      UNP_B1
+a0a6 a04a		;	                SC      IS_HEX
+a0a8 20bc		;	                JN      CH_RET
+a0aa 500c		;	                -       CH_0
+a0ac 6020		;	                *       TWO
+a0ae 4072		;	                +       CH_ANS
+a0b0 9072		;	                MM      CH_ANS
+  ;; Processa segundo byte
+a0b2 8008		;	                LD      UNP_B2
+a0b4 a04a		;	                SC      IS_HEX
+a0b6 20bc		;	                JN      CH_RET
+a0b8 500c		;	                -       CH_0
+a0ba 4072		;	                +       CH_ANS
+  ;; Valor da resposta está no acumulador!
+a0bc b078		;	CH_RET          RS      CHTOI
+
+
+; ==================================================================
+
+a0be 00d4		;	INI             JP       COMECA
+
+80c0 2f2f		;	BARRAS		K	'//
+80c2 4a42		;	JOB		K	'JB
+80c4 2f2a		;	FIMCHAR	K	'/*
+80c6 0a0a		;	ENTER		K	/0A0A
+80c8 2020		;	ESPACO		K	/2020
+80ca 4455		;	DUMP		K	'DU
+80cc 4c4f		;	LOAD		K	'LO
+80ce 0000		;	ACAO		K	/0000
+80d0 0000		;	X1		K	/0000
+80d2 0000		;	X0		K	/0000
+
+80d4 d300		;	COMECA		GD 	/300
+a0d6 50c0		;			-	BARRAS
+a0d8 10dc		;			JZ	JOBOK1/3
+a0da 016a		;			JP	JOBERRO	;ADICIONAR JOBERRO
+80dc d300		;	JOBOK1/3	GD	/300
+a0de 50c2		;			-	JOB
+a0e0 10e4		;			JZ	JOBOK2/3
+a0e2 016a		;			JP	JOBERRO
+80e4 d300		;	JOBOK2/3	GD	/300
+a0e6 50c6		;			-	ENTER
+a0e8 10ec		;			JZ	JOBOK3/3
+a0ea 016a		;			JP	JOBERRO
+80ec d300		;	JOBOK3/3	GD	/300
+a0ee 50c0		;			-	BARRAS
+a0f0 10f4		;			JZ	CMDOK1/3
+a0f2 016e		;			JP	CMDERRO
+80f4 d300		;	CMDOK1/3	GD	/300
+a0f6 90ce		;			MM	ACAO
+a0f8 00fa		;			JP	CMDOK2/3
+80fa d300		;	CMDOK2/3	GD	/300
+a0fc 50c6		;			-	ENTER
+a0fe 1102		;			JZ	CMDOK3/3
+a100 016e		;			JP	CMDERRO
+a102 80ce		;	CMDOK3/3	LD	ACAO		;VERIFICA O COMANDO SELECIONADO
+a104 50cc		;			-	LOAD
+a106 1110		;			JZ	LOAD_ACAO
+a108 40cc		;			+	LOAD
+a10a 50ca		;			-	DUMP
+a10c 1118		;			JZ	DUMP_ACAO
+a10e 016e		;			JP	CMDERRO	;ADICIONAR CMDERRO
+
+a110 a17e		;	LOAD_ACAO	SC	LENUMERO
+d112 9007		;			MM	LOADER_UL
+d114 a006		;			SC	LOADER
+a116 0158		;			JP	FIMACAO
+
+a118 a17e		;	DUMP_ACAO	SC	LENUMERO
+d11a 9004		;			MM	DUMP_BL
+811c d300		;			GD	/300
+a11e 50c8		;			-	ESPACO
+a120 1124		;			JZ	DUMP_ACAO_OK1
+a122 0172		;			JP	ERROARG	;ADICIONAR ERROARG
+a124 a17e		;	DUMP_ACAO_OK1	SC	LENUMERO
+d126 9001		;			MM	DUMP_INI
+8128 d300		;			GD	/300
+a12a 50c8		;			-	ESPACO
+a12c 1130		;			JZ	DUMP_ACAO_OK2
+a12e 0172		;			JP	ERROARG
+a130 a17e		;	DUMP_ACAO_OK2	SC	LENUMERO
+d132 9002		;			MM	DUMP_TAM
+8134 d300		;			GD	/300
+a136 50c8		;			-	ESPACO
+a138 113c		;			JZ	DUMP_ACAO_OK3
+a13a 0172		;			JP	ERROARG
+a13c a17e		;	DUMP_ACAO_OK3	SC	LENUMERO
+d13e 9005		;			MM	DUMP_EXE
+8140 d300		;			GD	/300
+a142 50c8		;			-	ESPACO
+a144 1148		;			JZ	DUMP_ACAO_OK4
+a146 0172		;			JP	ERROARG
+a148 a17e		;	DUMP_ACAO_OK4	SC	LENUMERO
+d14a 9003		;			MM	DUMP_UL
+814c d300		;			GD	/300
+a14e 50c6		;			-	ENTER
+a150 1154		;			JZ	DUMP_ACAO_OK5
+a152 0172		;			JP	ERROARG
+d154 a000		;	DUMP_ACAO_OK5	SC	DUMPER	
+a156 0158		;			JP	FIMACAO
+
+8158 d300		;	FIMACAO	GD	/300
+a15a 50c6		;			-	ENTER
+a15c 1172		;			JZ	ERROARG	;IMPLEMENTAR ERROARG
+815e d300		;			GD	/300
+a160 50c4		;			-	FIMCHAR
+a162 1166		;			JZ	FINALOK
+a164 0176		;			JP	ERROEND	;IMPLEMENTAR ERROEND
+
+8166 3000		;	FINALOK	LV	/0000
+a168 017a		;			JP	VERIFICA
+
+816a 3001		;	JOBERRO	LV	/0001
+a16c 017a		;			JP	VERIFICA
+
+816e 3002		;	CMDERRO	LV	/0002
+a170 017a		;			JP	VERIFICA
+
+8172 3003		;	ERROARG	LV	/0003
+a174 017a		;			JP	VERIFICA
+
+8176 3004		;	ERROEND	LV	/0004
+a178 017a		;			JP	VERIFICA
+
+817a f0ee		;	VERIFICA	OS	/00EE
+a17c 018c		;			JP	FIM
+
+
+817e 0000		;	LENUMERO	K	/0000
+8180 d300		;			GD	/300
+a182 9074		;			MM	CH_IN_A
+8184 d300		;			GD	/300
+a186 9076		;			MM	CH_IN_B
+a188 a078		;			SC	CHTOI
+a18a b17e		;			RS	LENUMERO
+
+; ==================================================================
+
+a18c c18c		;	FIM             HM      FIM   ; Fim do programa
+
