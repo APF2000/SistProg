@@ -4,7 +4,15 @@
 
 ; Coloque aqui os símbolos importados
 ; -------------------------------------------------------------------
+LOADER      <
+LOADER_UL   <
 
+DUMPER          <
+DUMP_INI        <
+DUMP_TAM        <
+DUMP_UL         <
+DUMP_BL         <
+DUMP_EXE        <
 ; ...
 
 ; Origem relocável
@@ -176,6 +184,188 @@ INI             JP      FIM
 ;                               \o/                                 |
 ;                                                                   |
 ; ==================================================================
+
+READ_NUM	$	/0001
+		GD	/300
+		MM	CH_IN_A ; in box
+		GD	/300
+		MM	CH_IN_B 
+
+		SC	CHTOI
+
+		RS	READ_NUM
+
+
+BARRA_BARRA	K	'//	
+JB		K	'JB
+EOL		K	/0A0A
+FIM_JOB		K	'/*
+SPACE		K	/2020
+
+LOAD		K	'LO
+DUMP		K	'DU
+AUX		$	/0001
+
+EXE		K	'EX
+
+		GD 	/300
+		- 	BARRA_BARRA 	; //
+		JZ	CONTINUE1
+		JP	ERR:JOB
+CONTINUE1	GD	/300
+		- 	JB	    	; JB
+		JZ	CONTINUE2
+		JP	ERR:JOB
+CONTINUE2	GD	/300
+		- 	EOL	    	;\n
+		JZ	LOOP
+		JP	ERR:JOB
+
+
+LOOP		GD	/300
+		- 	BARRA_BARRA 	; //
+		JZ	CONTINUE3
+		JP	ERR:CMD
+
+CONTINUE3	GD	/300
+		MM	AUX
+		-	LOAD
+		JZ	FAZER_LOAD	; inst de load
+
+		LD	AUX
+		-	DUMP		
+		JZ	FAZER_DUMP	; inst de dump
+
+		LD	AUX
+		- 	EXE
+		JZ	FAZER_EXE	
+
+		JP	ERR:CMD
+
+CONTINUE4	GD	/300
+		-	FIM_JOB
+		JZ	DEUBOM
+		JP	LOOP
+DEUBOM		LV	/0000
+		JP	FIM
+
+;---------------------------------------------
+EXE_UL		$	/0001
+LAST_ADDRESS	K	/08FF ; Estou chutando, não lembro ao certo
+
+FAZER_EXE	GD	/300
+		- 	EOL		; \n
+		JZ	CONTINUE_EXE1
+		JP	ERR:CMD
+CONTINUE_EXE1	SC	READ_NUM
+		MM	EXE_UL
+		-	LAST_ADDRESS
+
+		JN	CONTINUE_EXE2
+		JZ	CONTINUE_EXE2
+		JP	ERR:EXE		; Unidade logica fora dos limites
+
+CONTINUE_EXE2	GD	/300
+		-	EOL		; \n
+		JZ	CONTINUE_EXE3
+		JP	ERR:CMD
+CONTINUE_EXE3	SC	LOADER
+		JP	CONTINUE4
+
+;-----------------------------------------------
+
+; Lembrete 1
+;LOADER      <
+;LOADER_UL   <
+
+FAZER_LOAD	GD	/300
+		- 	EOL		; \n
+		JZ	CONTINUE_LOAD1
+		JP	ERR:CMD
+CONTINUE_LOAD1	SC	READ_NUM
+		MM	LOADER_UL
+		GD	/300
+		-	EOL		; \n
+		JZ	CONTINUE_LOAD2
+		JP	ERR:CMD
+CONTINUE_LOAD2	SC	LOADER
+		JP	CONTINUE4
+
+;-------------------------------------------
+; Lembrete 2
+;DUMPER          >
+;DUMP_BL         >
+;DUMP_INI        > "<tamanho_bloco>bb<endereço_inicial>bb<tamanho_total>bb
+;			<endereço_primeira_instrução>bb<LU>"
+;DUMP_TAM        >
+;DUMP_EXE        >
+;DUMP_UL         >
+
+FAZER_DUMP	GD	/300
+		- 	EOL		; \n
+		JZ	CONTINUE_DUMP1
+		JP	ERR:ARG
+CONTINUE_DUMP1	SC	READ_NUM
+		MM	DUMP_BL
+		GD	/300		; tam bloco
+		-	SPACE
+		JZ	CONTINUE_DUMP2
+		JP	ERR:ARG
+CONTINUE_DUMP2	SC	READ_NUM
+		MM	DUMP_INI
+		GD	/300		; end inicial
+		-	SPACE
+		JZ	CONTINUE_DUMP3
+		JP	ERR:ARG
+CONTINUE_DUMP3	SC	READ_NUM
+		MM	DUMP_TAM
+		GD	/300		; tam tot
+		-	SPACE
+		JZ	CONTINUE_DUMP4
+		JP	ERR:ARG
+CONTINUE_DUMP4	SC	READ_NUM
+		MM	DUMP_EXE
+		GD	/300		; end primeira inst
+		-	SPACE
+		JZ	CONTINUE_DUMP5
+		JP	ERR:ARG
+CONTINUE_DUMP5	SC	READ_NUM
+		MM	DUMP_UL
+		GD	/300		; unidade logica
+		-	SPACE
+		JZ	CONTINUE_DUMP6
+		JP	ERR:ARG
+		
+CONTINUE_DUMP6	GD	/300
+		- 	EOL		; \n
+		JZ	CONTINUE_DUMP7
+		JP	ERR:ARG
+
+CONTINUE_DUMP7	SC	DUMPER
+		JP	CONTINUE4
+
+					
+;-------------------------------------------	
+
+ERR:JOB		LV	/0001
+		JP	MSG_ERRO
+
+ERR:CMD		LV	/0002
+		JP	MSG_ERRO
+
+ERR:ARG		LV	/0003
+		JP	MSG_ERRO
+
+ERR:END		LV	/0004
+		JP	MSG_ERRO
+
+ERR:EXE		LV	/0005
+		JP	MSG_ERRO
+
+;-------------------------------------------
+
+
+MSG_ERRO	OS	/00EE
 
 FIM             HM      FIM   ; Fim do programa
 
