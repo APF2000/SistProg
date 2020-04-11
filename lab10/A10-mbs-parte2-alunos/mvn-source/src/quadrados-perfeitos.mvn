@@ -1,0 +1,52 @@
+;
+0000 0200  ; Pula para o início das instruções;
+;
+; ===========================================================================
+; Área de dados
+; ===========================================================================
+;
+0100 0000 ; Primeira posição para o quadrado perfeito
+017E 0000 ; última posição para o quadrado perfeito (aproximadamente)
+0180 0001 ; Constante 1
+0182 0002 ; Constante 2  
+0184 0000 ; Constante 0
+0186 003F ; Constante 63
+0188 0000 ; Espaço para iterador i
+018A 0100 ; Endereço inicial da lista
+018C 9000 ; "UP"LOAD para construir instrução
+;
+; ===========================================================================
+; Programa
+; ===========================================================================
+;
+; Programa principal
+;
+; for(i=0; i <= 63; i++){ v[i] = i * i;}
+;
+;
+0200 8184 ; Pega a constante 0
+0202 9188 ; Inicializa o iterador para começar o FOR
+;
+0204 5186 ; Subtrai 63 do iterador (começo do FOR)
+0206 120C
+0208 220C ; Continua o loop se i - 63 <= 0
+020A 0224 ; Acaba o FOR
+;
+020C 8188 ; Pega o valor atual do iterador
+020E 6182 ; Multiplica por 2 (posição do i-ésimo quadrado relativa ao começo da lista)
+0210 418A ; Adiciona o endereço inicial da lista
+0212 418C ; Adiciona o UPLOAD
+0214 921A ; Pôe a instrução 3 espaços abaixo
+;
+0216 8188 ; Resgata o valor do iterador
+0218 6188 ; Multiplica por ele mesmo (i^2)
+;
+021A 0000 ; Espaço reservado para a instrução de pôr (i^2) na posição correta da memória
+;
+021C 8188 ; Mais uma vez pega o iterador
+021E 4180 ; Incrementa de 1
+0220 9188 ; Põe no iterador
+;
+0222 0204 ; Volta pro começo do FOR
+;
+0224 C224 ; End
