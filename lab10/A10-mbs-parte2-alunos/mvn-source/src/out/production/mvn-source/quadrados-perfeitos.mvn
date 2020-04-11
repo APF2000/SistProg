@@ -25,13 +25,28 @@
 ;
 ;
 0200 8184 ; Pega a constante 0
-0202 4182 ; Soma 2
-0204 F0EF ; Chamada OS
-0206 3FFF ; Carrega FFF
-0208 4180 ; Soma 1
+0202 9188 ; Inicializa o iterador para começar o FOR
 ;
-020A C20A ; End
-
-0002 8186 ; Carrega 63 (0x3F)
-0004 7182 ; Divide por 2 (deve ter um 31 = 0x1F no ACC agora)
-0006 C006 ; Termina este programa
+0204 5186 ; Subtrai 63 do iterador (começo do FOR)
+0206 120C
+0208 220C ; Continua o loop se i - 63 <= 0
+020A 0224 ; Acaba o FOR
+;
+020C 8188 ; Pega o valor atual do iterador
+020E 6182 ; Multiplica por 2 (posição do i-ésimo quadrado relativa ao começo da lista)
+0210 418A ; Adiciona o endereço inicial da lista
+0212 418C ; Adiciona o UPLOAD
+0214 921A ; Pôe a instrução 3 espaços abaixo
+;
+0216 8188 ; Resgata o valor do iterador
+0218 6188 ; Multiplica por ele mesmo (i^2)
+;
+021A 0000 ; Espaço reservado para a instrução de pôr (i^2) na posição correta da memória
+;
+021C 8188 ; Mais uma vez pega o iterador
+021E 4180 ; Incrementa de 1
+0220 9188 ; Põe no iterador
+;
+0222 0204 ; Volta pro começo do FOR
+;
+0224 C224 ; End
