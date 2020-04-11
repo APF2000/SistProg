@@ -13,7 +13,7 @@ LOADER_UL   >
 ; Constantes
 UM           K          /0001
 DOIS         K          /0002
-GD_OP        K          /D300
+GD_OP        K          /D301
 SAVE_OP      K          /9000
 END_LIMITE   K          /0FFF
 ERROR_TAM    K          /FFFE
