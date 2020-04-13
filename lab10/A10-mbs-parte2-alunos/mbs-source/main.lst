@@ -233,43 +233,43 @@ a0cc b0c0		;			RS	READ_NUM
 80e0 d300		;	COMECA		GD 	/300
 a0e2 50ce		;			- 	BARRA_BARRA 	; //
 a0e4 10e8		;			JZ	CONTINUE1
-a0e6 01ae		;			JP	ERR:JOB
+a0e6 01b2		;			JP	ERR:JOB
 80e8 d300		;	CONTINUE1	GD	/300
 a0ea 50d0		;			- 	JB	    	; JB
 a0ec 10f0		;			JZ	CONTINUE2
-a0ee 01ae		;			JP	ERR:JOB
+a0ee 01b2		;			JP	ERR:JOB
 80f0 d300		;	CONTINUE2	GD	/300
 a0f2 50d2		;			- 	EOL	    	;\n
 a0f4 10f8		;			JZ	LOOP
-a0f6 01ae		;			JP	ERR:JOB
+a0f6 01b2		;			JP	ERR:JOB
 
 
 80f8 d300		;	LOOP		GD	/300
 a0fa 50ce		;			- 	BARRA_BARRA 	; //
 a0fc 1100		;			JZ	CONTINUE3
-a0fe 01b2		;			JP	ERR:CMD
+a0fe 01b6		;			JP	ERR:CMD
 
 8100 d300		;	CONTINUE3	GD	/300
 a102 90dc		;			MM	AUX
 a104 50d8		;			-	LOAD
-a106 1146		;			JZ	FAZER_LOAD	; inst de load
+a106 114a		;			JZ	FAZER_LOAD	; inst de load
 
 a108 80dc		;			LD	AUX
 a10a 50da		;			-	DUMP		
-a10c 115e		;			JZ	FAZER_DUMP	; inst de dump
+a10c 1162		;			JZ	FAZER_DUMP	; inst de dump
 
 a10e 80dc		;			LD	AUX
 a110 50de		;			- 	EXE
 a112 1126		;			JZ	FAZER_EXE	
 
-a114 01b2		;			JP	ERR:CMD
+a114 01b6		;			JP	ERR:CMD
 
 8116 d300		;	CONTINUE4	GD	/300
 a118 50d4		;			-	FIM_JOB
 a11a 111e		;			JZ	DEUBOM
 a11c 00f8		;			JP	LOOP
 811e 3000		;	DEUBOM		LV	/0000
-a120 01c4		;			JP	FIM
+a120 01c8		;			JP	FIM
 
 ;---------------------------------------------
 8122 0000		;	EXE_UL		$	/0001   0
@@ -279,21 +279,24 @@ a120 01c4		;			JP	FIM
 8126 d300		;	FAZER_EXE	GD	/300
 a128 50d2		;			- 	EOL		; \n
 a12a 112e		;			JZ	CONTINUE_EXE1
-a12c 01b2		;			JP	ERR:CMD
+a12c 01b6		;			JP	ERR:CMD
 a12e a0c0		;	CONTINUE_EXE1	SC	READ_NUM
 a130 9122		;			MM	EXE_UL
 a132 5124		;			-	LAST_ADDRESS
 
 a134 213a		;			JN	CONTINUE_EXE2
 a136 113a		;			JZ	CONTINUE_EXE2
-a138 01be		;			JP	ERR:EXE		; Unidade logica fora dos limites
+a138 01c2		;			JP	ERR:EXE		; Unidade logica fora dos limites
 
 813a d300		;	CONTINUE_EXE2	GD	/300
 a13c 50d2		;			-	EOL		; \n
 a13e 1142		;			JZ	CONTINUE_EXE3
-a140 01b2		;			JP	ERR:CMD
+a140 01b6		;			JP	ERR:CMD
 d142 a000		;	CONTINUE_EXE3	SC	LOADER
-a144 0116		;			JP	CONTINUE4
+a144 9146		;			MM	EXECUTE
+8146 0000		;	EXECUTE		$	/0001	        ; Aqui vai ficar o endereço do programa chamado pelo EX   0
+				;	EXECUTE		$	/0001	        ; Aqui vai ficar o endereço do programa chamado pelo EX
+a148 0116		;			JP	CONTINUE4
 
 ;-----------------------------------------------
 
@@ -301,18 +304,18 @@ a144 0116		;			JP	CONTINUE4
 ;LOADER      <
 ;LOADER_UL   <
 
-8146 d300		;	FAZER_LOAD	GD	/300
-a148 50d2		;			- 	EOL		; \n
-a14a 114e		;			JZ	CONTINUE_LOAD1
-a14c 01b2		;			JP	ERR:CMD
-a14e a0c0		;	CONTINUE_LOAD1	SC	READ_NUM
-d150 9001		;			MM	LOADER_UL
-8152 d300		;			GD	/300
-a154 50d2		;			-	EOL		; \n
-a156 115a		;			JZ	CONTINUE_LOAD2
-a158 01b2		;			JP	ERR:CMD
-d15a a000		;	CONTINUE_LOAD2	SC	LOADER
-a15c 0116		;			JP	CONTINUE4
+814a d300		;	FAZER_LOAD	GD	/300
+a14c 50d2		;			- 	EOL		; \n
+a14e 1152		;			JZ	CONTINUE_LOAD1
+a150 01b6		;			JP	ERR:CMD
+a152 a0c0		;	CONTINUE_LOAD1	SC	READ_NUM
+d154 9001		;			MM	LOADER_UL
+8156 d300		;			GD	/300
+a158 50d2		;			-	EOL		; \n
+a15a 115e		;			JZ	CONTINUE_LOAD2
+a15c 01b6		;			JP	ERR:CMD
+d15e a000		;	CONTINUE_LOAD2	SC	LOADER
+a160 0116		;			JP	CONTINUE4
 
 ;-------------------------------------------
 ; Lembrete 2
@@ -324,71 +327,71 @@ a15c 0116		;			JP	CONTINUE4
 ;DUMP_EXE        >
 ;DUMP_UL         >
 
-815e d300		;	FAZER_DUMP	GD	/300
-a160 50d2		;			- 	EOL		; \n
-a162 1166		;			JZ	CONTINUE_DUMP1
-a164 01b6		;			JP	ERR:ARG
-a166 a0c0		;	CONTINUE_DUMP1	SC	READ_NUM
-d168 9006		;			MM	DUMP_BL
-816a d300		;			GD	/300		; tam bloco
-a16c 50d6		;			-	SPACE
-a16e 1172		;			JZ	CONTINUE_DUMP2
-a170 01b6		;			JP	ERR:ARG
-a172 a0c0		;	CONTINUE_DUMP2	SC	READ_NUM
-d174 9003		;			MM	DUMP_INI
-8176 d300		;			GD	/300		; end inicial
-a178 50d6		;			-	SPACE
-a17a 117e		;			JZ	CONTINUE_DUMP3
-a17c 01b6		;			JP	ERR:ARG
-a17e a0c0		;	CONTINUE_DUMP3	SC	READ_NUM
-d180 9004		;			MM	DUMP_TAM
-8182 d300		;			GD	/300		; tam tot
-a184 50d6		;			-	SPACE
-a186 118a		;			JZ	CONTINUE_DUMP4
-a188 01b6		;			JP	ERR:ARG
-a18a a0c0		;	CONTINUE_DUMP4	SC	READ_NUM
-d18c 9007		;			MM	DUMP_EXE
-818e d300		;			GD	/300		; end primeira inst
-a190 50d6		;			-	SPACE
-a192 1196		;			JZ	CONTINUE_DUMP5
-a194 01b6		;			JP	ERR:ARG
-a196 a0c0		;	CONTINUE_DUMP5	SC	READ_NUM
-d198 9005		;			MM	DUMP_UL
-819a d300		;			GD	/300		; unidade logica
-a19c 50d6		;			-	SPACE
-a19e 11a2		;			JZ	CONTINUE_DUMP6
-a1a0 01b6		;			JP	ERR:ARG
+8162 d300		;	FAZER_DUMP	GD	/300
+a164 50d2		;			- 	EOL		; \n
+a166 116a		;			JZ	CONTINUE_DUMP1
+a168 01ba		;			JP	ERR:ARG
+a16a a0c0		;	CONTINUE_DUMP1	SC	READ_NUM
+d16c 9006		;			MM	DUMP_BL
+816e d300		;			GD	/300		; tam bloco
+a170 50d6		;			-	SPACE
+a172 1176		;			JZ	CONTINUE_DUMP2
+a174 01ba		;			JP	ERR:ARG
+a176 a0c0		;	CONTINUE_DUMP2	SC	READ_NUM
+d178 9003		;			MM	DUMP_INI
+817a d300		;			GD	/300		; end inicial
+a17c 50d6		;			-	SPACE
+a17e 1182		;			JZ	CONTINUE_DUMP3
+a180 01ba		;			JP	ERR:ARG
+a182 a0c0		;	CONTINUE_DUMP3	SC	READ_NUM
+d184 9004		;			MM	DUMP_TAM
+8186 d300		;			GD	/300		; tam tot
+a188 50d6		;			-	SPACE
+a18a 118e		;			JZ	CONTINUE_DUMP4
+a18c 01ba		;			JP	ERR:ARG
+a18e a0c0		;	CONTINUE_DUMP4	SC	READ_NUM
+d190 9007		;			MM	DUMP_EXE
+8192 d300		;			GD	/300		; end primeira inst
+a194 50d6		;			-	SPACE
+a196 119a		;			JZ	CONTINUE_DUMP5
+a198 01ba		;			JP	ERR:ARG
+a19a a0c0		;	CONTINUE_DUMP5	SC	READ_NUM
+d19c 9005		;			MM	DUMP_UL
+819e d300		;			GD	/300		; unidade logica
+a1a0 50d6		;			-	SPACE
+a1a2 11a6		;			JZ	CONTINUE_DUMP6
+a1a4 01ba		;			JP	ERR:ARG
 		
-81a2 d300		;	CONTINUE_DUMP6	GD	/300
-a1a4 50d2		;			- 	EOL		; \n
-a1a6 11aa		;			JZ	CONTINUE_DUMP7
-a1a8 01b6		;			JP	ERR:ARG
+81a6 d300		;	CONTINUE_DUMP6	GD	/300
+a1a8 50d2		;			- 	EOL		; \n
+a1aa 11ae		;			JZ	CONTINUE_DUMP7
+a1ac 01ba		;			JP	ERR:ARG
 
-d1aa a002		;	CONTINUE_DUMP7	SC	DUMPER
-a1ac 0116		;			JP	CONTINUE4
+d1ae a002		;	CONTINUE_DUMP7	SC	DUMPER
+a1b0 0116		;			JP	CONTINUE4
 
 					
 ;-------------------------------------------	
 
-81ae 3001		;	ERR:JOB		LV	/0001
-a1b0 01c2		;			JP	MSG_ERRO
+81b2 3001		;	ERR:JOB		LV	/0001
+a1b4 01c6		;			JP	MSG_ERRO
 
-81b2 3002		;	ERR:CMD		LV	/0002
-a1b4 01c2		;			JP	MSG_ERRO
+81b6 3002		;	ERR:CMD		LV	/0002
+a1b8 01c6		;			JP	MSG_ERRO
 
-81b6 3003		;	ERR:ARG		LV	/0003
-a1b8 01c2		;			JP	MSG_ERRO
+81ba 3003		;	ERR:ARG		LV	/0003
+a1bc 01c6		;			JP	MSG_ERRO
 
-81ba 3004		;	ERR:END		LV	/0004
-a1bc 01c2		;			JP	MSG_ERRO
+81be 3004		;	ERR:END		LV	/0004
+a1c0 01c6		;			JP	MSG_ERRO
 
-81be 3005		;	ERR:EXE		LV	/0005
-a1c0 01c2		;			JP	MSG_ERRO
+81c2 3005		;	ERR:EXE		LV	/0005
+a1c4 01c6		;			JP	MSG_ERRO
 
 ;-------------------------------------------
 
 
-81c2 f0ee		;	MSG_ERRO	OS	/00EE
+81c6 f0ee		;	MSG_ERRO	OS	/00EE
 
-a1c4 c1c4		;	FIM             HM      FIM   ; Fim do programa
+a1c8 c1c8		;	FIM             HM      FIM   ; Fim do programa
 
